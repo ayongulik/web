@@ -19,4 +19,5 @@ const pagesCollection = defineCollection({
 export const collections = {
   exercises: exercisesCollection,
   courses: pagesCollection,
+  levels: pagesCollection,
 };

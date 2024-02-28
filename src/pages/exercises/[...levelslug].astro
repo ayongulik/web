@@ -1,6 +1,7 @@
 ---
+import { getEntry } from 'astro:content'
 import BaseLayout from '../../layouts/Base.astro'
-import Breadcrumb from '../../components/Breadcrumb.astro'
+import Prose from '../../components/Prose.astro'
 import { getGroupedStaticPaths } from '../../utils/collection'
 import { removeStripes } from '../../utils/string'
 
@@ -28,18 +29,31 @@ interface Props {
   slug: string
 }
 
-const { entries, slug } = Astro.props;
+const { slug } = Astro.props;
 
-const title = removeStripes(slug.split('/').pop() as string)
+const pageEntry = await getEntry('levels', slug)
+// @ts-expect-error dynamic slug
+const { Content } = await pageEntry.render()
+
+const title = removeStripes(slug)
 ---
 <BaseLayout>
 	<div class="max-w-screen-lg mx-auto px-4 relative">
-        <Breadcrumb path={`exercises/${slug}`} class="py-2 my-4" />
+        <article class="mt-12">
+            <h1 class="text-6xl font-extrabold text-purple-800 mb-12 capitalize text-center">{title}</h1>
+            <Prose>
+                <Content />
+            </Prose>
+        </article>
 
-        <h1 class="text-2xl font-semibold text-purple-800 mt-8 mb-4 capitalize">{title}</h1>
-
-        <ul>
-            {entries.map(entry => (<li>{entry.slug}</li>))}
-        </ul>
+        <nav class="mt-8 mb-20">
+            <ol class="grid grid-cols-2 gap-6">
+                <li>
+                    <a 
+                        href="/exercises/level-0/algoritma-menggunakan-python" 
+                        class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100">Algoritma Menggunakan Python</a>
+                </li>
+            </ol>
+        </nav>
     </div>
 </BaseLayout>

@@ -63,11 +63,11 @@ const title = removeStripes(courseSlug)
         </article>
 
         <nav class="mt-12 mb-20">
-            <ol class="flex gap-4">
+            <ol class="grid grid-cols-2 gap-6">
                 {
                     entries.map(entry => (
-                        <li class="flex-1">
-                            <a href={`/exercises/${entry.slug}`} class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100">{entry.data.title}</a>
+                        <li>
+                            <a href={`/exercises/${entry.slug}`} class="block p-6 text-lg font-semibold bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100">{entry.data.title}</a>
                         </li>
                     ))
                 }
