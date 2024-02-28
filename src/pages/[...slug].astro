@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import CourseLayout from '../layouts/Course.astro';
+import Footer from '../components/Footer.astro'
 import { removeStripes } from '../utils/string';
 
 import type { CollectionEntry } from 'astro:content';
@@ -61,4 +62,5 @@ const { Content } = await entry.render();
 	</aside>
 
     <Content />
+    <Footer slot="after-editor" />
 </CourseLayout>

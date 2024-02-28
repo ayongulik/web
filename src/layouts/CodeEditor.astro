@@ -35,10 +35,10 @@ const {
 		<div class="flex">
 			<slot name="aside-editor" />
 
-			<div class="px-4 w-full">
+			<div class="w-full">
 				<slot name="before-editor" />
 
-				{enableCodeEditor && (<aside class="min-h-96 px-4 py-5 border-2 rounded-lg bg-white mb-12">
+				{enableCodeEditor && (<aside class="min-h-96 mx-4 px-4 py-5 border-2 rounded-lg bg-white mb-12">
 					<section class="w-full mb-4">
 						<textarea id="code" name="code" class="block w-full min-h-[300px] bg-[#212121] rounded-lg m-0 overflow-auto"></textarea>
 					</section>

@@ -17,8 +17,8 @@ const { frontmatter, slug } = Astro.props
 	<slot slot="aside-editor" name="aside" />
 
 	<Fragment slot="before-editor">
-		{ slug && <Breadcrumb path={slug} class="py-4 my-4" /> }
-		<main class="my-8">
+		{ slug && <Breadcrumb path={slug} class="p-4 my-4" /> }
+		<main class="px-4 my-8">
 			<article>
 				<Prose>
 					<slot />
@@ -26,4 +26,6 @@ const { frontmatter, slug } = Astro.props
 			</article>
 		</main>
 	</Fragment>
+
+	<slot slot="after-editor" name="after-editor"/>
 </CodeEditorLayout>
