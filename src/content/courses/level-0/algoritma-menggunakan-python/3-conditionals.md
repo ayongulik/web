@@ -7,7 +7,7 @@ type: "material"
 
 Conditionals adalah konsep pemrograman yang memberikan perintah kepada komputer untuk melakukan keputusan dan menjalankan suatu proses berdasarkan hasil dari logika perbandingan/boolean. Konsep ini dapat divisualisasikan ke dalam bentuk diagram flowchart. Diagram berikut mengilustrasikan contoh skenario untuk memutuskan apakah seseorang akan makan atau tidak.
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{Am I hungry?}
     B -- True --> C{Is food exist?}
@@ -21,7 +21,7 @@ flowchart TD
     I --> E
     E --> J[Done]
     D --> J
-```
+</pre>
 
 Skenario pada contoh dapat diimplementasikan ke dalam kode dengan memanfaatkan sintaks Python. Yuk kita ikuti pembahasan lebih detailnya!
 
@@ -55,7 +55,7 @@ else:
 
 Apabila kode pada contoh 1.a dijalankan, komputer hanya akan melakukan operasi pengurangan pada variable `money_on_wallet` dan menjalankan fungsi `print` yang pertama karena `money_on_wallet >= price_of_bread` akan menghasilkan nilai `True`, sedangkan fungsi `print` yang kedua akan di-skip.
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{Have enough money to buy the bread?}
     B -- True --> C[Pay for the bread]
@@ -63,7 +63,7 @@ flowchart TD
     D --> E[Done]
     B -- False --> F[Print 'I coudn't buy the bread ...']
     F --> E
-```
+</pre>
 
 _Ilustrasi flowchart untuk contoh 1.a_
 
@@ -90,7 +90,7 @@ print(f'I will buy the jam as well.')
 
 Apabila kode baru pada contoh 1.b dijalankan, komputer hanya akan melakukan operasi pengurangan, menjalankan fungsi `print` yang pertama _dan_ menjalankan fungsi `print` yang kedua. Hal ini disebabkan fungsi `print` yang kedua sudah tidak lagi di dalam blok kode `else`.
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{Have enough money to buy the bread?}
     B -- True --> C[Pay for the bread]
@@ -99,7 +99,7 @@ flowchart TD
     D --> E[Print 'I will buy the jam as well.']
     G --> E
     E --> F[Done]
-```
+</pre>
 
 _Ilustrasi flowchart untuk contoh 1.b_
 
@@ -134,7 +134,7 @@ else:
 # 'I will give the changes to the street singer.'
 ```
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{Have enough money to buy the bread?}
     B -- True --> C[Pay for the bread]
@@ -146,7 +146,7 @@ flowchart TD
     G --> H[Done]
     B -- False --> I[Print 'I couldn't buy the bread ...']
     I --> H
-```
+</pre>
 
 _Ilustrasi flowchart untuk contoh 1.b_
 

@@ -34,14 +34,14 @@ while number_of_loops > 0:
 
 Apabila kode pada Contoh 1.a dijalankan, komputer akan mengeksekusi kode yang ada di dalam loop secara berulang-ulang selama variable `number_of_loops` bernilai lebih dari 0. Namun, pada akhirnya loop akan berhenti pada iterasi ketiga karena di dalam loop ada kode yang melakukan operasi pengurangan terhadap nilai `number_of_loops` di setiap perulangan. Sehingga, output akan menyetak string 'I am inside a loop.' sebanyak 3 kali.
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{number_of_loops > 0?}
     B -- True --> C[Print 'I am inside a loop.']
     C --> D[Decrease number_of_loops by 1]
     D --> B
     B -- False --> E[End]
-```
+</pre>
 
 _Ilustrasi diagram untuk Contoh 1.a_
 
@@ -86,7 +86,7 @@ while number_of_loops > 0 and stop_loop == False:
 
 Apabila kode pada contoh 1.b dijalankan, program Python hanya akan mencetak string sebanyak 2 kali. Hal ini disebabkan kondisi pada `while` melakukan pengecekan terhadap nilai dari variable `stop_loop`. Pada saat yang bersamaan, di dalam blok kode `while` ada conditional yang melakukan perubahan nilai `stop_loop` dari `False` menjadi `True` apabila variable `number_of_loops`-nya bernilai 3. Sehingga, saat nilai `stop_loop` menjadi `True`, kondisi pada `while` akan menghasilkan nilai `False` dan akhirnya mengakibatkan loop berhenti.
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{number_of_loops > 0 and stop_loop is False?}
     B -- True --> C[Print 'I am inside a loop.']
@@ -96,7 +96,7 @@ flowchart TD
     F --> B
     E -- False --> B
     B -- False --> G[End]
-```
+</pre>
 
 _Ilustrasi diagram untuk Contoh 1.b_
 
@@ -127,7 +127,7 @@ while number_of_loops > 0:
 # "I am inside a loop."
 ```
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{number_of_loops > 0?}
     B -- True --> C[Set number_of_nested_loops with value]
@@ -138,7 +138,7 @@ flowchart TD
     D -- False --> G[Decrease number_of_loops by 1]
     G --> B
     B -- False --> H[Done]
-```
+</pre>
 
 _Ilustrasi diagram untuk Contoh 1.c_
 
@@ -172,13 +172,13 @@ Ada perbedaan mendasar antara penggunaan `for` dengan `while` untuk pembuatan lo
 
 Algoritma `for` akan mengunjungi satu per satu item yang terdapat pada `list` mulai dari item pada index yang pertama hingga item pada index yang terakhir. Itulah mengapa apabila dijalankan, kode pada Contoh 2.a akan menyetak `string` 'I like ...' sebanyak 5 kali dengan nama buah yang bergantian dan berurutan sesuai urutan item dalam `list`.
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[Start] --> B{Is there any fruit next?}
     B -- Yes --> C[Print 'I like --next fruit--.']
     C --> B
     B -- No --> D[Done]
-```
+</pre>
 
 _Ilustrasi diagram untuk contoh 2.a_
 

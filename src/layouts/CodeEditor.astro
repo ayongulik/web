@@ -64,7 +64,7 @@ const {
                       name="output"
                       class="block w-full min-h-[150px] font-mono text-sm border-2 border-gray-200 bg-gray-100 rounded-md p-2 text-slate-700"
                       readonly
-                    ></textarea>
+                    />
                   </div>
                 </div>
                 <div class="flex-none min-w-48">
@@ -156,5 +156,9 @@ const {
         printOutput(String(err));
       }
     }
+  </script>
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
   </script>
 </BaseLayout>
