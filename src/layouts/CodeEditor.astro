@@ -1,6 +1,10 @@
 ---
 import Button from '../components/Button.astro'
 import GlobalStyles from '../components/GlobalStyles.astro'
+
+const { frontmatter } = Astro.props
+
+const title = frontmatter?.title ?? 'Ayongulik Python\'s Code Editor'
 ---
 
 <html lang="en">
@@ -9,7 +13,7 @@ import GlobalStyles from '../components/GlobalStyles.astro'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Ayongulik Python Runner</title>
+		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -20,12 +24,14 @@ import GlobalStyles from '../components/GlobalStyles.astro'
 		<script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
 	</head>
 	<body>
-		<div class="max-w-screen-lg mx-auto">
-			<main class="min-h-96 px-4 py-5 border-2 rounded-lg">
+		<div class="max-w-screen-lg mx-auto px-4 relative">
+			<slot name="before-editor" />
+
+			<aside class="min-h-96 px-4 py-5 border-2 rounded-lg mb-12">
 				<section class="w-full mb-4">
 					<textarea id="code" name="code" class="block w-full min-h-[300px] bg-[#212121] rounded-lg m-0 overflow-auto"></textarea>
 				</section>
-				<aside class="w-full flex gap-4">
+				<section class="w-full flex gap-4">
 					<div class="flex-1">
 						<div class="grow-wrap">
 							<textarea 
@@ -39,8 +45,10 @@ import GlobalStyles from '../components/GlobalStyles.astro'
 						<Button id="button-run" class="mb-2" fullWidth>Run</Button>
 						<Button id="button-run-test-cases" variant="outline" fullWidth>Run Test Cases</Button>
 					</div>
-				</aside>
-			</main>
+				</section>
+			</aside>
+
+            <slot name="after-editor" />
 		</div>
 
 		<script>

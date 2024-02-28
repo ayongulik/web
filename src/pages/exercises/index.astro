@@ -1,0 +1,13 @@
+---
+import { getCollection } from "astro:content";
+
+const exercises = await getCollection('exercises')
+---
+
+<ul>
+    {
+        exercises.map(entry => (
+            <li>{entry.slug}</li>
+        ))
+    }
+</ul>

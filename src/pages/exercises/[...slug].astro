@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import ExerciseLayout from '../../layouts/Exercise.astro';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const exerciseEntries = await getCollection('exercises');
+  return exerciseEntries.map(entry => ({
+    params: { 
+      slug: entry.slug 
+    }, 
+    props: { 
+      entry, 
+    },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'exercises'>
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<ExerciseLayout frontmatter={entry.data} slug={entry.slug}>
+  <Content />
+</ExerciseLayout>

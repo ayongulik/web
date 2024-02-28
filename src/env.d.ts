@@ -1,3 +1,4 @@
+/// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 /// <reference types="@types/codemirror" />
 
@@ -55,7 +56,7 @@ interface PyodideInterface {
 declare global {
     interface Window {
         editor: EditorFromTextArea
-        loadPyodide(options: LoadPyodideOptions): PyodideInterface
+        loadPyodide: (options: LoadPyodideOptions) => Promise<PyodideInterface>
         pyodide: PyodideInterface
     }
 }

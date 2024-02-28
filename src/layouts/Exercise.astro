@@ -1,0 +1,24 @@
+---
+import CodeEditorLayout from './CodeEditor.astro'
+import Breadcrumb from '../components/Breadcrumb.astro'
+
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+	frontmatter?: CollectionEntry<'exercises'>
+	slug?: string
+}
+
+const { frontmatter, slug } = Astro.props
+---
+
+<CodeEditorLayout frontmatter={frontmatter}>
+	<Fragment slot="before-editor">
+		{ slug && <Breadcrumb path={`exercises/${slug}`} class="py-2 my-4" /> }
+		<main class="mt-12 mb-8">
+			<article class="prose prose-pre:border-2 prose-pre:rounded-lg prose-pre:p-2 prose-pre:!bg-gray-50 max-w-screen-lg prose-h1:text-purple-800">
+				<slot />
+			</article>
+		</main>
+	</Fragment>
+</CodeEditorLayout>
