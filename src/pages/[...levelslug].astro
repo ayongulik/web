@@ -1,15 +1,15 @@
 ---
 import { getEntry } from 'astro:content'
-import BaseLayout from '../../layouts/Base.astro'
-import Prose from '../../components/Prose.astro'
-import { getGroupedStaticPaths } from '../../utils/collection'
-import { removeStripes } from '../../utils/string'
+import BaseLayout from '../layouts/Base.astro'
+import Prose from '../components/Prose.astro'
+import { getGroupedStaticPaths } from '../utils/collection'
+import { removeStripes } from '../utils/string'
 
 import type { CollectionEntry } from 'astro:content'
 
 export async function getStaticPaths() {
     const groupedEntries = await getGroupedStaticPaths(
-        'exercises', 
+        'courses', 
         (slug) => slug.split('/')[0]
     )
 
@@ -25,14 +25,13 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  entries: CollectionEntry<'exercises'>[]
+  entries: CollectionEntry<'courses'>[]
   slug: string
 }
 
 const { slug } = Astro.props;
 
-const pageEntry = await getEntry('levels', slug)
-// @ts-expect-error dynamic slug
+const pageEntry = await getEntry('pages', slug)
 const { Content } = await pageEntry.render()
 
 const title = removeStripes(slug)
@@ -50,7 +49,7 @@ const title = removeStripes(slug)
             <ol class="grid grid-cols-2 gap-6">
                 <li>
                     <a 
-                        href="/exercises/level-0/algoritma-menggunakan-python" 
+                        href="/level-0/algoritma-menggunakan-python" 
                         class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100">Algoritma Menggunakan Python</a>
                 </li>
             </ol>

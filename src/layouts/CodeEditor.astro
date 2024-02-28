@@ -5,15 +5,17 @@ import Button from '../components/Button.astro'
 import type { CollectionEntry } from 'astro:content'
 
 interface Props {
-	frontmatter?: CollectionEntry<'exercises'>['data']
+	frontmatter?: CollectionEntry<'courses'>['data']
 	class?: string
 	enableTestCases?: boolean
+	enableCodeEditor?: boolean
 }
 
 const { 
 	frontmatter, 
 	class: customClass = '', 
-	enableTestCases = false 
+	enableTestCases = false,
+	enableCodeEditor = true,
 } = Astro.props
 ---
 
@@ -36,7 +38,7 @@ const {
 			<div class="px-4 w-full">
 				<slot name="before-editor" />
 
-				<aside class="min-h-96 px-4 py-5 border-2 rounded-lg bg-white mb-12">
+				{enableCodeEditor && (<aside class="min-h-96 px-4 py-5 border-2 rounded-lg bg-white mb-12">
 					<section class="w-full mb-4">
 						<textarea id="code" name="code" class="block w-full min-h-[300px] bg-[#212121] rounded-lg m-0 overflow-auto"></textarea>
 					</section>
@@ -55,7 +57,7 @@ const {
 							{ enableTestCases && <Button id="button-run-test-cases" variant="outline" fullWidth>Run Test Cases</Button> }
 						</div>
 					</section>
-				</aside>
+				</aside>)}
 
 				<slot name="after-editor" />
 			</div>

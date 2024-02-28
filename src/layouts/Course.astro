@@ -1,5 +1,4 @@
 ---
-import { getCollection } from 'astro:content'
 import CodeEditorLayout from './CodeEditor.astro'
 import Breadcrumb from '../components/Breadcrumb.astro'
 import Prose from '../components/Prose.astro'
@@ -7,18 +6,18 @@ import Prose from '../components/Prose.astro'
 import type { CollectionEntry } from 'astro:content'
 
 interface Props {
-	frontmatter: CollectionEntry<'exercises'>['data']
+	frontmatter: CollectionEntry<'courses'>['data']
 	slug?: string
 }
 
 const { frontmatter, slug } = Astro.props
 ---
 
-<CodeEditorLayout frontmatter={frontmatter}>
+<CodeEditorLayout frontmatter={frontmatter} enableCodeEditor={frontmatter.type === 'exercise'}>
 	<slot slot="aside-editor" name="aside" />
 
 	<Fragment slot="before-editor">
-		{ slug && <Breadcrumb path={`exercises/${slug}`} class="py-4 my-4" /> }
+		{ slug && <Breadcrumb path={slug} class="py-4 my-4" /> }
 		<main class="my-8">
 			<article>
 				<Prose>

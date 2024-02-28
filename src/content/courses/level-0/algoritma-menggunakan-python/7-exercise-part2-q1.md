@@ -1,11 +1,12 @@
 ---
 title: 'Exercise Part 2 - Q1'
+type: 'exercise'
 tags: ['level-0', 'python']
 ---
 
 # Exercise Part 2 - Q1
 
-Buatlah kode Python yang dapat mencetak pola segitiga siku-siku menggunakan simbol `*`:
+Buatlah kode python yang dapat mencetak pola segitiga siku-siku menggunakan simbol `*`:
 
 ```
 *
@@ -28,13 +29,13 @@ if __name__ == "__main__":
 ```
 
 <details>
-<summary>Test Cases</summary>
+<summary>test cases</summary>
 
 ```
-Input:
+input:
 6
 
-Output:
+output:
 *
 **
 ***
@@ -44,10 +45,10 @@ Output:
 ```
 
 ```
-Input:
+input:
 1
 
-Output:
+output:
 *
 ```
 </details>

@@ -1,0 +1,44 @@
+---
+title: 'Exercise Part 3 - Q3'
+type: 'exercise'
+---
+
+### Exercise Part 3 - Q3
+
+Buatlah fungsi `get_sum` untuk menghitung aggregate penjumlahan dari data. Fungsi ini menerima dua parameter: `data_source` (list dictionary) dan `key` (`string`, kemungkinan nilainya adalah key dengan tipe data number), dan mengembalikan tipe data `number` hasil penjumlahan. Contoh penggunaannya adalah sebagai berikut:
+
+```python
+some_data = [
+    {
+        'id': 7,
+        'product_name': 'ZW collection trench coat with belt',
+        'category': 'coat',
+        'price': 89.95,
+        'stock': 95,
+        'sold': 97       
+    },
+    {
+        'id': 8,
+        'product_name': 'Contrast knit sweater',
+        'category': 'sweater',
+        'price': 39.95,
+        'stock': 2,
+        'sold': 55
+    }
+]
+print(get_sum(some_data, 'price')) # Output: 129.9
+print(get_sum(some_data, 'sold')) # OUtput: 152
+```
+
+Buat file baru bernama `exercise_part3_Q13.py` dan gunakan template ini untuk mengerjakan soal.
+
+```python
+def get_sum(data_source, key):
+    # tulis kode kamu disini
+    return
+
+
+if __name__ == '__main__':
+    # copy data dari deskripsi di Q1
+    print(get_sum(data_source, 'price'))
+```
