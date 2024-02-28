@@ -27,6 +27,7 @@ if __name__ == "__main__":
 
 <details>
 <summary>Test Cases</summary>
+
 ```
 Input:
 4

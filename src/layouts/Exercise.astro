@@ -18,7 +18,7 @@ const { frontmatter, slug } = Astro.props
 
 	<Fragment slot="before-editor">
 		{ slug && <Breadcrumb path={`exercises/${slug}`} class="py-4 my-4" /> }
-		<main class="mt-12 mb-8">
+		<main class="my-8">
 			<article class="prose prose-pre:border-2 prose-pre:rounded-lg prose-pre:p-2 prose-pre:!bg-gray-50 max-w-screen-xl prose-h1:text-purple-800">
 				<slot />
 			</article>

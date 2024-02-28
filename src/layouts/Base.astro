@@ -1,5 +1,6 @@
 ---
 import GlobalStyles from '../components/GlobalStyles.astro'
+import Navbar from '../components/Navbar.astro'
 
 const { frontmatter } = Astro.props
 
@@ -19,7 +20,8 @@ const title = frontmatter?.title ?? 'Ayongulik'
 	    <GlobalStyles />
         <slot name="head"/>
 	</head>
-	<body class="bg-slate-50">
+	<body class="bg-slate-50 relative">
+		<Navbar />
         <slot />
     </body>
 </html>
