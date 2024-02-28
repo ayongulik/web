@@ -1,31 +1,34 @@
 ---
-import CodeEditorLayout from './CodeEditor.astro'
-import Breadcrumb from '../components/Breadcrumb.astro'
-import Prose from '../components/Prose.astro'
+import CodeEditorLayout from "./CodeEditor.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Prose from "../components/Prose.astro";
 
-import type { CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-	frontmatter: CollectionEntry<'courses'>['data']
-	slug?: string
+  frontmatter: CollectionEntry<"courses">["data"];
+  slug?: string;
 }
 
-const { frontmatter, slug } = Astro.props
+const { frontmatter, slug } = Astro.props;
 ---
 
-<CodeEditorLayout frontmatter={frontmatter} enableCodeEditor={frontmatter.type === 'exercise'}>
-	<slot slot="aside-editor" name="aside" />
+<CodeEditorLayout
+  frontmatter={frontmatter}
+  enableCodeEditor={frontmatter.type === "exercise"}
+>
+  <slot slot="aside-editor" name="aside" />
 
-	<Fragment slot="before-editor">
-		{ slug && <Breadcrumb path={slug} class="p-4 my-4" /> }
-		<main class="px-4 my-8">
-			<article>
-				<Prose>
-					<slot />
-				</Prose>
-			</article>
-		</main>
-	</Fragment>
+  <Fragment slot="before-editor">
+    {slug && <Breadcrumb path={slug} class="p-4 my-4" />}
+    <main class="px-4 my-8">
+      <article>
+        <Prose>
+          <slot />
+        </Prose>
+      </article>
+    </main>
+  </Fragment>
 
-	<slot slot="after-editor" name="after-editor"/>
+  <slot slot="after-editor" name="after-editor" />
 </CodeEditorLayout>

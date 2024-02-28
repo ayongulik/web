@@ -1,25 +1,29 @@
 ---
 interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
-    variant?: 'solid' | 'outline'
-    fullWidth?: boolean
+  variant?: "solid" | "outline";
+  fullWidth?: boolean;
 }
 
-const { 
-    variant = 'solid', 
-    fullWidth = false,
-    class: customClass = '',
-    ...props 
-} = Astro.props
+const {
+  variant = "solid",
+  fullWidth = false,
+  class: customClass = "",
+  ...props
+} = Astro.props;
 ---
 
-<button 
-    class:list={[
-        'inline-flex justify-center rounded-lg font-semibold py-3 px-4',
-        {'text-white bg-purple-600 hover:bg-purple-400': variant === 'solid'} , 
-        {'text-purple-600 bg-white border-2 border-purple-600 box-border hover:bg-slate-100': variant === 'outline'},
-        {'w-full': fullWidth},
-        customClass
-    ]} 
-    {...props}>
-    <slot />
+<button
+  class:list={[
+    "inline-flex justify-center rounded-lg font-semibold py-3 px-4",
+    { "text-white bg-purple-600 hover:bg-purple-400": variant === "solid" },
+    {
+      "text-purple-600 bg-white border-2 border-purple-600 box-border hover:bg-slate-100":
+        variant === "outline",
+    },
+    { "w-full": fullWidth },
+    customClass,
+  ]}
+  {...props}
+>
+  <slot />
 </button>

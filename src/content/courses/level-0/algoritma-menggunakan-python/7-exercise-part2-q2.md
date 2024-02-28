@@ -1,7 +1,7 @@
 ---
-title: 'Exercise Part 2 - Q2'
-type: 'exercise'
-tags: ['level-0', 'python']
+title: "Exercise Part 2 - Q2"
+type: "exercise"
+tags: ["level-0", "python"]
 ---
 
 # Exercise Part 2 - Q2
@@ -56,4 +56,5 @@ Input:
 Output:
 *
 ```
+
 </details>

@@ -1,7 +1,7 @@
 ---
-title: 'Exercise Part 1 - Q2'
-type: 'exercise'
-tags: ['level-0', 'python']
+title: "Exercise Part 1 - Q2"
+type: "exercise"
+tags: ["level-0", "python"]
 ---
 
 # Exercise Part 1 - Q2
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 <summary>Test Cases</summary>
 
 ```
-Input: 
+Input:
 True True 2 200 'UHasselt'
 
 Output:
@@ -41,7 +41,7 @@ Output:
 ```
 
 ```
-Input: 
+Input:
 True True 2 200 'BSI'
 
 Output:
@@ -49,7 +49,7 @@ Output:
 ```
 
 ```
-Input: 
+Input:
 True True 2 100 'Unpar'
 
 Output:
@@ -57,7 +57,7 @@ Output:
 ```
 
 ```
-Input: 
+Input:
 True False 2 200 'Unpar'
 
 Output:
@@ -65,10 +65,11 @@ Output:
 ```
 
 ```
-Input: 
+Input:
 True True 5 200 'Unpar'
 
 Output:
 'Diterima!'
 ```
+
 </details>

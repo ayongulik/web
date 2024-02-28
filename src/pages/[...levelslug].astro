@@ -1,61 +1,68 @@
 ---
-import { getEntry } from 'astro:content'
-import BaseLayout from '../layouts/Base.astro'
-import Prose from '../components/Prose.astro'
-import Footer from '../components/Footer.astro'
-import { getGroupedStaticPaths } from '../utils/collection'
-import { removeStripes } from '../utils/string'
+import { getEntry } from "astro:content";
+import BaseLayout from "../layouts/Base.astro";
+import Prose from "../components/Prose.astro";
+import Footer from "../components/Footer.astro";
+import { getGroupedStaticPaths } from "../utils/collection";
+import { removeStripes } from "../utils/string";
 
-import type { CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-    const groupedEntries = await getGroupedStaticPaths(
-        'courses', 
-        (slug) => slug.split('/')[0]
-    )
+  const groupedEntries = await getGroupedStaticPaths(
+    "courses",
+    (slug) => slug.split("/")[0],
+  );
 
-    return groupedEntries.map(groupedEntry => ({
-        params: {
-            levelslug: groupedEntry.params.group,
-        },
-        props: {
-            ...groupedEntry.props,
-            slug: groupedEntry.params.group
-        }
-    }))
+  return groupedEntries.map((groupedEntry) => ({
+    params: {
+      levelslug: groupedEntry.params.group,
+    },
+    props: {
+      ...groupedEntry.props,
+      slug: groupedEntry.params.group,
+    },
+  }));
 }
 
 interface Props {
-  entries: CollectionEntry<'courses'>[]
-  slug: string
+  entries: CollectionEntry<"courses">[];
+  slug: string;
 }
 
 const { slug } = Astro.props;
 
-const pageEntry = await getEntry('pages', slug)
-const { Content } = await pageEntry.render()
+const pageEntry = await getEntry("pages", slug);
+const { Content } = await pageEntry.render();
 
-const title = removeStripes(slug)
+const title = removeStripes(slug);
 ---
+
 <BaseLayout>
-	<div class="max-w-screen-lg mx-auto min-screen-height px-4 relative">
-        <article class="mt-12">
-            <h1 class="text-6xl font-extrabold text-purple-800 mb-12 capitalize text-center">{title}</h1>
-            <Prose>
-                <Content />
-            </Prose>
-        </article>
+  <div class="max-w-screen-lg mx-auto min-screen-height px-4 relative">
+    <article class="mt-12">
+      <h1
+        class="text-6xl font-extrabold text-purple-800 mb-12 capitalize text-center"
+      >
+        {title}
+      </h1>
+      <Prose>
+        <Content />
+      </Prose>
+    </article>
 
-        <nav class="mt-8">
-            <ol class="grid grid-cols-2 gap-6">
-                <li>
-                    <a 
-                        href="/level-0/algoritma-menggunakan-python" 
-                        class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100">Algoritma Menggunakan Python</a>
-                </li>
-            </ol>
-        </nav>
-    </div>
+    <nav class="mt-8">
+      <ol class="grid grid-cols-2 gap-6">
+        <li>
+          <a
+            href="/level-0/algoritma-menggunakan-python"
+            class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100"
+            >Algoritma Menggunakan Python</a
+          >
+        </li>
+      </ol>
+    </nav>
+  </div>
 
-	<Footer />
+  <Footer />
 </BaseLayout>

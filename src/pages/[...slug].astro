@@ -1,66 +1,77 @@
 ---
-import { getCollection } from 'astro:content';
-import CourseLayout from '../layouts/Course.astro';
-import Footer from '../components/Footer.astro'
-import { removeStripes } from '../utils/string';
+import { getCollection } from "astro:content";
+import CourseLayout from "../layouts/Course.astro";
+import Footer from "../components/Footer.astro";
+import { removeStripes } from "../utils/string";
 
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const exerciseEntries = await getCollection('courses');
-  return exerciseEntries.map(entry => ({
-    params: { 
-      slug: entry.slug 
-    }, 
-    props: { 
-      entry, 
+  const exerciseEntries = await getCollection("courses");
+  return exerciseEntries.map((entry) => ({
+    params: {
+      slug: entry.slug,
+    },
+    props: {
+      entry,
     },
   }));
 }
 
 interface Props {
-  entry: CollectionEntry<'courses'>
+  entry: CollectionEntry<"courses">;
 }
-
 
 const { entry } = Astro.props;
 
-const splitSlug = entry.slug.split('/')
-const courseSlug = splitSlug[1]
-const courseTitle = removeStripes(courseSlug)
-const levelTitle = removeStripes(splitSlug[0])
-const courseEntries = await getCollection('courses', ({ slug }) => slug.includes(courseSlug)) 
+const splitSlug = entry.slug.split("/");
+const courseSlug = splitSlug[1];
+const courseTitle = removeStripes(courseSlug);
+const levelTitle = removeStripes(splitSlug[0]);
+const courseEntries = await getCollection("courses", ({ slug }) =>
+  slug.includes(courseSlug),
+);
 
 const { Content } = await entry.render();
 ---
 
 <CourseLayout frontmatter={entry.data} slug={entry.slug}>
-	<aside slot="aside" class="side-navbar flex-none w-1/4 hidden md:hidden lg:block sticky overflow-y-scroll p-4 bg-slate-100">
-		<nav class="bg-slate-50 shadow rounded-lg">
-            <div class="p-4 bg-purple-100 rounded-t-lg">
-                <p class="text-xs capitalize mb-1">{levelTitle}</p>
-                <p class="text-sm capitalize">{courseTitle}</p>
-            </div>
-            <ol class="rounded-b-lg">
-                {
-                    courseEntries.map(({ data, slug }, index) => (
-                        <li>
-                <a 
-                href={`/${slug}`} 
+  <aside
+    slot="aside"
+    class="side-navbar flex-none w-1/4 hidden md:hidden lg:block sticky overflow-y-scroll p-4 bg-slate-100"
+  >
+    <nav class="bg-slate-50 shadow rounded-lg">
+      <div class="p-4 bg-purple-100 rounded-t-lg">
+        <p class="text-xs capitalize mb-1">{levelTitle}</p>
+        <p class="text-sm capitalize">{courseTitle}</p>
+      </div>
+      <ol class="rounded-b-lg">
+        {
+          courseEntries.map(({ data, slug }, index) => (
+            <li>
+              <a
+                href={`/${slug}`}
                 class:list={[
-                    'pl-8 py-4 pr-4 block border-b-2 border-slate-200 overflow-hidden whitespace-nowrap text-ellipsis',
-                    {'text-white font-semibold bg-purple-800 border-purple-800': slug == entry.slug},
-                    {'border-none rounded-b-lg': index == courseEntries.length - 1}
-                ]}>
+                  "pl-8 py-4 pr-4 block border-b-2 border-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
+                  {
+                    "text-white font-semibold bg-purple-800 border-purple-800":
+                      slug == entry.slug,
+                  },
+                  {
+                    "border-none rounded-b-lg":
+                      index == courseEntries.length - 1,
+                  },
+                ]}
+              >
                 {data.title}
-                </a>
+              </a>
             </li>
-                    ))
-                }
-            </ol>
-		</nav>
-	</aside>
+          ))
+        }
+      </ol>
+    </nav>
+  </aside>
 
-    <Content />
-    <Footer slot="after-editor" />
+  <Content />
+  <Footer slot="after-editor" />
 </CourseLayout>

@@ -1,17 +1,18 @@
 ---
 interface Props {
-    href: string
-    highlighted?: boolean
+  href: string;
+  highlighted?: boolean;
 }
 
-const { href, highlighted = false } = Astro.props
+const { href, highlighted = false } = Astro.props;
 ---
 
-<a 
-    class:list={[
-        "inline-block text-sm font-semibold hover:text-purple-700 p-4",
-        {"text-purple-700": highlighted}
-    ]} 
-    href={href}>
-    <slot />
+<a
+  class:list={[
+    "inline-block text-sm font-semibold hover:text-purple-700 p-4",
+    { "text-purple-700": highlighted },
+  ]}
+  href={href}
+>
+  <slot />
 </a>

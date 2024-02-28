@@ -1,6 +1,6 @@
 ---
-title: 'Perkenalan'
-type: 'material'
+title: "Perkenalan"
+type: "material"
 ---
 
 # Perkenalan
@@ -13,7 +13,7 @@ Definisi algoritma itu banyak dan mudah saja dicari di internet. Namun pada dasa
 
 ## Mengapa belajar algoritma itu penting?
 
-Dalam implementasinya, set instruksi ini bentuknya bisa bermacam-macam tergantung dengan bahasa pemrograman yang dipilih. Sebagai contoh, sintaks dari bahasa C akan berbeda dengan sintaks dari bahasa Python. 
+Dalam implementasinya, set instruksi ini bentuknya bisa bermacam-macam tergantung dengan bahasa pemrograman yang dipilih. Sebagai contoh, sintaks dari bahasa C akan berbeda dengan sintaks dari bahasa Python.
 
 ```c
 // Bahasa C
@@ -30,11 +30,11 @@ int main(void)
 print('Hello, world!')
 ```
 
-*Perbedaan sintaks dari bahasa C dan Python untuk melakukan print 'Hello, world!'*
+_Perbedaan sintaks dari bahasa C dan Python untuk melakukan print 'Hello, world!'_
 
 Meskipun demikian, konsep dari set instruksi atau algoritma ini memiliki fundamental yang sama. Sehingga, apabila teman-teman telah memahami dengan benar konsep dari algoritma, belajar bahasa pemrograman baru akan jauh lebih mudah.
 
-Pada course ini, Python dipilih karena bahasanya relatif mudah, fungsi-fungsinya lengkap, dan kegunaannya sangat luas (bisa untuk scripting, data analysis dsb). 
+Pada course ini, Python dipilih karena bahasanya relatif mudah, fungsi-fungsinya lengkap, dan kegunaannya sangat luas (bisa untuk scripting, data analysis dsb).
 
 ## Input dan output
 
@@ -62,9 +62,10 @@ Untuk mengetes apakah instalasi program Python kalian sukses, ikuti langkah-lang
 2. Buka aplikasi terminal/command prompt pada komputer kalian. Ganti direktori ke lokasi dimana kalian menyimpan file `hello-world.py`.
 3. Jalan perintah `py hello-world.py` atau `python hello-world.py`. Apabila tidak muncul error dan tampil teks `Hello, world!` pada terminal, maka instalasi Python kalian telah berhasil!
 
->[!NOTE] 
-> Ada beberapa pengetahuan yang dapat kita ambil dari mengikuti langkah-langkah instalasi Python yang diberikan. 
-> 1. Program Python perlu diinstal pada komputer kita agar skrip Python kita bisa dijalankan atau dieksekusi. Hal ini umumnya berlaku pada bahasa pemrograman lain seperti C, C++, R, Ruby, Erlang dsb. Yang membedakan biasanya hanya pada cara instalasinya saja. 
+> [!NOTE]
+> Ada beberapa pengetahuan yang dapat kita ambil dari mengikuti langkah-langkah instalasi Python yang diberikan.
+>
+> 1. Program Python perlu diinstal pada komputer kita agar skrip Python kita bisa dijalankan atau dieksekusi. Hal ini umumnya berlaku pada bahasa pemrograman lain seperti C, C++, R, Ruby, Erlang dsb. Yang membedakan biasanya hanya pada cara instalasinya saja.
 > 2. Setelah menginstal program Python, kita dapat menjalankan perintah `py` atau `python` pada terminal. Ini juga umumnya berlaku pada bahasa pemrograman lain, dan biasanya cara menjalankan skripnya sama, yaitu dengan menjalankan perintah dengan pola `<nama-command> <nama-file>.<ekstensi>`.
 
 ## Text Editor dan IDE

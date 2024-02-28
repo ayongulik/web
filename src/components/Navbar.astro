@@ -1,21 +1,23 @@
 ---
-import Logo from './Logo.astro'
-import NavbarLink from './NavbarLink.astro'
+import Logo from "./Logo.astro";
+import NavbarLink from "./NavbarLink.astro";
 ---
 
-<nav class="sticky top-0 left-0 w-full flex items-center box-border border-b-2 border-gray-200 z-10 bg-white">
-    <section class="flex-none px-4">
-        <Logo />
-    </section>
+<nav
+  class="sticky top-0 left-0 w-full flex items-center box-border border-b-2 border-gray-200 z-10 bg-white"
+>
+  <section class="flex-none px-4">
+    <Logo />
+  </section>
 
-    <section class="flex-1">
-        <ul class="flex flex-row-reverse items-center">
-            <li class="flex">
-                <NavbarLink href="/online-editor">Editor Online</NavbarLink> 
-            </li>
-            <li class="flex">
-                <NavbarLink href="/level-0">Courses</NavbarLink> 
-            </li>
-        </ul>
-    </section>
+  <section class="flex-1">
+    <ul class="flex flex-row-reverse items-center">
+      <li class="flex">
+        <NavbarLink href="/online-editor">Editor Online</NavbarLink>
+      </li>
+      <li class="flex">
+        <NavbarLink href="/level-0">Courses</NavbarLink>
+      </li>
+    </ul>
+  </section>
 </nav>

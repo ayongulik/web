@@ -1,6 +1,6 @@
 ---
-title: 'Exercise Part 3 - Q3'
-type: 'exercise'
+title: "Exercise Part 3 - Q3"
+type: "exercise"
 ---
 
 ### Exercise Part 3 - Q3
@@ -15,7 +15,7 @@ some_data = [
         'category': 'coat',
         'price': 89.95,
         'stock': 95,
-        'sold': 97       
+        'sold': 97
     },
     {
         'id': 8,

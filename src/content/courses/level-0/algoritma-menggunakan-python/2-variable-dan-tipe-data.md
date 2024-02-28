@@ -1,6 +1,6 @@
 ---
-title: 'Variable dan Tipe Data'
-type: 'material'
+title: "Variable dan Tipe Data"
+type: "material"
 ---
 
 # Variable dan Tipe Data
@@ -31,6 +31,7 @@ print(total_purchase) # output: 999
 
 > [!NOTE]
 > Simbol `#` digunakan untuk membuat komentar/catatan pada kode Python kita:
+>
 > ```python
 > # Semua catatan dimulai dengan menggunakan simbol '#'
 > total_purchase = 1000 # komentar terkait kode ini
@@ -112,7 +113,7 @@ Tipe data `boolean` hanya memiliki nilai `True` atau `False`. Biasanya, tipe dat
 - lebih besar (`>`),
 - lebih besar atau sama dengan (`>=`),
 - lebih kecil (`<`), dan
-- lebih kecil atau sama dengan (`<=`). 
+- lebih kecil atau sama dengan (`<=`).
 
 Berikut ini adalah contoh penggunaan tipe data `boolean`.
 
@@ -157,21 +158,22 @@ are_you_hungry = True
 can_buy_food = False
 
 will_eat = are_you_hungry and can_buy_food
-print(will_eat) # output: False 
+print(will_eat) # output: False
 
-will_eat = are_you_hungry or can_buy_food 
+will_eat = are_you_hungry or can_buy_food
 print(will_eat) # output: True
 ```
 
 > [!TIP]
 > Tipe data `boolean` juga memiliki operator negasi (`not`). Contoh pemakaiannya adalah sebagai berikut:
+>
 > ```python
 > have_money = True
 > charming = True
 >
 > im_cool = have_money and charming
 > print(im_cool) # output: True
-> 
+>
 > im_cool = have_money and not charming
 > print(im_cool) # output: False
 > ```
@@ -225,7 +227,7 @@ print(len(last_name)) # output: 3
 print(len(first_name + ' ' + last_name)) # output: 8
 ```
 
-Selain itu, kita juga bisa mengkonstruksi nilai `string` dengan lebih dinamis menggunakan fungsi `format` dan `f-strings` seperti contoh berikut ini. 
+Selain itu, kita juga bisa mengkonstruksi nilai `string` dengan lebih dinamis menggunakan fungsi `format` dan `f-strings` seperti contoh berikut ini.
 
 ```python
 my_name = 'John Doe'
@@ -277,5 +279,6 @@ headline_title =  "Taylor Swift will release her new album \"Midnight\" next yea
 
 > [!NOTE]
 > Terminologi dalam chapter ini (untuk memudahkan pencarian Google):
-> - String concatenation: penggabungan string  
+>
+> - String concatenation: penggabungan string
 > - String formatting/interpolation: pembentukan/konstruksi string

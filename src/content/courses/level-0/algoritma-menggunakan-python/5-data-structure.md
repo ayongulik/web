@@ -1,6 +1,6 @@
 ---
-title: 'Data Structure'
-type: 'material'
+title: "Data Structure"
+type: "material"
 ---
 
 # Data Structure
@@ -17,7 +17,7 @@ my_list = [1, 2, 3, 4]
 print(my_list) # output: [1, 2, 3, 4]
 ```
 
-Nilai di dalam `list` seringkali disebut sebagai *item*.
+Nilai di dalam `list` seringkali disebut sebagai _item_.
 
 Pada bahasa Python, kita dapat menggabungkan beberapa tipe data yang berbeda seperti `number`, `string`, `boolean` ke dalam satu `list`. Kita juga bisa memasukkan `list` menjadi item pada suatu `list`.
 
@@ -70,6 +70,7 @@ print(my_list[list_length - 1]) # output: 4
 
 > [!TIP]
 > Apabila kamu perlu membuat `list` dengan item `number` yang berurutan dalam rentang tertentu secara cepat, kamu bisa memakai fungsi `range`.
+>
 > ```python
 > my_list = list(range(0, 5))
 > print(my_list) # [0, 1, 2, 3, 4]
@@ -141,7 +142,7 @@ print(fruits) # output: ['apple', 'apricot', 'cherry', 'grapes', 'strawberry']
 
 ### Hubungan antara string dan list
 
-Tipe data `string` dan data structure `list` memiliki hubungan yang dekat. Hal ini disebabkan kedua konsep tersebut memiliki sifat yang mirip. Berdasarkan penjelasan `list` di chapter ini, bisa kita rangkum bahwa `list` merupakan kumpulan dari beberapa item. Sedangkan tipe data `string` pada hakikatnya juga merupakan *kumpulan dari beberapa karakter*. Sehingga, ada beberapa operasi dari `list` yang bisa kita lakukan juga pada tipe data `string`. Sebagai contoh, kita juga bisa menggunakan index untuk mengakses dan memanipulasi karakter pada `string`.
+Tipe data `string` dan data structure `list` memiliki hubungan yang dekat. Hal ini disebabkan kedua konsep tersebut memiliki sifat yang mirip. Berdasarkan penjelasan `list` di chapter ini, bisa kita rangkum bahwa `list` merupakan kumpulan dari beberapa item. Sedangkan tipe data `string` pada hakikatnya juga merupakan _kumpulan dari beberapa karakter_. Sehingga, ada beberapa operasi dari `list` yang bisa kita lakukan juga pada tipe data `string`. Sebagai contoh, kita juga bisa menggunakan index untuk mengakses dan memanipulasi karakter pada `string`.
 
 ```python
 headline_title = 'Taylor Swift will release her new album \"Midnight\" next year'
@@ -243,7 +244,7 @@ my_dict = {
 
 my_dict['discount_rate'] = 0.05
 
-print(my_dict) # output: {'base_price': 50000, 'delivery_fee': 5000, 'discount_rate': 0.05} 
+print(my_dict) # output: {'base_price': 50000, 'delivery_fee': 5000, 'discount_rate': 0.05}
 ```
 
 Selain itu, kita juga bisa menambahkan key-value baru ke dalam `dictionary` yang telah kita definisikan seperti contoh berikut:

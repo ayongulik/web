@@ -1,11 +1,11 @@
 ---
-title: 'Perkenalan Fungsi, Class dan Object'
-type: 'material'
+title: "Perkenalan Fungsi, Class dan Object"
+type: "material"
 ---
 
 # Perkenalan Fungsi, Class dan Object
 
-Dua konsep yang akan dikenalkan pada chapter ini digunakan untuk meningkatkan *reusability* dari kode Python. Salah satu manfaat dari implementasi konsep ini adalah kita tidak perlu melakukan duplikasi kode yang memiliki cara kerja yang identik.
+Dua konsep yang akan dikenalkan pada chapter ini digunakan untuk meningkatkan _reusability_ dari kode Python. Salah satu manfaat dari implementasi konsep ini adalah kita tidak perlu melakukan duplikasi kode yang memiliki cara kerja yang identik.
 
 ## Fungsi
 
@@ -44,7 +44,7 @@ print(print_this_text('Hello, World~')) # output: 'Hello, World~'
 print(print_hello_world()) # output: 'Hello, World~'
 ```
 
-Contoh-contoh yang diberikan sampai saat ini adalah contoh fungsi yang terlalu simpel dan mungkin kurang relevan dengan realita. Tentunya, tidak semua operasi-operasi kecil pada kode kita harus dibuat menjadi fungsi. Yang jelas, apabila kamu menemukan ada bagian dari kode kamu yang mungkin bisa digunakan kembali, kode itulah yang bisa kamu jadikan fungsi. 
+Contoh-contoh yang diberikan sampai saat ini adalah contoh fungsi yang terlalu simpel dan mungkin kurang relevan dengan realita. Tentunya, tidak semua operasi-operasi kecil pada kode kita harus dibuat menjadi fungsi. Yang jelas, apabila kamu menemukan ada bagian dari kode kamu yang mungkin bisa digunakan kembali, kode itulah yang bisa kamu jadikan fungsi.
 
 Sebagai gambaran, salah satu contoh fungsi yang mungkin lebih representatif dapat dilihat pada kode di bawah ini, dimana kode di dalamnya mengolah `list` yang cukup kompleks sehingga cukup patut untuk dijadikan fungsi:
 
@@ -58,7 +58,7 @@ def generate_sentences(bucket_of_words):
             sentence = sentence + word + ' '
 
         output = output + sentence + '\n'
-    
+
     return output
 
 sentences = generate_sentences(
@@ -74,7 +74,7 @@ print(sentences)
 
 ### Scoping pada fungsi
 
-Kode di dalam fungsi dapat mengakses variable yang di definisikan di luar fungsi. Perhatikan contoh di bawah ini: 
+Kode di dalam fungsi dapat mengakses variable yang di definisikan di luar fungsi. Perhatikan contoh di bawah ini:
 
 ```python
 a = 100
@@ -127,14 +127,14 @@ class NamaClass:
     def __init__(self, parameter_1, parameter_2, ...):
         # kode dalam constructor
         self.attribute = parameter_1
-    
+
     def nama_method(self, parameter_1, parameter_2, ...):
         # kode dalam method
 
 obj = NamaClass(1, 2, ...)
 ```
 
-Untuk mendefinisikan sebuah `class`, kita menggunakan keyword `class`. Di dalam blok kode `class`, kita dapat menuliskan fungsi atau dalam konteks ini biasa disebut method. Ciri utama dari method adalah parameter pertamanya merujuk kepada diri sendiri atau `self`. 
+Untuk mendefinisikan sebuah `class`, kita menggunakan keyword `class`. Di dalam blok kode `class`, kita dapat menuliskan fungsi atau dalam konteks ini biasa disebut method. Ciri utama dari method adalah parameter pertamanya merujuk kepada diri sendiri atau `self`.
 
 Di bagian paling awal setelah penulisan nama `class`, kita menemukan satu fungsi yang memiliki nama unik, yaitu fungsi `__init__`. Fungsi ini adalah fungsi `constructor` pada `class` yang dipanggil saat pertama kali menginisiasi `object`. Cara menginisiasi `object` mirip dengan melakukan pemanggilan pada fungsi. Parameter yang dimasukkan pada inisiasi `object` adalah parameter yang digunakan pada fungsi `__init__`.
 
@@ -146,7 +146,7 @@ import math
 class Circle:
     def __init__(self, radius):
         self.radius = radius
-    
+
     def calculate_area(self):
         return round(math.pi * self.radius ** 2, 2)
 
@@ -159,9 +159,9 @@ print(circle.radius) # output: 5
 print(circle.calculate_area()) # output: 78.54
 ```
 
-Pada contoh, `class Circle` menerima parameter constructor berupa radius dan di set sebagai attribute. Class `Circle` juga memiliki method `calculate_area` untuk menghitung luas area lingkaran. Setelah object `circle_4` diinisiasi, attribute `radius` dan method `calculate_area` dapat diakses dari `object` `circle_4`. 
+Pada contoh, `class Circle` menerima parameter constructor berupa radius dan di set sebagai attribute. Class `Circle` juga memiliki method `calculate_area` untuk menghitung luas area lingkaran. Setelah object `circle_4` diinisiasi, attribute `radius` dan method `calculate_area` dapat diakses dari `object` `circle_4`.
 
-Masih banyak lagi konsep yang berhubungan dengan class dan object. Untuk belajar lebih lanjut, silakan mengunjungi chapter 'extras' (tunggu update terbaru!). 
+Masih banyak lagi konsep yang berhubungan dengan class dan object. Untuk belajar lebih lanjut, silakan mengunjungi chapter 'extras' (tunggu update terbaru!).
 
 ---
 

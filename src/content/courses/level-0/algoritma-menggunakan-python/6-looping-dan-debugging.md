@@ -1,6 +1,6 @@
 ---
-title: 'Looping dan Debugging'
-type: 'material'
+title: "Looping dan Debugging"
+type: "material"
 ---
 
 # Looping dan Debugging
@@ -42,13 +42,14 @@ flowchart TD
     D --> B
     B -- False --> E[End]
 ```
-*Ilustrasi diagram untuk Contoh 1.a*
 
-Melakukan operasi pengurangan terhadap nilai `number_of_loops` di dalam blok kode `while` adalah penting agar kondisi stopnya bisa tercapai dan proses loop bisa berhenti melakukan eksekusi kode. Apabila operasi pengurangan ini dihilangkan, maka kondisi stopnya tidak akan terpenuhi dan program Python akan terus menjalankan baris kode di dalam `while` tanpa berhenti. Hal ini disebut dengan istilah *infinite looping*.
+_Ilustrasi diagram untuk Contoh 1.a_
+
+Melakukan operasi pengurangan terhadap nilai `number_of_loops` di dalam blok kode `while` adalah penting agar kondisi stopnya bisa tercapai dan proses loop bisa berhenti melakukan eksekusi kode. Apabila operasi pengurangan ini dihilangkan, maka kondisi stopnya tidak akan terpenuhi dan program Python akan terus menjalankan baris kode di dalam `while` tanpa berhenti. Hal ini disebut dengan istilah _infinite looping_.
 
 ```python
 # Contoh 1.b
-# Perhatian: 
+# Perhatian:
 # Kode di bawah akan menyetak string secara berulang-ulang tanpa berhenti.
 # Untuk menghentikannya, tekan Ctrl-C pada keyboard.
 number_of_loops = 3
@@ -94,11 +95,12 @@ flowchart TD
     E -- True --> F[stop_loop = True]
     F --> B
     E -- False --> B
-    B -- False --> G[End] 
+    B -- False --> G[End]
 ```
-*Ilustrasi diagram untuk Contoh 1.b*
 
-Selain conditional, kita juga dapat membuat `while` di dalam blok kode `while` untuk membuat *nested loop*.
+_Ilustrasi diagram untuk Contoh 1.b_
+
+Selain conditional, kita juga dapat membuat `while` di dalam blok kode `while` untuk membuat _nested loop_.
 
 ```python
 # Contoh 1.c
@@ -137,7 +139,8 @@ flowchart TD
     G --> B
     B -- False --> H[Done]
 ```
-*Ilustrasi diagram untuk Contoh 1.c*
+
+_Ilustrasi diagram untuk Contoh 1.c_
 
 ## For
 
@@ -145,7 +148,7 @@ Sintaks dasar pembuatan looping dengan `for` dapat dilihat pada contoh berikut:
 
 ```python
 for item in data_structure:
-    # Kode yang dijalankan selama masih ada item yang belum dikunjungi dari data_structure 
+    # Kode yang dijalankan selama masih ada item yang belum dikunjungi dari data_structure
 ```
 
 Untuk lebih jelasnya, perhatikan contoh kode di bawah ini:
@@ -165,7 +168,7 @@ for fruit in fruits:
 # 'I like strawberry.'
 ```
 
-Ada perbedaan mendasar antara penggunaan `for` dengan `while` untuk pembuatan looping. Looping dengan `while` memerlukan kondisi yang eksplisit untuk menentukan apakah iterasi masih berjalan atau stop. Sedangkan looping dengan `for` tidak memerlukan kondisi yang eksplisit. Sebagai gantinya, `for` harus selalu dipasangkan dengan suatu data structure, seperti pada Contoh 2.a yang menggunakan `list`. 
+Ada perbedaan mendasar antara penggunaan `for` dengan `while` untuk pembuatan looping. Looping dengan `while` memerlukan kondisi yang eksplisit untuk menentukan apakah iterasi masih berjalan atau stop. Sedangkan looping dengan `for` tidak memerlukan kondisi yang eksplisit. Sebagai gantinya, `for` harus selalu dipasangkan dengan suatu data structure, seperti pada Contoh 2.a yang menggunakan `list`.
 
 Algoritma `for` akan mengunjungi satu per satu item yang terdapat pada `list` mulai dari item pada index yang pertama hingga item pada index yang terakhir. Itulah mengapa apabila dijalankan, kode pada Contoh 2.a akan menyetak `string` 'I like ...' sebanyak 5 kali dengan nama buah yang bergantian dan berurutan sesuai urutan item dalam `list`.
 
@@ -176,7 +179,8 @@ flowchart TD
     C --> B
     B -- No --> D[Done]
 ```
-*Ilustrasi diagram untuk contoh 2.a*
+
+_Ilustrasi diagram untuk contoh 2.a_
 
 Kita juga bisa membuat kode seperti pada Contoh 2.a dengan menggunakan sintaks `while`. Coba bandingkan contoh berikut dengan kode sebelumnya:
 
@@ -198,7 +202,7 @@ while index < len(fruits):
 # 'I like strawberry.'
 ```
 
-Selain `list`, kita juga bisa melakukan looping terhadap data structure `dictionary`. Perhatikan contoh berikut: 
+Selain `list`, kita juga bisa melakukan looping terhadap data structure `dictionary`. Perhatikan contoh berikut:
 
 ```python
 # Contoh 2.c
@@ -239,6 +243,7 @@ for words in bucket_of_words:
 ```
 
 > [!TIP]
+>
 > - Kode yang ingin dieksekusi di dalam blok kode `while` dan `for` harus menggunakan indentasi pada awal baris. Kamu dapat menggunakan tab atau space sebagai indentasi.
 > - Supaya program Python-nya tidak bingung, penggunaan indentasi harus konsisten. Kamu bisa memilih salah satu style, lalu terapkan ke semua kode yang kamu buat.
 
@@ -248,7 +253,7 @@ Debugging adalah proses mencari error dan memperbaiki kode agar dapat berjalan d
 
 Untuk melakukan debugging, kita perlu menganalisis bagaimana proses eksekusi tiap baris kode kita dari awal sampai akhir. Pahami konsep-konsep yang sudah kita pelajari sampai saat ini: tipe data (`number`, `string`, dan `boolean`), `if...else`, dan data structure (`list` dan `dictionary`), lalu coba memvisualisasikan bagaimana kode kita menghasilkan output dari input dan data yang kita sediakan.
 
-Untuk mempermudah kita melakukan debugging, kita bisa memanfaatkan fungsi `print` pada Python. Perhatikan contoh kode berikut ini: 
+Untuk mempermudah kita melakukan debugging, kita bisa memanfaatkan fungsi `print` pada Python. Perhatikan contoh kode berikut ini:
 
 ```python
 # Contoh 3.a
@@ -263,7 +268,7 @@ for words in bucket_of_words:
     found = False
     index = 0
     while not found:
-        word = words[index]    
+        word = words[index]
         if word[0] == 'I' or word[0] == 'i':
             found_words.append(word)
             found = True

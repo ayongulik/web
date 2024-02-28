@@ -1,6 +1,6 @@
 ---
-title: 'Conditionals'
-type: 'material'
+title: "Conditionals"
+type: "material"
 ---
 
 # Conditionals
@@ -53,7 +53,7 @@ else:
 # output: 'I bought the bread. I have 1 money left on my wallet.'
 ```
 
-Apabila kode pada contoh 1.a dijalankan, komputer hanya akan melakukan operasi pengurangan pada variable `money_on_wallet` dan menjalankan fungsi `print` yang pertama karena `money_on_wallet >= price_of_bread` akan menghasilkan nilai `True`, sedangkan fungsi `print` yang kedua akan di-skip. 
+Apabila kode pada contoh 1.a dijalankan, komputer hanya akan melakukan operasi pengurangan pada variable `money_on_wallet` dan menjalankan fungsi `print` yang pertama karena `money_on_wallet >= price_of_bread` akan menghasilkan nilai `True`, sedangkan fungsi `print` yang kedua akan di-skip.
 
 ```mermaid
 flowchart TD
@@ -64,7 +64,8 @@ flowchart TD
     B -- False --> F[Print 'I coudn't buy the bread ...']
     F --> E
 ```
-*Ilustrasi flowchart untuk contoh 1.a*
+
+_Ilustrasi flowchart untuk contoh 1.a_
 
 Apa yang akan terjadi jika kita mengganti nilai `price_of_bread` menjadi `101`? Kondisi `money_on_wallet >= price_of_bread` akan menghasilkan nilai `False` sehingga hanya fungsi `print` yang kedua yang akan dieksekusi.
 
@@ -82,12 +83,12 @@ if money_on_wallet >= price_of_bread:
 
 print(f'I will buy the jam as well.')
 
-# output: 
+# output:
 # 'I bought the bread. I have 1 money left on my wallet.'
 # 'I will buy the jam as well.'
 ```
 
-Apabila kode baru pada contoh 1.b dijalankan, komputer hanya akan melakukan operasi pengurangan, menjalankan fungsi `print` yang pertama *dan* menjalankan fungsi `print` yang kedua. Hal ini disebabkan fungsi `print` yang kedua sudah tidak lagi di dalam blok kode `else`. 
+Apabila kode baru pada contoh 1.b dijalankan, komputer hanya akan melakukan operasi pengurangan, menjalankan fungsi `print` yang pertama _dan_ menjalankan fungsi `print` yang kedua. Hal ini disebabkan fungsi `print` yang kedua sudah tidak lagi di dalam blok kode `else`.
 
 ```mermaid
 flowchart TD
@@ -99,11 +100,13 @@ flowchart TD
     G --> E
     E --> F[Done]
 ```
-*Ilustrasi flowchart untuk contoh 1.b*
+
+_Ilustrasi flowchart untuk contoh 1.b_
 
 Apa yang akan terjadi jika kita mengganti nilai `price_of_bread` menjadi `101`? Nilai `money_on_wallet >= price_of_bread` akan berubah menjadi `False`, namun perubahan ini tidak memengaruhi eksekusi dari fungsi `print` yang kedua (tetap dilakukan pemanggilan) karena baris tersebut tidak ada di dalam blok kode `if` maupun `else`.
 
 > [!TIP]
+>
 > - Kode yang ingin dieksekusi di dalam blok kode `if` dan `else` harus menggunakan indentasi pada awal baris. Kamu dapat menggunakan tab atau space sebagai indentasi.
 > - Supaya program Python-nya tidak bingung, penggunaan indentasi harus konsisten. Kamu bisa memilih salah satu style, lalu terapkan ke semua kode yang kamu buat.
 
@@ -144,7 +147,8 @@ flowchart TD
     B -- False --> I[Print 'I couldn't buy the bread ...']
     I --> H
 ```
-*Ilustrasi flowchart untuk contoh 1.b*
+
+_Ilustrasi flowchart untuk contoh 1.b_
 
 ---
 

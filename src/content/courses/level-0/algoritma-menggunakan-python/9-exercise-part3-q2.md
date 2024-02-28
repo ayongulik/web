@@ -1,6 +1,6 @@
 ---
-title: 'Exercise Part 3 - Q2'
-type: 'exercise'
+title: "Exercise Part 3 - Q2"
+type: "exercise"
 ---
 
 # Exercise Part 3 - Q2
@@ -29,6 +29,7 @@ if __name__ == '__main__':
 > [!TIP]
 > Kamu tidak perlu membuat pengecekan terhadap tipe data `number` dan `string` saat sorting.
 > Untuk melakukan perbandingan dengan `string`, kamu bisa menggunakan cara yang sama dengan perbandingan dengan `number`.
+>
 > ```python
 > # Penggunaan operator >, >=, <, dan <= pada dua buah string akan menghasilkan nilai boolean.
 > # Python akan otomatis membandingkan string berdasarkan urutan alphabet.

@@ -3,51 +3,62 @@
 ---
 
 <style is:global>
-    html {
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-    }
+  html {
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      sans-serif,
+      Apple Color Emoji,
+      Segoe UI Emoji,
+      Segoe UI Symbol,
+      Noto Color Emoji;
+  }
 
-    code, kbd, samp, pre {
-        font-size: 0.875rem;
-    }
+  code,
+  kbd,
+  samp,
+  pre {
+    font-size: 0.875rem;
+  }
 
-    .min-screen-height {
-        min-height: calc(100vh - 3.35rem);
-    }
+  .min-screen-height {
+    min-height: calc(100vh - 3.35rem);
+  }
 
-    .side-navbar {
-        top: 3.35rem;
-        left: 0;
-        height: calc(100vh - 3.35rem);
-    }
+  .side-navbar {
+    top: 3.35rem;
+    left: 0;
+    height: calc(100vh - 3.35rem);
+  }
 
-    .CodeMirror {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 0.875rem;
-        height: auto;
-        border-radius: 0.5rem;
-    }
+  .CodeMirror {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875rem;
+    height: auto;
+    border-radius: 0.5rem;
+  }
 
-    .grow-wrap {
-        display: grid;
-    }
+  .grow-wrap {
+    display: grid;
+  }
 
-    .grow-wrap::after {
-        content: attr(data-replicated-value) " ";
-        white-space: pre-wrap;
-        visibility: hidden;
-    }
+  .grow-wrap::after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+  }
 
-    .grow-wrap > textarea {
-        resize: none;
-        overflow: hidden;
-    }
+  .grow-wrap > textarea {
+    resize: none;
+    overflow: hidden;
+  }
 
-    .grow-wrap > textarea,
-
-    .grow-wrap::after {
-        @apply border-2 border-gray-200 p-2;
-        font: inherit;
-        grid-area: 1 / 1 / 2 / 2;
-    }
+  .grow-wrap > textarea,
+  .grow-wrap::after {
+    @apply border-2 border-gray-200 p-2;
+    font: inherit;
+    grid-area: 1 / 1 / 2 / 2;
+  }
 </style>
