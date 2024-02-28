@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import CodeEditorLayout from './CodeEditor.astro'
 import Breadcrumb from '../components/Breadcrumb.astro'
+import Prose from '../components/Prose.astro'
 
 import type { CollectionEntry } from 'astro:content'
 
@@ -19,8 +20,10 @@ const { frontmatter, slug } = Astro.props
 	<Fragment slot="before-editor">
 		{ slug && <Breadcrumb path={`exercises/${slug}`} class="py-4 my-4" /> }
 		<main class="my-8">
-			<article class="prose prose-pre:border-2 prose-pre:rounded-lg prose-pre:p-2 prose-pre:!bg-gray-50 max-w-screen-xl prose-h1:text-purple-800">
-				<slot />
+			<article>
+				<Prose>
+					<slot />
+				</Prose>
 			</article>
 		</main>
 	</Fragment>

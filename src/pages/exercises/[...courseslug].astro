@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/Base.astro'
 import Breadcrumb from '../../components/Breadcrumb.astro'
+import Prose from '../../components/Prose.astro'
 import { getGroupedStaticPaths } from '../../utils/collection'
 import { removeStripes } from '../../utils/string'
 
@@ -32,18 +33,41 @@ interface Props {
 }
 
 const { entries, slug } = Astro.props;
+const splitSlug = slug.split('/')
+const levelTitle = removeStripes(splitSlug[0])
 
-const title = removeStripes(slug.split('/').pop() as string)
+const title = removeStripes(splitSlug[splitSlug.length - 1])
 ---
 
 <BaseLayout>
 	<div class="max-w-screen-lg mx-auto px-4 relative">
         <Breadcrumb path={`exercises/${slug}`} class="py-2 my-4" />
 
-        <h1 class="text-2xl font-semibold text-purple-800 mt-8 mb-4 capitalize">{title}</h1>
+        <article class="mt-8">
+            <header class="flex flex-col mb-6">
+                <div class="mb-4">
+                    <span class="text-sm px-2 py-1 rounded-xl bg-slate-200 capitalize font-semibold">{levelTitle}</span>
+                </div>
+                <h1 class="text-4xl font-bold text-purple-800 capitalize">{title}</h1>
+            </header>
 
-        <ul>
-            {entries.map(entry => (<li><a href={`/exercises/${entry.slug}`}>{entry.slug}</a></li>))}
-        </ul>
+            <Prose>
+                <p>
+                    Selamat datang di chapter 'Exercises - Part 1'! Pada exercises ini, kamu akan dilatih untuk mengimplementasikan konsep variable dan tipe-datanya beserta konsep conditionals. Pada setiap pertanyaan akan terdapat beberapa test cases berupa contoh input dan output yang perlu kalian uji saat membuat kode. Kode yang menjawab pertanyaan adalah kode yang berhasil lolos semua test cases-nya. Selamat berlatih!
+                </p>
+            </Prose>
+        </article>
+
+        <nav class="mt-12">
+            <ol class="flex gap-4">
+                {
+                    entries.map(entry => (
+                        <li class="flex-1">
+                            <a href={`/exercises/${entry.slug}`} class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">{entry.data.title}</a>
+                        </li>
+                    ))
+                }
+            </ol>
+        </nav>
     </div>
 </BaseLayout>
