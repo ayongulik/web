@@ -1,116 +1,116 @@
 ---
+import BaseLayout from './Base.astro'
 import Button from '../components/Button.astro'
-import GlobalStyles from '../components/GlobalStyles.astro'
+
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+	frontmatter?: CollectionEntry<'exercises'>['data']
+}
 
 const { frontmatter } = Astro.props
-
-const title = frontmatter?.title ?? 'Ayongulik Python\'s Code Editor'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<BaseLayout frontmatter={frontmatter}>
+	<Fragment slot="head">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.css"/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js" referrerpolicy="no-referrer"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js" referrerpolicy="no-referrer"></script>
 		<script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
-	</head>
-	<body>
-		<div class="max-w-screen-lg mx-auto px-4 relative">
-			<slot name="before-editor" />
+	</Fragment>
 
-			<aside class="min-h-96 px-4 py-5 border-2 rounded-lg mb-12">
-				<section class="w-full mb-4">
-					<textarea id="code" name="code" class="block w-full min-h-[300px] bg-[#212121] rounded-lg m-0 overflow-auto"></textarea>
-				</section>
-				<section class="w-full flex gap-4">
-					<div class="flex-1">
-						<div class="grow-wrap">
-							<textarea 
-								id="output" 
-								name="output"
-								class="block w-full min-h-[150px] font-mono text-sm border-2 border-gray-200 bg-gray-100 rounded-md p-2 text-slate-700"
-								readonly>Output goes here...</textarea>
+	<div class="max-w-screen-2xl relative mx-auto">
+		<div class="flex">
+			<slot name="aside-editor" />
+
+			<div class="px-4 w-full">
+				<slot name="before-editor" />
+
+				<aside class="min-h-96 px-4 py-5 border-2 rounded-lg bg-white mb-12">
+					<section class="w-full mb-4">
+						<textarea id="code" name="code" class="block w-full min-h-[300px] bg-[#212121] rounded-lg m-0 overflow-auto"></textarea>
+					</section>
+					<section class="w-full flex gap-4">
+						<div class="flex-1">
+							<div class="grow-wrap">
+								<textarea 
+									id="output" 
+									name="output"
+									class="block w-full min-h-[150px] font-mono text-sm border-2 border-gray-200 bg-gray-100 rounded-md p-2 text-slate-700"
+									readonly>Output goes here...</textarea>
+							</div>
 						</div>
-					</div>
-					<div class="flex-none">
-						<Button id="button-run" class="mb-2" fullWidth>Run</Button>
-						<Button id="button-run-test-cases" variant="outline" fullWidth>Run Test Cases</Button>
-					</div>
-				</section>
-			</aside>
+						<div class="flex-none">
+							<Button id="button-run" class="mb-2" fullWidth>Run</Button>
+							<Button id="button-run-test-cases" variant="outline" fullWidth>Run Test Cases</Button>
+						</div>
+					</section>
+				</aside>
 
-            <slot name="after-editor" />
+				<slot name="after-editor" />
+			</div>
 		</div>
+	</div>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', main, false)
-			document.getElementById('button-run')?.addEventListener('click', evaluateCode)
+	<script>
+		document.addEventListener('DOMContentLoaded', main, false)
+		document.getElementById('button-run')?.addEventListener('click', evaluateCode)
 
-			async function main() {
-				window.pyodide = await window.loadPyodide({
-					indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.20.0/full/'
-				})
-				window.editor = window.CodeMirror.fromTextArea(
-					document.getElementById('code') as HTMLTextAreaElement, {
-							mode: {
-								name: 'python',
-								version: 3,
-								singleLineStringErrors: false,
-							},
-							theme: 'material-darker',
-							lineNumbers: true,
-							indentUnit: 4,
-							viewportMargin: Infinity
-						}
-					);
-
-				updateToMinHeight(window.editor, 300)
-
-				console.log('Editor is ready!')
-			}
-
-			function updateToMinHeight(editor: CodeMirror.EditorFromTextArea, minHeight: number) {
-				editor.getScrollerElement().style.minHeight = `${minHeight}px`
-				editor.refresh()
-			}
-
-			function printOutput(output: string) {
-				const el = document.getElementById('output') as HTMLTextAreaElement
-				if (el) {
-					el.value = output
-					if (el.parentNode) {
-						const parentNode = el.parentNode as HTMLElement
-						parentNode.dataset.replicatedValue = output
+		async function main() {
+			window.pyodide = await window.loadPyodide({
+				indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.20.0/full/'
+			})
+			window.editor = window.CodeMirror.fromTextArea(
+				document.getElementById('code') as HTMLTextAreaElement, {
+						mode: {
+							name: 'python',
+							version: 3,
+							singleLineStringErrors: false,
+						},
+						theme: 'material-darker',
+						lineNumbers: true,
+						indentUnit: 4,
+						viewportMargin: Infinity
 					}
+				);
+
+			updateToMinHeight(window.editor, 300)
+
+			console.log('Editor is ready!')
+		}
+
+		function updateToMinHeight(editor: CodeMirror.EditorFromTextArea, minHeight: number) {
+			editor.getScrollerElement().style.minHeight = `${minHeight}px`
+			editor.refresh()
+		}
+
+		function printOutput(output: string) {
+			const el = document.getElementById('output') as HTMLTextAreaElement
+			if (el) {
+				el.value = output
+				if (el.parentNode) {
+					const parentNode = el.parentNode as HTMLElement
+					parentNode.dataset.replicatedValue = output
 				}
 			}
+		}
 
-			function evaluateCode() {
-				try {
-					if (window.pyodide?.version && window.CodeMirror?.version) {
-						window.pyodide.runPython(`
-							import sys
-							import io
-							sys.stdout = io.StringIO()
-						`)
-						window.pyodide.runPython(window.editor.getValue());
-						const stdout = window.pyodide.runPython('sys.stdout.getvalue()');
-						printOutput(stdout)
-					}
-				} catch (err) {
-					printOutput(String(err));
-				}				
-			}
-		</script>
-	</body>
-	<GlobalStyles />
-</html>
+		function evaluateCode() {
+			try {
+				if (window.pyodide?.version && window.CodeMirror?.version) {
+					window.pyodide.runPython(`
+						import sys
+						import io
+						sys.stdout = io.StringIO()
+					`)
+					window.pyodide.runPython(window.editor.getValue());
+					const stdout = window.pyodide.runPython('sys.stdout.getvalue()');
+					printOutput(stdout)
+				}
+			} catch (err) {
+				printOutput(String(err));
+			}				
+		}
+	</script>
+</BaseLayout>

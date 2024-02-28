@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import ExerciseLayout from '../../layouts/Exercise.astro';
+import { removeStripes } from '../../utils/string';
+
 import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -19,10 +21,43 @@ interface Props {
   entry: CollectionEntry<'exercises'>
 }
 
+
 const { entry } = Astro.props;
+
+const splitSlug = entry.slug.split('/')
+const courseSlug = splitSlug[1]
+const courseTitle = removeStripes(courseSlug)
+const levelTitle = removeStripes(splitSlug[0])
+const courseExercises = await getCollection('exercises', ({ slug }) => slug.includes(courseSlug)) 
+
 const { Content } = await entry.render();
 ---
 
 <ExerciseLayout frontmatter={entry.data} slug={entry.slug}>
+	<aside slot="aside" class="flex-none w-1/4 hidden md:hidden lg:block sticky top-0 left-0 h-screen overflow-y-scroll">
+		<nav>
+      <div class="p-4 bg-gray-200">
+        <p class="text-xs capitalize mb-1">{levelTitle}</p>
+        <p class="text-sm capitalize">{courseTitle}</p>
+      </div>
+			<ol>
+				{
+					courseExercises.map(({ data, slug }) => (
+						<li>
+              <a 
+                href={`/exercises/${slug}`} 
+                class:list={[
+                  'p-4 block border-b-2 border-gray-200',
+                  {'text-white font-semibold bg-purple-800 border-purple-800': slug == entry.slug}
+                ]}>
+                {data.title}
+              </a>
+            </li>
+					))
+				}
+			</ol>
+		</nav>
+	</aside>
+
   <Content />
 </ExerciseLayout>
