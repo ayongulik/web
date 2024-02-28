@@ -38,7 +38,7 @@ const { Content } = await pageEntry.render()
 const title = removeStripes(slug)
 ---
 <BaseLayout>
-	<div class="max-w-screen-lg mx-auto px-4 relative">
+	<div class="max-w-screen-lg mx-auto min-screen-height px-4 relative">
         <article class="mt-12">
             <h1 class="text-6xl font-extrabold text-purple-800 mb-12 capitalize text-center">{title}</h1>
             <Prose>
@@ -46,7 +46,7 @@ const title = removeStripes(slug)
             </Prose>
         </article>
 
-        <nav class="mt-8 mb-20">
+        <nav class="mt-8">
             <ol class="grid grid-cols-2 gap-6">
                 <li>
                     <a 
