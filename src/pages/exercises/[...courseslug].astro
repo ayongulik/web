@@ -1,4 +1,5 @@
 ---
+import { getEntry } from 'astro:content'
 import BaseLayout from '../../layouts/Base.astro'
 import Breadcrumb from '../../components/Breadcrumb.astro'
 import Prose from '../../components/Prose.astro'
@@ -34,9 +35,14 @@ interface Props {
 
 const { entries, slug } = Astro.props;
 const splitSlug = slug.split('/')
+const courseSlug = splitSlug[splitSlug.length - 1]
 const levelTitle = removeStripes(splitSlug[0])
 
-const title = removeStripes(splitSlug[splitSlug.length - 1])
+const pageEntry = await getEntry('courses', courseSlug)
+// @ts-expect-error dynamic course slug
+const { Content } = await pageEntry.render()
+
+const title = removeStripes(courseSlug)
 ---
 
 <BaseLayout>
@@ -44,7 +50,7 @@ const title = removeStripes(splitSlug[splitSlug.length - 1])
         <Breadcrumb path={`exercises/${slug}`} class="py-2 my-4" />
 
         <article class="mt-8">
-            <header class="flex flex-col mb-6">
+            <header class="flex flex-col mb-10">
                 <div class="mb-4">
                     <span class="text-sm px-2 py-1 rounded-xl bg-slate-200 capitalize font-semibold">{levelTitle}</span>
                 </div>
@@ -52,18 +58,16 @@ const title = removeStripes(splitSlug[splitSlug.length - 1])
             </header>
 
             <Prose>
-                <p>
-                    Selamat datang di chapter 'Exercises - Part 1'! Pada exercises ini, kamu akan dilatih untuk mengimplementasikan konsep variable dan tipe-datanya beserta konsep conditionals. Pada setiap pertanyaan akan terdapat beberapa test cases berupa contoh input dan output yang perlu kalian uji saat membuat kode. Kode yang menjawab pertanyaan adalah kode yang berhasil lolos semua test cases-nya. Selamat berlatih!
-                </p>
+                <Content />
             </Prose>
         </article>
 
-        <nav class="mt-12">
+        <nav class="mt-12 mb-20">
             <ol class="flex gap-4">
                 {
                     entries.map(entry => (
                         <li class="flex-1">
-                            <a href={`/exercises/${entry.slug}`} class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">{entry.data.title}</a>
+                            <a href={`/exercises/${entry.slug}`} class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100">{entry.data.title}</a>
                         </li>
                     ))
                 }

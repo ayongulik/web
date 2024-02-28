@@ -8,6 +8,15 @@ const exercisesCollection = defineCollection({
     })
 });
 
+const pagesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    ref: z.string()
+  })
+})
+
 export const collections = {
   exercises: exercisesCollection,
+  courses: pagesCollection,
 };
