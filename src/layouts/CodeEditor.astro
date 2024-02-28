@@ -6,9 +6,15 @@ import type { CollectionEntry } from 'astro:content'
 
 interface Props {
 	frontmatter?: CollectionEntry<'exercises'>['data']
+	class?: string
+	enableTestCases?: boolean
 }
 
-const { frontmatter } = Astro.props
+const { 
+	frontmatter, 
+	class: customClass = '', 
+	enableTestCases = false 
+} = Astro.props
 ---
 
 <BaseLayout frontmatter={frontmatter}>
@@ -20,7 +26,10 @@ const { frontmatter } = Astro.props
 		<script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
 	</Fragment>
 
-	<div class="max-w-screen-2xl relative mx-auto">
+	<div class:list={[
+		"max-w-screen-2xl relative mx-auto",
+		customClass
+	]}>
 		<div class="flex">
 			<slot name="aside-editor" />
 
@@ -41,9 +50,9 @@ const { frontmatter } = Astro.props
 									readonly>Output goes here...</textarea>
 							</div>
 						</div>
-						<div class="flex-none">
+						<div class="flex-none min-w-48">
 							<Button id="button-run" class="mb-2" fullWidth>Run</Button>
-							<Button id="button-run-test-cases" variant="outline" fullWidth>Run Test Cases</Button>
+							{ enableTestCases && <Button id="button-run-test-cases" variant="outline" fullWidth>Run Test Cases</Button> }
 						</div>
 					</section>
 				</aside>

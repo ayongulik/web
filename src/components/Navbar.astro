@@ -4,17 +4,24 @@ import NavbarLink from './NavbarLink.astro'
 
 <nav class="sticky top-0 left-0 w-full flex items-center box-border border-b-2 border-gray-200 z-10 bg-white">
     <section class="flex-none px-4">
-        <p class="font-semibold text-white rounded-md bg-purple-800 -skew-y-3 hover:-skew-y-1 px-2 py-1">Ayo Ngulik!</p>
+        <a 
+            href="/"
+            class="inline-flex font-semibold text-white rounded-md bg-purple-800 -skew-y-3 hover:-skew-y-1 px-2 py-1">
+            Ayo Ngulik!
+        </a>
     </section>
 
     <section class="flex-1">
-        <ol class="flex flex-row-reverse items-center">
+        <ul class="flex flex-row-reverse items-center">
             <li class="flex">
-                <NavbarLink href="https://github.com/rahmanda/ayongulik">Courses</NavbarLink> 
+                <NavbarLink href="/online-editor">Editor Online</NavbarLink> 
             </li>
             <li class="flex">
                 <NavbarLink href="/exercises">Exercises</NavbarLink> 
             </li>
-        </ol>
+            <li class="flex">
+                <NavbarLink href="https://github.com/rahmanda/ayongulik">Materi Belajar</NavbarLink> 
+            </li>
+        </ul>
     </section>
 </nav>
