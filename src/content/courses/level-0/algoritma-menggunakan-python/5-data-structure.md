@@ -258,7 +258,15 @@ my_dict = {
 
 my_dict['payment_methods'] = ['atm', 'credit_card', 'digital_wallet']
 
-print(my_dict) # output: {'base_price': 50000, 'delivery_fee': 5000, 'discount_rate': 0.25, 'payment_methods': ['atm', 'credit_card', 'digital_wallet']}
+print(my_dict)
+# output:
+# {
+#     'base_price': 50000,
+#     'delivery_fee': 5000,
+#     'discount_rate': 0.25,
+#     'payment_methods':
+#     ['atm', 'credit_card', 'digital_wallet']
+# }
 ```
 
 Untuk menghapus key pada `dictionary`, kita dapat menggunakan fungsi `del` dan `pop`.
@@ -293,5 +301,12 @@ other_dict = {
 
 my_dict.update(other_dict)
 
-print(my_dict) # output: {'base_price': 50000, 'delivery_fee': 5000, 'discount_rate': 0.05, 'payment_methods': ['atm', 'credit_card', 'digital_wallet']}
+print(my_dict)
+# output:
+# {
+#     'base_price': 50000,
+#     'delivery_fee': 5000,
+#     'discount_rate': 0.05,
+#     'payment_methods': ['atm', 'credit_card', 'digital_wallet']
+# }
 ```

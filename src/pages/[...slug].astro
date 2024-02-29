@@ -33,6 +33,29 @@ const courseEntries = await getCollection("courses", ({ slug }) =>
 );
 
 const { Content } = await entry.render();
+
+const { prev, next } = getPrevNextNavigation(courseEntries, entry.slug);
+
+function getPrevNextNavigation(
+  entries: CollectionEntry<"courses">[],
+  sourceSlug: string,
+) {
+  let prev: CollectionEntry<"courses"> | undefined = undefined;
+  let next: CollectionEntry<"courses"> | undefined = undefined;
+
+  const index = entries.findIndex(({ slug }) => slug.includes(sourceSlug));
+  if (index > 0) {
+    prev = entries[index - 1];
+  }
+  if (index < entries.length - 1) {
+    next = entries[index + 1];
+  }
+
+  return {
+    prev,
+    next,
+  };
+}
 ---
 
 <CourseLayout frontmatter={entry.data} slug={entry.slug}>
@@ -73,5 +96,38 @@ const { Content } = await entry.render();
   </aside>
 
   <Content />
-  <Footer slot="after-editor" />
+
+  <Fragment slot="after-editor">
+    <aside class="mb-8">
+      <nav class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="text-center md:text-left">
+          {
+            prev && (
+              <a
+                href={`/${prev.slug}`}
+                class="flex flex-col p-4 hover:text-purple-800"
+              >
+                <span>Previous</span>
+                <span class="font-semibold text-lg">{prev.data.title}</span>
+              </a>
+            )
+          }
+        </div>
+        <div class="text-center md:text-right">
+          {
+            next && (
+              <a
+                href={`/${next.slug}`}
+                class="flex flex-col p-4 hover:text-purple-800"
+              >
+                <span>Next</span>
+                <span class="font-semibold text-lg">{next.data.title}</span>
+              </a>
+            )
+          }
+        </div>
+      </nav>
+    </aside>
+    <Footer />
+  </Fragment>
 </CourseLayout>
