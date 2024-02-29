@@ -4,6 +4,12 @@ const buttonRunEl = document.getElementById("button-run");
 
 buttonRunEl?.addEventListener("click", evaluateCode);
 
+const templateCode = `def main():
+    # tulis kode kamu disini
+
+if __name__ == '__main__':
+    main()`;
+
 async function main() {
   const editorEl = document.getElementById("code") as HTMLTextAreaElement;
 
@@ -25,6 +31,8 @@ async function main() {
         viewportMargin: Infinity,
       },
     );
+
+    window.editor.setValue(templateCode);
 
     updateToMinHeight(window.editor, 300);
 
