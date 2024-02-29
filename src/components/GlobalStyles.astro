@@ -62,6 +62,18 @@
     height: calc(100vh - 3.35rem);
   }
 
+  [data-section]:before {
+    @apply absolute font-extrabold;
+
+    content: attr(data-section);
+    top: -2rem;
+    left: -1rem;
+    line-height: 0.75;
+    font-size: 12rem;
+    z-index: 0;
+    opacity: 0.15;
+  }
+
   /** Override styles */
 
   .CodeMirror {
