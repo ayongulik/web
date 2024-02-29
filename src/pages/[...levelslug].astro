@@ -33,6 +33,7 @@ interface Props {
 const { slug } = Astro.props;
 
 const pageEntry = await getEntry("pages", slug);
+// @ts-expect-error dynamic slug
 const { Content } = await pageEntry.render();
 
 const title = removeStripes(slug);

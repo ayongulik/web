@@ -3,14 +3,10 @@ title: "Algoritma menggunakan Python"
 ref: "level-0/algoritma-menggunakan-python"
 ---
 
-Selamat datang di exercise 'Algoritma Menggunakan Python'!
+Selamat datang di course 'Algoritma Menggunakan Python'!
 
-Pada exercises ini, kamu akan dilatih untuk mengimplementasikan semua konsep yang telah diajarkan di [materi belajar 'Algoritma Menggunakan Python'](https://github.com/rahmanda/ayongulik/tree/main/courses/level-0/algoritma-menggunakan-python). Exercise ini terbagi menjadi 3 parts, yaitu:
+Pada course ini, kita akan belajar dasar-dasar pemrograman menggunakan Python agar bisa lebih siap dalam menggunakan Python untuk berbagai macam kebutuhan. Kamu tidak perlu memiliki background IT untuk mengikuti course ini.
 
-1. **Variable dan tipe-datanya beserta konsep conditionals.**
-2. **Data structure dan looping.**
-3. **Fungsi dan class.**
+Selain itu, setiap beberapa chapter pada course ini akan diselingi oleh exercise untuk mengasah pemahaman pemrograman kamu. Pada setiap pertanyaan exercise, terdapat beberapa test cases berupa contoh input dan output yang perlu kalian uji saat membuat kode. Kode yang menjawab pertanyaan adalah kode yang berhasil lolos semua test cases-nya. Apabila kamu bisa menyelesaikan semua exercise dengan baik, itu pertanda bahwa kamu benar-benar sudah menguasai materinya!
 
-Pada setiap pertanyaan, terdapat beberapa test cases berupa contoh input dan output yang perlu kalian uji saat membuat kode. Kode yang menjawab pertanyaan adalah kode yang berhasil lolos semua test cases-nya.
-
-Selamat berlatih!
+Selamat belajar!
