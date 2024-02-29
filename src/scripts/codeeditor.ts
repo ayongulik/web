@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", main, false);
+document.addEventListener("DOMContentLoaded", initCodeEditor, false);
 
 const buttonRunEl = document.getElementById("button-run");
 
@@ -10,7 +10,7 @@ const templateCode = `def main():
 if __name__ == '__main__':
     main()`;
 
-async function main() {
+async function initCodeEditor() {
   const editorEl = document.getElementById("code") as HTMLTextAreaElement;
 
   if (editorEl) {
