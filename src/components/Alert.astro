@@ -1,0 +1,29 @@
+---
+interface Props {
+  variant?: "note" | "tip" | "warning";
+}
+
+const { variant = "note" } = Astro.props;
+const title = {
+  note: "📝 Catatan",
+  tip: "💡 Tips",
+  warning: "⚠ Warning",
+};
+const textColor = {
+  note: "text-blue-600",
+  tip: "text-green-600",
+  warning: "text-yellow-600",
+};
+const borderColor = {
+  note: "border-blue-600",
+  tip: "border-green-600",
+  warning: "border-yellow-600",
+};
+---
+
+<aside class:list={["my-8 px-4 border-l-4", borderColor[variant]]}>
+  <p class:list={["capitalize font-semibold text-xl", textColor[variant]]}>
+    {title[variant]}
+  </p>
+  <slot />
+</aside>

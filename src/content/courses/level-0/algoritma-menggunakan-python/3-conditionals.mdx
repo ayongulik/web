@@ -3,11 +3,15 @@ title: "Conditionals"
 type: "material"
 ---
 
+import Alert from "src/components/Alert.astro";
+import Mermaid from "src/components/Mermaid.astro";
+
 # Conditionals
 
 Conditionals adalah konsep pemrograman yang memberikan perintah kepada komputer untuk melakukan keputusan dan menjalankan suatu proses berdasarkan hasil dari logika perbandingan/boolean. Konsep ini dapat divisualisasikan ke dalam bentuk diagram flowchart. Diagram berikut mengilustrasikan contoh skenario untuk memutuskan apakah seseorang akan makan atau tidak.
 
-<pre class="mermaid">
+<Mermaid
+  content={`
 flowchart TD
     A[Start] --> B{Am I hungry?}
     B -- True --> C{Is food exist?}
@@ -20,8 +24,8 @@ flowchart TD
     G -- False --> I[Can't buy food]
     I --> E
     E --> J[Done]
-    D --> J
-</pre>
+    D --> J`}
+/>
 
 Skenario pada contoh dapat diimplementasikan ke dalam kode dengan memanfaatkan sintaks Python. Yuk kita ikuti pembahasan lebih detailnya!
 
@@ -55,7 +59,8 @@ else:
 
 Apabila kode pada contoh 1.a dijalankan, komputer hanya akan melakukan operasi pengurangan pada variable `money_on_wallet` dan menjalankan fungsi `print` yang pertama karena `money_on_wallet >= price_of_bread` akan menghasilkan nilai `True`, sedangkan fungsi `print` yang kedua akan di-skip.
 
-<pre class="mermaid">
+<Mermaid
+  content={`
 flowchart TD
     A[Start] --> B{Have enough money to buy the bread?}
     B -- True --> C[Pay for the bread]
@@ -63,7 +68,8 @@ flowchart TD
     D --> E[Done]
     B -- False --> F[Print 'I coudn't buy the bread ...']
     F --> E
-</pre>
+`}
+/>
 
 _Ilustrasi flowchart untuk contoh 1.a_
 
@@ -90,7 +96,8 @@ print(f'I will buy the jam as well.')
 
 Apabila kode baru pada contoh 1.b dijalankan, komputer hanya akan melakukan operasi pengurangan, menjalankan fungsi `print` yang pertama _dan_ menjalankan fungsi `print` yang kedua. Hal ini disebabkan fungsi `print` yang kedua sudah tidak lagi di dalam blok kode `else`.
 
-<pre class="mermaid">
+<Mermaid
+  content={`
 flowchart TD
     A[Start] --> B{Have enough money to buy the bread?}
     B -- True --> C[Pay for the bread]
@@ -99,16 +106,19 @@ flowchart TD
     D --> E[Print 'I will buy the jam as well.']
     G --> E
     E --> F[Done]
-</pre>
+`}
+/>
 
 _Ilustrasi flowchart untuk contoh 1.b_
 
 Apa yang akan terjadi jika kita mengganti nilai `price_of_bread` menjadi `101`? Nilai `money_on_wallet >= price_of_bread` akan berubah menjadi `False`, namun perubahan ini tidak memengaruhi eksekusi dari fungsi `print` yang kedua (tetap dilakukan pemanggilan) karena baris tersebut tidak ada di dalam blok kode `if` maupun `else`.
 
-> [!TIP]
->
-> - Kode yang ingin dieksekusi di dalam blok kode `if` dan `else` harus menggunakan indentasi pada awal baris. Kamu dapat menggunakan tab atau space sebagai indentasi.
-> - Supaya program Python-nya tidak bingung, penggunaan indentasi harus konsisten. Kamu bisa memilih salah satu style, lalu terapkan ke semua kode yang kamu buat.
+<Alert variant="tip">
+
+- Kode yang ingin dieksekusi di dalam blok kode `if` dan `else` harus menggunakan indentasi pada awal baris. Kamu dapat menggunakan tab atau space sebagai indentasi.
+- Supaya program Python-nya tidak bingung, penggunaan indentasi harus konsisten. Kamu bisa memilih salah satu style, lalu terapkan ke semua kode yang kamu buat.
+
+</Alert>
 
 Sintaks `if else` juga bisa digunakan secara nested apabila skenario yang ingin dibuat lebih kompleks seperti contoh berikut ini:
 
@@ -134,7 +144,8 @@ else:
 # 'I will give the changes to the street singer.'
 ```
 
-<pre class="mermaid">
+<Mermaid
+  content={`
 flowchart TD
     A[Start] --> B{Have enough money to buy the bread?}
     B -- True --> C[Pay for the bread]
@@ -146,9 +157,10 @@ flowchart TD
     G --> H[Done]
     B -- False --> I[Print 'I couldn't buy the bread ...']
     I --> H
-</pre>
+`}
+/>
 
-_Ilustrasi flowchart untuk contoh 1.b_
+_Ilustrasi flowchart untuk contoh 1.c_
 
 ---
 
@@ -177,5 +189,7 @@ print(output)
 # output: 'I bought the bread.'
 ```
 
-> [!TIP]
-> Sebagai latihan, coba terjemahkan skenario pada contoh diagram flowchart yang paling pertama ke dalam kode Python. Kira-kira kodenya akan seperti apa ya?
+<Alert variant="tip">
+  Sebagai latihan, coba terjemahkan skenario pada contoh diagram flowchart yang
+  paling pertama ke dalam kode Python. Kira-kira kodenya akan seperti apa ya?
+</Alert>

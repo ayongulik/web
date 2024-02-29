@@ -3,6 +3,8 @@ title: "Exercise Part 3 - Q2"
 type: "exercise"
 ---
 
+import Alert from "src/components/Alert.astro";
+
 # Exercise Part 3 - Q2
 
 Buatlah fungsi `sort_product` untuk melakukan sorting data. Fungsi ini menerima tiga parameter: `data_source` (list dictionary), `key` (`string`, kemungkinan nilainya adalah 'id', 'product_name', 'category', 'price', 'stock', dan 'sold'), dan `direction` (`string`, 'asc' untuk mengurutkan nilai dari kecil ke besar, 'desc' untuk sebaliknya), dan mengembalikan data dengan format yang sama dengan data-nya. Contoh penggunaannya adalah sebagai berikut:
@@ -26,13 +28,16 @@ if __name__ == '__main__':
     print(sort_product(data, 'price', 'asc'))
 ```
 
-> [!TIP]
-> Kamu tidak perlu membuat pengecekan terhadap tipe data `number` dan `string` saat sorting.
-> Untuk melakukan perbandingan dengan `string`, kamu bisa menggunakan cara yang sama dengan perbandingan dengan `number`.
->
-> ```python
-> # Penggunaan operator >, >=, <, dan <= pada dua buah string akan menghasilkan nilai boolean.
-> # Python akan otomatis membandingkan string berdasarkan urutan alphabet.
-> print('coat' < 'sweater') # Output: True
-> print('pants' > 'coat') # Output: True
-> ```
+<Alert variant="tip">
+
+Kamu tidak perlu membuat pengecekan terhadap tipe data `number` dan `string` saat sorting.
+Untuk melakukan perbandingan dengan `string`, kamu bisa menggunakan cara yang sama dengan perbandingan dengan `number`.
+
+```python
+# Penggunaan operator >, >=, <, dan <= pada dua buah string akan menghasilkan nilai boolean.
+# Python akan otomatis membandingkan string berdasarkan urutan alphabet.
+print('coat' < 'sweater') # Output: True
+print('pants' > 'coat') # Output: True
+```
+
+</Alert>

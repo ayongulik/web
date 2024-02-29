@@ -3,6 +3,8 @@ title: "Data Structure"
 type: "material"
 ---
 
+import Alert from "src/components/Alert.astro";
+
 # Data Structure
 
 Selain menggunakan tipe data `number`, `string` dan `boolean`, nilai dari suatu variable dapat direpresentasikan oleh data structure. Pada chapter ini, kita akan membahas dua data structure di Python yang lazim kita temui juga di bahasa pemrograman lain, yaitu `list` dan `dictionary`.
@@ -68,13 +70,16 @@ print(list_length) # output: 4
 print(my_list[list_length - 1]) # output: 4
 ```
 
-> [!TIP]
-> Apabila kamu perlu membuat `list` dengan item `number` yang berurutan dalam rentang tertentu secara cepat, kamu bisa memakai fungsi `range`.
->
-> ```python
-> my_list = list(range(0, 5))
-> print(my_list) # [0, 1, 2, 3, 4]
-> ```
+<Alert variant="tip">
+
+Apabila kamu perlu membuat `list` dengan item `number` yang berurutan dalam rentang tertentu secara cepat, kamu bisa memakai fungsi `range`.
+
+```python
+my_list = list(range(0, 5))
+print(my_list) # [0, 1, 2, 3, 4]
+```
+
+</Alert>
 
 ### Manipulasi list
 

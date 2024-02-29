@@ -1,0 +1,12 @@
+---
+// This component is an easy workaround of mdx not supporting mermaid syntax
+// Passing the mermaid syntax as prop instead of children will skip the mdx parsing/compilation
+
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<pre class="mermaid">{content}</pre>

@@ -3,6 +3,8 @@ title: "Variable dan Tipe Data"
 type: "material"
 ---
 
+import Alert from "src/components/Alert.astro";
+
 # Variable dan Tipe Data
 
 Variable adalah sebuah simbol/referensi/nama yang kita berikan untuk sebuah nilai atau data yang ingin kita pakai. Cara mendefinisikan sebuah variable pada skrip Python dapat di lihat pada contoh ini:
@@ -29,13 +31,15 @@ total_purchase = 999
 print(total_purchase) # output: 999
 ```
 
-> [!NOTE]
-> Simbol `#` digunakan untuk membuat komentar/catatan pada kode Python kita:
->
-> ```python
-> # Semua catatan dimulai dengan menggunakan simbol '#'
-> total_purchase = 1000 # komentar terkait kode ini
-> ```
+<Alert>
+Simbol `#` digunakan untuk membuat komentar/catatan pada kode Python kita:
+
+```python
+# Semua catatan dimulai dengan menggunakan simbol '#'
+total_purchase = 1000 # komentar terkait kode ini
+```
+
+</Alert>
 
 ## Tipe Data
 
@@ -49,7 +53,7 @@ Mari kita bahas satu persatu tipe data ini.
 
 ### Number
 
-Tipe data `number` ini sudah kita temui pada contoh pembuatan variable `total_purchase`. Karena nilainya berupa angka, kita bisa melakukan operasi matematika pada variable tersebut. Perhatikan contoh berikut yang memperlihatkan penggunaan operasi matematika:
+Tipe data `number` ini sudah kita temui pada contoh pembuatan variable `total_purchase`. Karena nilainya berupa angka, kita bisa melakukan operasi aritmatika pada variable tersebut. Perhatikan contoh berikut yang memperlihatkan penggunaan operasi aritmatika:
 
 ```python
 base_price = 50000
@@ -72,7 +76,7 @@ billed_price = total_after_extra_discount + total_after_extra_discount * fee_rat
 print(billed_price) # output: 44100
 ```
 
-Lengkapnya, operasi matematika yang bisa dilakukan adalah:
+Lengkapnya, operasi aritmatika yang bisa dilakukan adalah:
 
 - penambahan (`+`),
 - pengurangan (`-`),
@@ -94,7 +98,7 @@ print(my_favorite_number / 4) # output: 25
 print(my_favorite_number % 8)  # output: 4
 ```
 
-Selain operasi matematika dasar, kita juga bisa menggunakan library tambahan dari Python untuk melakukan perhitungan yang lebih kompleks. Berikut ini adalah contoh penggunaan library `math`:
+Selain operasi aritmatika dasar, kita juga bisa menggunakan library tambahan dari Python untuk melakukan perhitungan yang lebih kompleks. Berikut ini adalah contoh penggunaan library `math`:
 
 ```python
 import math # baris ini diperlukan untuk memakai fungsi-fungsi math
@@ -164,19 +168,21 @@ will_eat = are_you_hungry or can_buy_food
 print(will_eat) # output: True
 ```
 
-> [!TIP]
-> Tipe data `boolean` juga memiliki operator negasi (`not`). Contoh pemakaiannya adalah sebagai berikut:
->
-> ```python
-> have_money = True
-> charming = True
->
-> im_cool = have_money and charming
-> print(im_cool) # output: True
->
-> im_cool = have_money and not charming
-> print(im_cool) # output: False
-> ```
+<Alert variant="tip">
+Tipe data `boolean` juga memiliki operator negasi (`not`). Contoh pemakaiannya adalah sebagai berikut:
+
+```python
+have_money = True
+charming = True
+
+im_cool = have_money and charming
+print(im_cool) # output: True
+
+im_cool = have_money and not charming
+print(im_cool) # output: False
+```
+
+</Alert>
 
 Konsep `boolean` dan logika perbandingan ini akan kita temui lagi pada chapter 3 'Conditionals'.
 
@@ -191,9 +197,16 @@ my_name = "John Doe"
 print(my_name) # output: 'John Doe'
 ```
 
-> [!TIP]
-> Q: Bagaimana cara menentukan apakah pakai double quote atau pakai single quote untuk variable string?  
-> A: Sebenarnya tidak ada aturan khusus. Yang penting, pakai salah satu style dan gunakan style tersebut secara konsisten untuk semua kode kalian.
+<Alert variant="tip">
+  <p>
+    **Q**: Bagaimana cara menentukan apakah pakai double quote atau pakai single
+    quote untuk variable string?
+  </p>
+  <p>
+    **A**: Sebenarnya tidak ada aturan khusus. Yang penting, pakai salah satu
+    style dan gunakan style tersebut secara konsisten untuk semua kode kalian.
+  </p>
+</Alert>
 
 Operator boolean seperti `==` dan `!=` juga bisa dilakukan dengan tipe data `string` seperti pada contoh di bawah ini.
 
@@ -277,8 +290,10 @@ caption_text = 'Indonesian\'s rain forest in Kalimantan are rapidly decreasing d
 headline_title =  "Taylor Swift will release her new album \"Midnight\" next year"
 ```
 
-> [!NOTE]
-> Terminologi dalam chapter ini (untuk memudahkan pencarian Google):
->
-> - String concatenation: penggabungan string
-> - String formatting/interpolation: pembentukan/konstruksi string
+<Alert>
+Terminologi dalam chapter ini (untuk memudahkan pencarian Google):
+
+- String concatenation: penggabungan string
+- String formatting/interpolation: pembentukan/konstruksi string
+
+</Alert>
