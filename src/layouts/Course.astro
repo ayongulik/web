@@ -20,7 +20,14 @@ const { frontmatter, slug } = Astro.props;
   <slot slot="aside-editor" name="aside" />
 
   <Fragment slot="before-editor">
-    {slug && <Breadcrumb path={slug} class="p-4 mb-4 border-b-2" />}
+    {
+      slug && (
+        <Breadcrumb
+          path={slug}
+          class="p-4 mb-4 border-b-2 sticky top-[3.35rem] left-0 z-10 bg-white"
+        />
+      )
+    }
     <main class="px-4 my-8">
       <article>
         <Prose>
