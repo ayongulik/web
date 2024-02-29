@@ -1,11 +1,14 @@
 ---
 import Navbar from "src/components/Navbar.astro";
+import Footer from "src/components/Footer.astro";
 ---
 
 <main class="bg-slate-100 min-h-screen">
-  <header class="max-w-screen-xl mx-auto mb-10">
-    <Navbar enableBorder={false} transparent />
+  <div class="max-w-screen-xl mx-auto">
+    <Navbar enableBorder={false} sticky={false} transparent />
+  </div>
 
+  <header class="max-w-screen-xl mx-auto mb-24">
     <article class="px-4">
       <h1
         class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[3rem] md:leading-[3.5rem] lg:leading-[4.5rem] mt-24 mb-8 md:mb-10 lg:mb-12"
@@ -26,5 +29,60 @@ import Navbar from "src/components/Navbar.astro";
       >
     </article>
   </header>
-  <section class="bg-slate-800"></section>
+  <section class="my-14 md:my-16 lg:my-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2
+        class="text-2xl lg:text-4xl font-semibold text-purple-900 text-center max-w-screen-md mx-auto mb-8 lg:mb-12 lg:tracking-tight"
+      >
+        “Banyak sumber di internet, tapi belajar pemrograman tetap saja
+        membingungkan.”
+      </h2>
+      <p class="text-lg lg:text-xl text-center max-w-screen-md mx-auto">
+        Semua materi pada platform ini dirancang terstruktur, fokus, dan
+        interaktif agar skill pemrograman dapat lebih mudah diserap oleh siswa.
+      </p>
+    </div>
+  </section>
+  <section class="py-14 md:py-16 lg:py-24 bg-black text-gray-300">
+    <div class="max-w-screen-xl mx-auto px-4 mb-24">
+      <h2
+        class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
+      >
+        Courses dibagi ke dalam beberapa level, dari dasar hingga mahir 🧗
+      </h2>
+      <p class="text-lg lg:text-xl max-w-screen-md">
+        Alur pembelajaran dibuat terstruktur agar siswa dapat belajar dengan
+        lebih sistematis dan menyesuaikan kemampuan masing-masing.
+      </p>
+    </div>
+
+    <div class="max-w-screen-xl mx-auto px-4 mb-24">
+      <h2
+        class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
+      >
+        Materi belajar singkat dan padat 📖
+      </h2>
+      <p class="text-lg lg:text-xl max-w-screen-md">
+        Cakupan materi telah dibuat sederhana dan fokus agar siswa dapat lebih
+        mudah menyerap pengetahuan yang paling penting dari tiap course.
+      </p>
+    </div>
+
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2
+        class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
+      >
+        Exercise yang interaktif dengan contoh kasus yang relevan dengan dunia
+        pekerjaan 🏋
+      </h2>
+      <p class="text-lg lg:text-xl max-w-screen-md">
+        Materi belajar diselingi dengan exercise yang relevan untuk memperkuat
+        pemahaman dan memperbanyak <em>hands-on</em>.
+      </p>
+    </div>
+  </section>
+
+  <section></section>
 </main>
+
+<Footer class="max-w-screen-xl" />
