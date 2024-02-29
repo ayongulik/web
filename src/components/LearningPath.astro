@@ -1,0 +1,107 @@
+---
+const skills = [{ id: 1, name: "Analisis Data", slug: "analisis-data" }];
+const learningPaths = {
+  "analisis-data": [
+    {
+      level: 0,
+      courses: [
+        {
+          title: "Algoritma menggunakan Python",
+          path: "/level-0/algoritma-menggunakan-python",
+          available: true,
+        },
+      ],
+    },
+    {
+      level: 1,
+      courses: [
+        {
+          title: "Intermediate Python",
+          path: "",
+          available: false,
+        },
+        {
+          title: "Relational Database & SQL",
+          path: "",
+          available: false,
+        },
+      ],
+    },
+    {
+      level: 2,
+      courses: [
+        {
+          title: "Analisis Data & Visualisasi",
+          path: "",
+          available: false,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<div class="max-w-48 mx-auto mb-8">
+  <select
+    id="skill-select"
+    class="bg-gray-50 border-2 border-gray-200 rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5"
+  >
+    {
+      skills.map((skill, index) => (
+        <option selected={index === 0} value={skill.id}>
+          {skill.name}
+        </option>
+      ))
+    }
+  </select>
+</div>
+
+<div class="relative overflow-x-auto">
+  <div
+    class="max-w-screen-lg min-w-[1024px] mx-auto text-left text-md lg:text-lg"
+  >
+    <ol>
+      {
+        learningPaths["analisis-data"].map((item) => (
+          <li class="grid grid-cols-9 items-center">
+            <div class="col-span-1 text-center flex items-center justify-center h-full sticky left-0 top-0 bg-slate-100">
+              <span>Level {item.level}</span>
+            </div>
+
+            {item.courses.map((course) =>
+              course.available ? (
+                <a
+                  href={course.path}
+                  class="col-span-4 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100"
+                >
+                  {course.title}
+                </a>
+              ) : (
+                <span class="col-span-4 flex items-center p-3 m-2 font-semibold bg-gray-200 shadow rounded-lg border border-gray-200 text-gray-500">
+                  <span class="flex-1">{course.title}</span>
+                  <span class="flex-none">
+                    <svg
+                      class="w-6 h-6"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H7a1 1 0 0 1-1-1v-7c0-.6.4-1 1-1Z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              ),
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</div>
