@@ -1,126 +1,155 @@
 ---
+import GlobalStyles from "src/components/GlobalStyles.astro";
 import Navbar from "src/components/Navbar.astro";
 import Footer from "src/components/Footer.astro";
 import LearningPath from "src/components/LearningPath.astro";
 ---
 
-<main class="bg-slate-100 min-h-screen">
-  <div class="max-w-screen-xl mx-auto">
-    <Navbar enableBorder={false} sticky={false} transparent />
-  </div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      Semua bisa belajar pemrograman dengan platform yang simpel, interaktif,
+      dan terstruktur - Ayo Ngulik!
+    </title>
+    <meta
+      name="description"
+      content="Ayo Ngulik! adalah platform belajar pemrograman yang dirancang terstruktur, fokus, dan interaktif. Bebas akses dan gratis!"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <GlobalStyles />
+  </head>
+  <body>
+    <main class="bg-slate-100 min-h-screen">
+      <div class="max-w-screen-xl mx-auto">
+        <Navbar enableBorder={false} sticky={false} transparent />
+      </div>
 
-  <header class="max-w-screen-xl mx-auto mb-24">
-    <article class="px-4">
-      <h1
-        class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[3rem] md:leading-[3.5rem] lg:leading-[4.5rem] mt-24 mb-8 md:mb-10 lg:mb-12"
-      >
-        <span>Semua bisa belajar</span>{" "}<span
-          class="inline-flex text-purple-800">pemrograman!</span
-        >
-      </h1>
-      <p class="text-lg md:text-xl lg:text-2xl text-gray-800 mb-6 md:mb-8">
-        Platform belajar pemrograman yang simpel, interaktif, terstruktur, dan {
-          " "
-        }
-        <em>gratis!</em>
-      </p>
-      <a
-        href="/level-0"
-        class="inline-block text-lg md:text-xl lg:text-2xl font-semibold text-white bg-purple-600 px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-4 rounded-lg hover:bg-purple-500"
-        >Mulai belajar</a
-      >
-    </article>
-  </header>
+      <header class="max-w-screen-xl mx-auto mb-24">
+        <article class="px-4">
+          <h1
+            class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[3rem] md:leading-[3.5rem] lg:leading-[4.5rem] mt-24 mb-8 md:mb-10 lg:mb-12"
+          >
+            <span>Semua bisa belajar</span>{" "}<span
+              class="inline-flex text-purple-800">pemrograman!</span
+            >
+          </h1>
+          <p class="text-lg md:text-xl lg:text-2xl text-gray-800 mb-6 md:mb-8">
+            Platform belajar pemrograman yang simpel, interaktif, terstruktur,
+            dan {" "}
+            <em>gratis!</em>
+          </p>
+          <a
+            href="/level-0"
+            class="inline-block text-lg md:text-xl lg:text-2xl font-semibold text-white bg-purple-600 px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-4 rounded-lg hover:bg-purple-500"
+            >Mulai belajar</a
+          >
+        </article>
+      </header>
 
-  <section class="my-14 md:my-16 lg:my-20">
-    <div class="max-w-screen-xl mx-auto px-4">
-      <h2
-        class="text-2xl lg:text-4xl font-semibold text-purple-900 text-center max-w-screen-md mx-auto mb-8 lg:mb-12 lg:tracking-tight"
-      >
-        “Banyak sumber di internet, tapi belajar pemrograman tetap saja
-        membingungkan.”
-      </h2>
-      <p class="text-lg lg:text-xl text-center max-w-screen-md mx-auto">
-        Semua materi pada platform ini dirancang terstruktur, fokus, dan
-        interaktif agar skill pemrograman dapat lebih mudah diserap oleh siswa.
-      </p>
-    </div>
-  </section>
+      <section class="my-14 md:my-16 lg:my-20">
+        <div class="max-w-screen-xl mx-auto px-4">
+          <h2
+            class="text-2xl lg:text-4xl font-semibold text-purple-900 text-center max-w-screen-md mx-auto mb-8 lg:mb-12 lg:tracking-tight"
+          >
+            “Banyak sumber di internet, tapi belajar pemrograman tetap saja
+            membingungkan.”
+          </h2>
+          <p class="text-lg lg:text-xl text-center max-w-screen-md mx-auto">
+            Semua materi pada platform ini dirancang terstruktur, fokus, dan
+            interaktif agar skill pemrograman dapat lebih mudah diserap oleh
+            siswa.
+          </p>
+        </div>
+      </section>
 
-  <section class="py-14 md:py-16 lg:py-24 bg-black text-gray-300">
-    <div class="max-w-screen-xl mx-auto px-4 mb-24">
-      <h2
-        class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
-      >
-        Courses dibagi ke dalam beberapa level, dari dasar hingga mahir 🧗
-      </h2>
-      <p class="text-lg lg:text-xl max-w-screen-md">
-        Alur pembelajaran dibuat terstruktur agar siswa dapat belajar dengan
-        lebih sistematis dan menyesuaikan kemampuan masing-masing.
-      </p>
-    </div>
+      <section class="py-14 md:py-16 lg:py-24 bg-black text-gray-300">
+        <div class="max-w-screen-xl mx-auto px-4 mb-24">
+          <h2
+            class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
+          >
+            Courses dibagi ke dalam beberapa level, dari dasar hingga mahir 🧗
+          </h2>
+          <p class="text-lg lg:text-xl max-w-screen-md">
+            Alur pembelajaran dibuat terstruktur agar siswa dapat belajar dengan
+            lebih sistematis dan menyesuaikan kemampuan masing-masing.
+          </p>
+        </div>
 
-    <div class="max-w-screen-xl mx-auto px-4 mb-24">
-      <h2
-        class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
-      >
-        Materi belajar singkat dan padat 📖
-      </h2>
-      <p class="text-lg lg:text-xl max-w-screen-md">
-        Cakupan materi telah dibuat sederhana dan fokus agar siswa dapat lebih
-        mudah menyerap pengetahuan yang paling penting dari tiap course.
-      </p>
-    </div>
+        <div class="max-w-screen-xl mx-auto px-4 mb-24">
+          <h2
+            class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
+          >
+            Materi belajar singkat dan padat 📖
+          </h2>
+          <p class="text-lg lg:text-xl max-w-screen-md">
+            Cakupan materi telah dibuat sederhana dan fokus agar siswa dapat
+            lebih mudah menyerap pengetahuan yang paling penting dari tiap
+            course.
+          </p>
+        </div>
 
-    <div class="max-w-screen-xl mx-auto px-4 mb-24">
-      <h2
-        class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
-      >
-        Exercise yang interaktif dengan contoh kasus yang relevan dengan dunia
-        pekerjaan 🏋
-      </h2>
-      <p class="text-lg lg:text-xl max-w-screen-md">
-        Materi belajar diselingi dengan exercise yang relevan untuk memperkuat
-        pemahaman dan memperbanyak <em>hands-on</em>.
-      </p>
-    </div>
+        <div class="max-w-screen-xl mx-auto px-4 mb-24">
+          <h2
+            class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
+          >
+            Exercise yang interaktif dengan contoh kasus yang relevan dengan
+            dunia pekerjaan 🏋
+          </h2>
+          <p class="text-lg lg:text-xl max-w-screen-md">
+            Materi belajar diselingi dengan exercise yang relevan untuk
+            memperkuat pemahaman dan memperbanyak <em>hands-on</em>.
+          </p>
+        </div>
 
-    <div class="max-w-screen-xl mx-auto px-4">
-      <h2
-        class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
-      >
-        Bebas akses, bebas belajar, gratis! 💸
-      </h2>
-      <p class="text-lg lg:text-xl max-w-screen-md">
-        Kami berpedoman bahwa akses pendidikan harus dapat terjangkau oleh semua
-        kalangan. Akses semua courses, materi dan exercise pada platform ini
-        dengan gratis, dan dapatkan skill yang kamu mau disini.
-      </p>
-    </div>
-  </section>
+        <div class="max-w-screen-xl mx-auto px-4">
+          <h2
+            class="text-2xl lg:text-4xl font-semibold max-w-screen-md mb-8 text-gray-100"
+          >
+            Bebas akses, bebas belajar, gratis! 💸
+          </h2>
+          <p class="text-lg lg:text-xl max-w-screen-md">
+            Kami berpedoman bahwa akses pendidikan harus dapat terjangkau oleh
+            semua kalangan. Akses semua courses, materi dan exercise pada
+            platform ini dengan gratis, dan dapatkan skill yang kamu mau disini.
+          </p>
+        </div>
+      </section>
 
-  <section class="py-14 md:py-16 lg:py-20">
-    <div class="max-w-screen-xl mx-auto px-4">
-      <h2
-        id="courses"
-        class="text-2xl lg:text-4xl font-semibold text-purple-900 text-center max-w-screen-md mx-auto mb-8 lg:mb-12 lg:tracking-tight"
-      >
-        Pilih skill yang kamu mau, dan ikuti alur pembelajarannya
-      </h2>
-      <p class="text-lg lg:text-xl text-center max-w-screen-md mx-auto mb-10">
-        Skill pemrograman tertentu memerlukan alur pembelajaran yang khusus.
-        Oleh karena itu, semua course dan materi pada platform ini telah
-        dirancang agar terstruktur, relevan dan sesuai dengan berbagai kebutuhan
-        dan minat.*
-      </p>
+      <section class="py-14 md:py-16 lg:py-20">
+        <div class="max-w-screen-xl mx-auto px-4">
+          <h2
+            id="courses"
+            class="text-2xl lg:text-4xl font-semibold text-purple-900 text-center max-w-screen-md mx-auto mb-8 lg:mb-12 lg:tracking-tight"
+          >
+            Pilih skill yang kamu mau, dan ikuti alur pembelajarannya
+          </h2>
+          <p
+            class="text-lg lg:text-xl text-center max-w-screen-md mx-auto mb-10"
+          >
+            Skill pemrograman tertentu memerlukan alur pembelajaran yang khusus.
+            Oleh karena itu, semua course dan materi pada platform ini telah
+            dirancang agar terstruktur, relevan dan sesuai dengan berbagai
+            kebutuhan dan minat.*
+          </p>
 
-      <LearningPath />
+          <LearningPath />
 
-      <p class="text-center text-sm mt-8">
-        * Beberapa course dan materi masih dalam tahap pengembangan.
-      </p>
-    </div>
-  </section>
-</main>
+          <p class="text-center text-sm mt-8">
+            * Beberapa course dan materi masih dalam tahap pengembangan.
+          </p>
+        </div>
+      </section>
+    </main>
 
-<Footer class="max-w-screen-xl" />
+    <Footer class="max-w-screen-xl" />
+  </body>
+</html>
