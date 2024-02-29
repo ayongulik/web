@@ -30,13 +30,16 @@ const {
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.css"
     />
     <script
+      is:inline
       src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"
       referrerpolicy="no-referrer"></script>
     <script
+      is:inline
       src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"
       referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"
-    ></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
   </Fragment>
 
   <div class:list={["max-w-screen-2xl relative mx-auto", customClass]}>
@@ -91,72 +94,7 @@ const {
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", main, false);
-    document
-      .getElementById("button-run")
-      ?.addEventListener("click", evaluateCode);
-
-    async function main() {
-      window.pyodide = await window.loadPyodide({
-        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.20.0/full/",
-      });
-      window.editor = window.CodeMirror.fromTextArea(
-        document.getElementById("code") as HTMLTextAreaElement,
-        {
-          mode: {
-            name: "python",
-            version: 3,
-            singleLineStringErrors: false,
-          },
-          theme: "material-darker",
-          lineNumbers: true,
-          indentUnit: 4,
-          viewportMargin: Infinity,
-        },
-      );
-
-      updateToMinHeight(window.editor, 300);
-
-      console.log("Editor is ready!");
-    }
-
-    function updateToMinHeight(
-      editor: CodeMirror.EditorFromTextArea,
-      minHeight: number,
-    ) {
-      editor.getScrollerElement().style.minHeight = `${minHeight}px`;
-      editor.refresh();
-    }
-
-    function printOutput(output: string) {
-      const el = document.getElementById("output") as HTMLTextAreaElement;
-      if (el) {
-        el.value = output;
-        if (el.parentNode) {
-          const parentNode = el.parentNode as HTMLElement;
-          parentNode.dataset.replicatedValue = output;
-        }
-      }
-    }
-
-    function evaluateCode() {
-      try {
-        if (window.pyodide?.version && window.CodeMirror?.version) {
-          window.pyodide.runPython(`
-						import sys
-						import io
-						sys.stdout = io.StringIO()
-					`);
-          window.pyodide.runPython(window.editor.getValue());
-          const stdout = window.pyodide.runPython("sys.stdout.getvalue()");
-          printOutput(stdout);
-        }
-      } catch (err) {
-        printOutput(String(err));
-      }
-    }
-  </script>
+  <script src="../scripts/codeeditor.ts"></script>
 
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
