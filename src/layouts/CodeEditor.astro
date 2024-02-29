@@ -127,4 +127,17 @@ const {
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
   </script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"
+  ></script>
+  <script>
+    // @ts-expect-error
+    window.anchors.options = {
+      // @ts-expect-error
+      ...window.anchors.options,
+      visible: "always",
+      class: "no-underline text-purple-800 hover:underline",
+    };
+    // @ts-expect-error
+    window.anchors.add();
+  </script>
 </BaseLayout>
