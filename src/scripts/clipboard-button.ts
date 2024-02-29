@@ -3,7 +3,9 @@ const copyButtonLabel = "Copy";
 document.addEventListener("DOMContentLoaded", initClipboardButton, false);
 
 async function initClipboardButton() {
-  const codeBlocks = Array.from(document.querySelectorAll("pre"));
+  const codeBlocks: HTMLPreElement[] = Array.from(
+    document.querySelectorAll("pre.astro-code"),
+  );
 
   for (const codeBlock of codeBlocks) {
     const wrapper = document.createElement("div");
