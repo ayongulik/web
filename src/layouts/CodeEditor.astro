@@ -18,7 +18,7 @@ const {
   enableCodeEditor = true,
 } = Astro.props;
 
-const enableTestCases = enableTestCasesProps || frontmatter.enableTestCases;
+const enableTestCases = enableTestCasesProps || frontmatter?.enableTestCases;
 ---
 
 <BaseLayout frontmatter={frontmatter}>
