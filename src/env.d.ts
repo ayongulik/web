@@ -6,7 +6,7 @@ import type { EditorFromTextArea } from "codemirror";
 
 // https://github.com/pyodide/pyodide/blob/main/src/js/pyodide.ts ConfigType
 interface LoadPyodideOptions {
-  indexURL: string;
+  indexURL?: string;
   packageCacheDir?: string;
   lockFileURL?: string;
   fullStdLib?: boolean;
@@ -23,7 +23,9 @@ interface LoadPyodideOptions {
 
 interface PyodideInterface {
   ERRNO_CODES: { [code: string]: number };
-  FS: string;
+  FS: {
+    writeFile: (...args) => void;
+  };
   PATH: string;
   canvas: any;
   ffi: any;
@@ -54,7 +56,10 @@ interface PyodideInterface {
 declare global {
   interface Window {
     editor: EditorFromTextArea;
-    loadPyodide: (options: LoadPyodideOptions) => Promise<PyodideInterface>;
+    loadPyodide: (options?: LoadPyodideOptions) => Promise<PyodideInterface>;
     pyodide: PyodideInterface;
+    ayongulik: {
+      loadingTestCase: boolean;
+    };
   }
 }

@@ -14,9 +14,11 @@ interface Props {
 const {
   frontmatter,
   class: customClass = "",
-  enableTestCases = false,
+  enableTestCases: enableTestCasesProps = false,
   enableCodeEditor = true,
 } = Astro.props;
+
+const enableTestCases = enableTestCasesProps || frontmatter.enableTestCases;
 ---
 
 <BaseLayout frontmatter={frontmatter}>
@@ -39,7 +41,7 @@ const {
       referrerpolicy="no-referrer"></script>
     <script
       is:inline
-      src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
+      src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
   </Fragment>
 
   <div class:list={["max-w-screen-2xl relative mx-auto", customClass]}>

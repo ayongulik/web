@@ -5,6 +5,7 @@ const coursesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     type: z.string(),
+    enableTestCases: z.boolean().optional().default(false),
   }),
 });
 
