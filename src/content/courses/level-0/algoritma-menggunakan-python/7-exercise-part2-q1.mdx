@@ -5,6 +5,8 @@ tags: ["level-0", "python"]
 enableTestCases: true
 ---
 
+import Alert from 'src/components/Alert.astro'
+
 # Exercise Part 2 - Q1
 
 Buatlah kode python yang dapat mencetak pola segitiga siku-siku menggunakan simbol `*`:
@@ -28,6 +30,16 @@ if __name__ == "__main__":
     # tes input yang berbeda disini
     main(6)
 ```
+
+<Alert variant="tip">
+
+Secara default, fungsi `print` akan menambahkan newline atau `\n` pada setiap akhir string yang dicetak. Kita dapat mengubah sifat tersebut dengan mengeset opsi `end` saat melakukan pemanggilan fungsi `print` seperti berikut:
+
+```python
+print('Hello world!', end='') # Hasil cetak akan diakhiri dengan string kosong
+```
+
+</Alert>
 
 <details>
 <summary>Test Cases</summary>
