@@ -4,6 +4,7 @@ type: "material"
 ---
 
 import Alert from "src/components/Alert.astro";
+import Mermaid from "src/components/Mermaid.astro";
 
 # Perkenalan
 
@@ -42,12 +43,14 @@ Pada course ini, Python dipilih karena bahasanya relatif mudah, fungsi-fungsinya
 
 Mengimplementasikan sebuah algoritma tidak luput dari konsep input dan output.
 
-```mermaid
+<Mermaid
+  content={`
 flowchart LR
     classDef processState stroke-dasharray:3,fill:white
     Input --> Algoritma:::processState
     Algoritma --> Output
-```
+`}
+/>
 
 Suatu algoritma dikatakan berhasil atau menyelesaikan masalah apabila algoritma tersebut dapat menghasilkan output yang dikehendaki sesuai dengan input yang diberikan. Sehingga, masalah yang sama dapat diselesaikan dengan solusi algoritma yang berbeda-beda. Jadi, kalau nanti di bagian exercise kalian memiliki solusi yang berbeda dari kunci jawaban, itu sama sekali tidak menjadi persoalan.
 
