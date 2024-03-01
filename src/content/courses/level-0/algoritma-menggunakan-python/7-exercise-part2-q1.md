@@ -2,6 +2,7 @@
 title: "Exercise Part 2 - Q1"
 type: "exercise"
 tags: ["level-0", "python"]
+enableTestCases: true
 ---
 
 # Exercise Part 2 - Q1
