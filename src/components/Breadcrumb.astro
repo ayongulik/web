@@ -9,9 +9,10 @@ interface BreadcrumbItems {
 interface Props {
   path: string;
   class?: string;
+  enableMenu?: boolean;
 }
 
-const { path, class: customClass = "" } = Astro.props;
+const { path, class: customClass = "", enableMenu = false } = Astro.props;
 
 const items = generateItems(path);
 const otherItems = items.slice(0, items.length - 1);
@@ -32,6 +33,30 @@ function generateItems(path: string): BreadcrumbItems[] {
 ---
 
 <nav class:list={["flex", customClass]} aria-label="Breadcrumb">
+  {
+    enableMenu && (
+      <button
+        id="button-menu"
+        class="block mr-6 lg:hidden lg:m-0"
+        onclick="onButtonMenuClick()"
+      >
+        <svg
+          class="w-6 h-6 text-gray-700"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+            d="M5 7h14M5 12h14M5 17h14"
+          />
+        </svg>
+      </button>
+    )
+  }
   <ol
     class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
   >

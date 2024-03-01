@@ -61,8 +61,28 @@ function getPrevNextNavigation(
 <CourseLayout frontmatter={entry.data} slug={entry.slug}>
   <aside
     slot="aside"
+    id="side-navbar"
     class="side-navbar flex-none w-1/4 hidden md:hidden lg:block sticky overflow-y-scroll p-4 bg-slate-100"
   >
+    <button
+      class="side-navbar__close-button"
+      onclick="onSideNavbarCloseClick()"
+    >
+      <svg
+        class="w-6 h-6 text-gray-700"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18 18 6m0 12L6 6"></path>
+      </svg>
+    </button>
     <nav class="bg-slate-50 shadow rounded-lg">
       <div class="p-4 bg-purple-100 rounded-t-lg">
         <p class="text-xs capitalize mb-1">{levelTitle}</p>
