@@ -59,7 +59,7 @@ function generateItems(path: string): BreadcrumbItems[] {
     )
   }
   <ol
-    class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+    class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse whitespace-nowrap text-ellipsis overflow-hidden"
   >
     <li class="inline-flex items-center">
       <a
@@ -81,8 +81,8 @@ function generateItems(path: string): BreadcrumbItems[] {
     </li>
 
     {
-      otherItems.map((item) => (
-        <li>
+      otherItems.map((item, index) => (
+        <li class:list={[{ "hidden md:block": index == 0 }]}>
           <div class="flex items-center">
             <svg
               class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
