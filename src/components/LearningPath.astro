@@ -1,4 +1,6 @@
 ---
+import { linkTo } from "../utils/url";
+
 const skills = [{ id: 1, name: "Analisis Data", slug: "analisis-data" }];
 const learningPaths = {
   "analisis-data": [
@@ -7,7 +9,7 @@ const learningPaths = {
       courses: [
         {
           title: "Algoritma menggunakan Python",
-          path: "/level-0/algoritma-menggunakan-python",
+          path: "level-0/algoritma-menggunakan-python",
           available: true,
         },
       ],
@@ -71,7 +73,7 @@ const learningPaths = {
             {item.courses.map((course) =>
               course.available ? (
                 <a
-                  href={course.path}
+                  href={linkTo(course.path)}
                   class="col-span-4 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100"
                 >
                   {course.title}

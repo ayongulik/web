@@ -1,5 +1,6 @@
 ---
 import { removeStripes } from "../utils/string";
+import { linkTo } from "../utils/url";
 
 interface BreadcrumbItems {
   slug: string;
@@ -19,7 +20,7 @@ const otherItems = items.slice(0, items.length - 1);
 const activeItem = items[items.length - 1];
 
 function generateItems(path: string): BreadcrumbItems[] {
-  let slug = "/";
+  let slug = "";
   const items: BreadcrumbItems[] = [];
 
   path.split("/").forEach((part) => {
@@ -62,7 +63,7 @@ function generateItems(path: string): BreadcrumbItems[] {
   >
     <li class="inline-flex items-center">
       <a
-        href="/"
+        href={linkTo("")}
         class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-purple-800 dark:text-gray-400 dark:hover:text-white capitalize"
       >
         <svg
@@ -99,7 +100,7 @@ function generateItems(path: string): BreadcrumbItems[] {
               />
             </svg>
             <a
-              href={item.slug}
+              href={linkTo(item.slug)}
               class="ms-1 text-sm font-medium text-gray-700 hover:text-purple-800 md:ms-2 dark:text-gray-400 dark:hover:text-white capitalize"
             >
               {item.label}

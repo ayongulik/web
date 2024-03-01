@@ -6,6 +6,7 @@ import Prose from "../components/Prose.astro";
 import Footer from "../components/Footer.astro";
 import { getGroupedStaticPaths } from "../utils/collection";
 import { removeStripes } from "../utils/string";
+import { linkTo } from "../utils/url";
 
 import type { CollectionEntry } from "astro:content";
 
@@ -69,7 +70,7 @@ const title = removeStripes(courseSlug);
           entries.map((entry) => (
             <li>
               <a
-                href={`/${entry.slug}`}
+                href={linkTo(entry.slug)}
                 class="flex p-6 items-center text-lg font-semibold bg-white border border-gray-200 rounded-lg text-purple-800 shadow hover:bg-purple-100"
               >
                 <span class="flex-1">{entry.data.title}</span>

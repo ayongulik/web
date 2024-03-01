@@ -1,6 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import NavbarLink from "./NavbarLink.astro";
+import { linkTo } from "../utils/url";
 
 interface Props {
   enableBorder?: boolean;
@@ -26,10 +27,10 @@ const { enableBorder = true, sticky = true, transparent = false } = Astro.props;
   <section class="flex-1">
     <ul class="flex flex-row-reverse items-center">
       <li class="flex">
-        <NavbarLink href="/online-editor">Editor Online</NavbarLink>
+        <NavbarLink href={linkTo("online-editor")}>Editor Online</NavbarLink>
       </li>
       <li class="flex">
-        <NavbarLink href="/#courses">Courses</NavbarLink>
+        <NavbarLink href={linkTo("#courses")}>Courses</NavbarLink>
       </li>
     </ul>
   </section>

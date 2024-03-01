@@ -5,6 +5,7 @@ import Prose from "../components/Prose.astro";
 import Footer from "../components/Footer.astro";
 import { getGroupedStaticPaths } from "../utils/collection";
 import { removeStripes } from "../utils/string";
+import { linkTo } from "../utils/url";
 
 import type { CollectionEntry } from "astro:content";
 
@@ -56,7 +57,7 @@ const title = removeStripes(slug);
       <ol class="grid grid-cols-2 gap-6">
         <li>
           <a
-            href="/level-0/algoritma-menggunakan-python"
+            href={linkTo("level-0/algoritma-menggunakan-python")}
             class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100"
             >Algoritma Menggunakan Python</a
           >

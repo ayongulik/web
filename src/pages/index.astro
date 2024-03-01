@@ -3,14 +3,29 @@ import GlobalStyles from "src/components/GlobalStyles.astro";
 import Navbar from "src/components/Navbar.astro";
 import Footer from "src/components/Footer.astro";
 import LearningPath from "src/components/LearningPath.astro";
+import { linkTo } from "../utils/url";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={linkTo("apple-touch-icon.png")}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href={linkTo("favicon-32x32.png")}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={linkTo("favicon-16x16.png")}
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>
@@ -50,7 +65,7 @@ import LearningPath from "src/components/LearningPath.astro";
             <em>gratis!</em>
           </p>
           <a
-            href="/level-0"
+            href={linkTo("level-0")}
             class="inline-block text-lg md:text-xl lg:text-2xl font-semibold text-white bg-purple-600 px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-4 rounded-lg hover:bg-purple-500"
             >Mulai belajar</a
           >

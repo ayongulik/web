@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import CourseLayout from "../layouts/Course.astro";
 import Footer from "../components/Footer.astro";
 import { removeStripes } from "../utils/string";
+import { linkTo } from "../utils/url";
 
 import type { CollectionEntry } from "astro:content";
 
@@ -93,7 +94,7 @@ function getPrevNextNavigation(
           courseEntries.map(({ data, slug }, index) => (
             <li>
               <a
-                href={`/${slug}`}
+                href={linkTo(slug)}
                 class:list={[
                   "pl-8 py-4 pr-4 block border-b-2 border-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
                   {
@@ -124,7 +125,7 @@ function getPrevNextNavigation(
           {
             prev && (
               <a
-                href={`/${prev.slug}`}
+                href={linkTo(prev.slug)}
                 class="flex flex-col p-4 hover:text-purple-800"
               >
                 <span>Sebelumnya</span>
@@ -137,7 +138,7 @@ function getPrevNextNavigation(
           {
             next && (
               <a
-                href={`/${next.slug}`}
+                href={linkTo(next.slug)}
                 class="flex flex-col p-4 hover:text-purple-800"
               >
                 <span>Selanjutnya</span>
