@@ -1,6 +1,4 @@
-window.ayongulik = {
-  loadingTestCase: false,
-};
+import { BASE_PATH } from "src/config";
 
 const warningLog = console.warn;
 
@@ -11,13 +9,10 @@ console.warn = (data) => {
   printOutput(data, true);
 };
 
-document.addEventListener("DOMContentLoaded", initCodeEditor, false);
-
-const buttonRunEl = document.getElementById("button-run");
-const buttonRunTestCasesEl = document.getElementById("button-run-test-cases");
-
-buttonRunEl?.addEventListener("click", evaluateCode);
-buttonRunTestCasesEl?.addEventListener("click", evaluateTestCases);
+const buttonRunId = "button-run";
+const buttonRunTestCasesId = "button-run-test-cases";
+const buttonRunEl = document.getElementById(buttonRunId);
+const buttonRunTestCasesEl = document.getElementById(buttonRunTestCasesId);
 
 const templateCode = `def main():
     # tulis kode kamu disini
@@ -25,10 +20,24 @@ const templateCode = `def main():
 if __name__ == '__main__':
     main()`;
 
+const patchPrintCode = `
+import sys
+import io
+sys.stdout = io.StringIO()
+`;
+
+document.addEventListener("DOMContentLoaded", initCodeEditor, false);
+
+buttonRunEl?.addEventListener("click", evaluateCode);
+buttonRunTestCasesEl?.addEventListener("click", evaluateTestCases);
+
 async function initCodeEditor() {
   const editorEl = document.getElementById("code") as HTMLTextAreaElement;
 
   if (editorEl) {
+    toggleLoadingOnButton(buttonRunId, true);
+    toggleLoadingOnButton(buttonRunTestCasesId, true);
+
     window.pyodide = await window.loadPyodide();
     window.editor = window.CodeMirror.fromTextArea(
       document.getElementById("code") as HTMLTextAreaElement,
@@ -47,6 +56,9 @@ async function initCodeEditor() {
 
     window.editor.setValue(templateCode);
     updateToMinHeight(window.editor, 300);
+
+    toggleLoadingOnButton(buttonRunId, false);
+    toggleLoadingOnButton(buttonRunTestCasesId, false);
     console.log("Editor is ready!");
   }
 
@@ -61,73 +73,55 @@ function updateToMinHeight(
   editor.refresh();
 }
 
-const testCode = `
-import io
-import unittest
-from unittest.mock import patch
-from challenge import main
-
-
-class TestExercisePart1(unittest.TestCase):
-
-    @patch('sys.stdout', new_callable=io.StringIO)
-    def test_one(self, stdout):
-        main(10, False)
-        expected_out = 'Lulus!\\n'
-        self.assertEqual(stdout.getvalue(), expected_out)
-
-    @patch('sys.stdout', new_callable=io.StringIO)
-    def test_two(self, stdout):
-        main(9, False)
-        expected_out = 'Tidak lulus~\\n'
-        self.assertEqual(stdout.getvalue(), expected_out)
-
-    @patch('sys.stdout', new_callable=io.StringIO)
-    def test_three(self, stdout):
-        main(9, True)
-        expected_out = 'Lulus!\\n'
-        self.assertEqual(stdout.getvalue(), expected_out)
-
-
-if __name__ == '__main__':
-    unittest.main(exit=False)
-`;
-
-const patchPrintCode = `
-import sys
-import io
-sys.stdout = io.StringIO()
-`;
-
 function evaluateCode() {
   try {
     if (window.pyodide?.version && window.CodeMirror?.version) {
+      toggleLoadingOnButton(buttonRunId, true);
+
       window.pyodide.runPython(patchPrintCode);
       window.pyodide.runPython(window.editor.getValue());
       const stdout = window.pyodide.runPython("sys.stdout.getvalue()");
       printOutput(stdout);
+
+      toggleLoadingOnButton(buttonRunId, false);
     }
   } catch (err) {
     printOutput(String(err));
+    toggleLoadingOnButton(buttonRunId, false);
   }
 }
 
-function evaluateTestCases() {
+async function evaluateTestCases() {
   try {
     if (window.pyodide?.version && window.CodeMirror?.version) {
-      window.pyodide.runPython(patchPrintCode);
-      window.pyodide.FS.writeFile("challenge.py", window.editor.getValue());
-      window.pyodide.FS.writeFile("test.py", testCode);
-      printOutput("");
-      window.pyodide.runPython(`
-        exec(open('test.py').read())
-        import sys
-        sys.modules.pop("test", None)
-        sys.modules.pop("challenge", None)
-      `);
+      toggleLoadingOnButton(buttonRunTestCasesId, true);
+
+      const repoUrl =
+        "https://raw.githubusercontent.com/ayongulik/gameshark/master/tests";
+      const testFilePath = window.location.pathname.replace(BASE_PATH, "");
+      const response = await fetch(`${repoUrl}${testFilePath}.py`);
+
+      if (response.ok) {
+        const testCode = await response.text();
+        window.pyodide.runPython(patchPrintCode);
+        window.pyodide.FS.writeFile("challenge.py", window.editor.getValue());
+        window.pyodide.FS.writeFile("test.py", testCode);
+        printOutput("");
+        window.pyodide.runPython(`
+          exec(open('test.py').read())
+          import sys
+          sys.modules.pop("test", None)
+          sys.modules.pop("challenge", None)
+        `);
+
+        toggleLoadingOnButton(buttonRunTestCasesId, false);
+      }
+
+      toggleLoadingOnButton(buttonRunTestCasesId, false);
     }
   } catch (err) {
     printOutput(String(err));
+    toggleLoadingOnButton(buttonRunTestCasesId, false);
   }
 }
 
@@ -139,6 +133,19 @@ function printOutput(output: string, append = false) {
     if (el.parentNode) {
       const parentNode = el.parentNode as HTMLElement;
       parentNode.dataset.replicatedValue = el.value;
+    }
+  }
+}
+
+function toggleLoadingOnButton(id: string, loading = true) {
+  const el = document.getElementById(id) as HTMLButtonElement;
+  if (el) {
+    if (loading) {
+      el.disabled = true;
+      el.classList.add("loading");
+    } else {
+      el.disabled = false;
+      el.classList.remove("loading");
     }
   }
 }

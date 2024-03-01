@@ -58,8 +58,5 @@ declare global {
     editor: EditorFromTextArea;
     loadPyodide: (options?: LoadPyodideOptions) => Promise<PyodideInterface>;
     pyodide: PyodideInterface;
-    ayongulik: {
-      loadingTestCase: boolean;
-    };
   }
 }
