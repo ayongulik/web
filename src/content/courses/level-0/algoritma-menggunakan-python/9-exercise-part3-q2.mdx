@@ -7,6 +7,11 @@ import Alert from "src/components/Alert.astro";
 
 # Exercise Part 3 - Q2
 
+<Alert>
+  Untuk mengerjakan exercise ini, kamu perlu menggunakan data dari [Exercise
+  Part 3 Q1](/level-0/algoritma-menggunakan-python/9-exercise-part3-q1).
+</Alert>
+
 Buatlah fungsi `sort_product` untuk melakukan sorting data. Fungsi ini menerima tiga parameter: `data_source` (list dictionary), `key` (`string`, kemungkinan nilainya adalah 'id', 'product_name', 'category', 'price', 'stock', dan 'sold'), dan `direction` (`string`, 'asc' untuk mengurutkan nilai dari kecil ke besar, 'desc' untuk sebaliknya), dan mengembalikan data dengan format yang sama dengan data-nya. Contoh penggunaannya adalah sebagai berikut:
 
 ```python
@@ -15,7 +20,7 @@ output = sort_product(data, 'category', 'desc')
 output = sort_product(data, 'sold', 'desc')
 ```
 
-Buat file baru bernama `exercise_part3_Q12.py` dan gunakan template ini untuk mengerjakan soal.
+Gunakan template ini untuk mengerjakan soal.
 
 ```python
 def sort_product(data, key, direction):

@@ -15,7 +15,7 @@ Buatlah kode Python yang dapat mencetak pola segitiga menggunakan simbol `*`:
 *******
 ```
 
-Buat file baru bernama `exercise_part2_Q2.py` dan gunakan template ini untuk mengerjakan soal.
+Gunakan template ini untuk mengerjakan soal.
 
 ```python
 def main(lines):

@@ -29,7 +29,7 @@ if __name__ == "__main__":
 ```
 
 <details>
-<summary>test cases</summary>
+<summary>Test Cases</summary>
 
 ```
 input:

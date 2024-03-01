@@ -3,7 +3,14 @@ title: "Exercise Part 3 - Q3"
 type: "exercise"
 ---
 
-### Exercise Part 3 - Q3
+import Alert from "src/components/Alert.astro";
+
+# Exercise Part 3 - Q3
+
+<Alert>
+  Untuk mengerjakan exercise ini, kamu perlu menggunakan data dari [Exercise
+  Part 3 Q1](/level-0/algoritma-menggunakan-python/9-exercise-part3-q1).
+</Alert>
 
 Buatlah fungsi `get_sum` untuk menghitung aggregate penjumlahan dari data. Fungsi ini menerima dua parameter: `data_source` (list dictionary) dan `key` (`string`, kemungkinan nilainya adalah key dengan tipe data number), dan mengembalikan tipe data `number` hasil penjumlahan. Contoh penggunaannya adalah sebagai berikut:
 
@@ -30,7 +37,7 @@ print(get_sum(some_data, 'price')) # Output: 129.9
 print(get_sum(some_data, 'sold')) # OUtput: 152
 ```
 
-Buat file baru bernama `exercise_part3_Q13.py` dan gunakan template ini untuk mengerjakan soal.
+Gunakan template ini untuk mengerjakan soal.
 
 ```python
 def get_sum(data_source, key):

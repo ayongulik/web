@@ -94,11 +94,9 @@ data = [
 
 ```
 
-### Q1.1
-
 Buatlah fungsi `get_product_by_category` untuk memfilter data berdasarkan nilai `category`. Fungsi ini menerima dua parameter: `data_source` (list dictionary) dan `category_name` (`string`), dan mengembalikan data dengan format yang sama dengan data-nya:
 
-Buat file baru bernama `exercise_part3_Q11.py` dan gunakan template ini untuk mengerjakan soal.
+Gunakan template ini untuk mengerjakan soal.
 
 ```python
 def get_product_by_category(data, category_name):
