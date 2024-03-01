@@ -98,7 +98,11 @@ async function evaluateTestCases() {
 
       const repoUrl =
         "https://raw.githubusercontent.com/ayongulik/gameshark/master/tests";
-      const testFilePath = window.location.pathname.replace(BASE_PATH, "");
+      let testFilePath = window.location.pathname.replace(BASE_PATH, "");
+      // handle trailing backslash
+      if (testFilePath.slice(-1) === "/") {
+        testFilePath = testFilePath.slice(0, testFilePath.length - 1);
+      }
       const response = await fetch(`${repoUrl}${testFilePath}.py`);
 
       if (response.ok) {
