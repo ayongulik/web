@@ -53,11 +53,11 @@ const enableTestCases = enableTestCasesProps || frontmatter?.enableTestCases;
 
         {
           enableCodeEditor && (
-            <aside class="min-h-96 mx-4 px-4 pt-4 pb-5 border-2 rounded-lg bg-white mb-12">
-              <section class="w-full mb-4">
+            <aside class="min-h-96 mx-4 border-2 rounded-lg bg-white mb-12">
+              <section class="w-full">
                 <label
                   for="code"
-                  class="flex items-center font-semibold text-sm mb-3"
+                  class="flex items-center font-semibold text-sm px-4 py-3"
                 >
                   <svg
                     class="w-5 h-5 mr-2 text-gray-400"
@@ -86,34 +86,39 @@ const enableTestCases = enableTestCasesProps || frontmatter?.enableTestCases;
                 <textarea
                   id="code"
                   name="code"
-                  class="block w-full min-h-[300px] bg-[#212121] rounded-lg m-0 overflow-auto"
+                  class="block w-full min-h-[300px] bg-[#212121] m-0 overflow-auto"
                 />
               </section>
-              <section class="w-full flex gap-4">
-                <div class="flex-1">
-                  <div class="grow-wrap">
-                    <textarea
-                      id="output"
-                      name="output"
-                      class="block w-full min-h-[150px] font-mono text-sm border-2 border-gray-200 bg-gray-100 rounded-md p-2 text-slate-700"
-                      readonly
+              <section class="px-4 py-3 flex gap-2">
+                <Button id="button-run">
+                  Run
+                  <svg
+                    class="w-6 h-6 text-white ml-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8.6 5.2A1 1 0 0 0 7 6v12a1 1 0 0 0 1.6.8l8-6a1 1 0 0 0 0-1.6l-8-6Z"
+                      clip-rule="evenodd"
                     />
-                  </div>
-                </div>
-                <div class="flex-none min-w-48">
-                  <Button id="button-run" class="mb-2" fullWidth>
-                    Run
+                  </svg>
+                </Button>
+                {enableTestCases && (
+                  <Button id="button-run-test-cases" variant="outline">
+                    Run Test Cases
                   </Button>
-                  {enableTestCases && (
-                    <Button
-                      id="button-run-test-cases"
-                      variant="outline"
-                      fullWidth
-                    >
-                      Run Test Cases
-                    </Button>
-                  )}
-                </div>
+                )}
+              </section>
+              <section class="grow-wrap px-4 pb-3">
+                <textarea
+                  id="output"
+                  name="output"
+                  class="block w-full min-h-[150px] font-mono text-sm border-2 border-gray-200 bg-gray-100 rounded-md p-2 text-slate-700"
+                  readonly
+                />
               </section>
             </aside>
           )
