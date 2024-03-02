@@ -3,7 +3,6 @@ interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
   variant?: "solid" | "outline";
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
-  href?: string;
 }
 
 const {
@@ -13,11 +12,9 @@ const {
   class: customClass = "",
   ...props
 } = Astro.props;
-
-const Element = Astro.props.href ? "a" : "button";
 ---
 
-<Element
+<button
   class:list={[
     "inline-flex justify-center items-center rounded-lg font-semibold border-2 border-purple-600",
     { "py-1 px-2 text-sm": size === "sm" },
@@ -53,4 +50,4 @@ const Element = Astro.props.href ? "a" : "button";
   </svg>
 
   <slot />
-</Element>
+</button>
