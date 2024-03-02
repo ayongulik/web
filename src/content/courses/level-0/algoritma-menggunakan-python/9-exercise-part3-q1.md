@@ -87,7 +87,7 @@ data = [
         'category':  'pants',
         'price': 39.95,
         'stock': 2,
-        'sold' 143
+        'sold': 143
     }
 ]
 
