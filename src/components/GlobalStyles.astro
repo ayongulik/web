@@ -124,6 +124,17 @@
     height: auto;
   }
 
+  :not(pre) > code {
+    @apply bg-slate-200 rounded-md text-sm;
+    padding: 0.125rem 0.25rem;
+    width: fit-content;
+  }
+
+  :not(pre) > code::before,
+  :not(pre) > code::after {
+    content: "" !important;
+  }
+
   .grow-wrap {
     display: grid;
     overflow-x: auto;
