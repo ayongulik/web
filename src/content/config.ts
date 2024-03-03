@@ -14,6 +14,14 @@ const pagesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     ref: z.string(),
+    courses: z
+      .array(
+        z.object({
+          title: z.string(),
+          slug: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
 

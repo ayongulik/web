@@ -1,9 +1,9 @@
 ---
-title: "Level 0"
-ref: "level-0"
+title: "Level 1"
+ref: "level-1"
 courses:
-  - title: Algoritma Menggunakan Python
-    slug: "level-0/algoritma-menggunakan-python"
+  - title: Intermediate Python
+    slug: "level-1/intermediate-python"
 ---
 
 Bersiaplah untuk menjelajahi pengetahuan secara interaktif dan menantang 🚀.

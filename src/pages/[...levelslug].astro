@@ -20,7 +20,7 @@ export async function getStaticPaths() {
       levelslug: groupedEntry.params.group,
     },
     props: {
-      ...groupedEntry.props,
+      entries: groupedEntry.entries,
       slug: groupedEntry.params.group,
     },
   }));
@@ -31,7 +31,7 @@ interface Props {
   slug: string;
 }
 
-const { slug } = Astro.props;
+const { entries, slug } = Astro.props;
 
 const pageEntry = await getEntry("pages", slug);
 // @ts-expect-error dynamic slug
@@ -55,13 +55,18 @@ const title = removeStripes(slug);
 
     <nav class="mt-8">
       <ol class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <li>
-          <a
-            href={linkTo("level-0/algoritma-menggunakan-python")}
-            class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100"
-            >Algoritma Menggunakan Python</a
-          >
-        </li>
+        {
+          pageEntry.data.courses.map((course) => (
+            <li>
+              <a
+                href={linkTo(course.slug)}
+                class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100"
+              >
+                {course.title}
+              </a>
+            </li>
+          ))
+        }
       </ol>
     </nav>
   </div>
