@@ -1,0 +1,113 @@
+---
+title: "Perkenalan"
+type: "material"
+---
+
+import Alert from "src/components/Alert.astro";
+
+# Perkenalan
+
+Selamat datang pada course 'Intermediate Python'! Pada course ini, kamu akan belajar menggunakan library Pandas untuk melakukan pengolahan data, memahami konsep module dan package, dan menggunakan tools seperti Anaconda/Conda dan Jupyter Lab.
+
+Untuk mengikuti course ini dengan baik, sangat direkomendasikan untuk mengikuti course ['Algoritma menggunakan Python'](/web/level-0/algoritma-menggunakan-python) terlebih dahulu.
+
+## Quiz
+
+Apakah kamu sudah paham dengan baik konsep algoritma? Coba jawab pertanyaan-pertanyaan berikut ini **tanpa sekalipun menjalankan kodenya di IDE/editor online**:
+
+### Q1
+
+Jelaskan apa yang akan terjadi apabila kode ini dijalankan?
+
+```python
+def main(num):
+    if num % 2 == 0:
+        print('Angka genap')
+    else:
+        print('Angka ganjil')
+
+
+if __name__ == "__main__":
+    main(4)
+```
+
+### Q2
+
+Jelaskan apa yang akan terjadi apabila kode ini dijalankan?
+
+```python
+def main(num):
+    data = ['Saya', 'suka', 'ngulik', 'Python', '!']
+    output = ''
+
+    for i in range(num):
+        output = output + ' ' + data[i]
+
+    print(output)
+
+if __name__ == "__main__":
+    main(3)
+```
+
+### Q3
+
+Jelaskan:
+
+- Apa yang akan terjadi apabila kode ini dijalankan?
+- Apabila kita melakukan pemanggilan `main(1, 2, 'kali')`, apakah hasil outputnya?
+
+```python
+def tambah(a, b):
+    return a + b
+
+def kurang(a, b):
+    return a - b
+
+def main(a, b, operasi):
+    if operasi == 'tambah':
+        print(tambah(a, b))
+    elif operasi == 'kurang':
+        print(kurang(a, b))
+    else:
+        print('Operasi tidak didukung.')
+
+if __name__ == "__main__":
+    main(3, 4, 'kurang')
+```
+
+--
+
+<Alert>
+
+  Bagi yang bisa menjawab semua pertanyaan pada quiz dengan benar, waw kamu keren banget 🤩! Kamu sudah cocok lanjut ke materi selanjutnya!
+  
+  Apabila belum, jangan khawatir! Kamu tetap bisa mengikuti course ini sambil baca-baca lagi materi pada course
+  ['Algoritma menggunakan Python'](/web/level-0/algoritma-menggunakan-python).
+
+</Alert>
+
+<details>
+    <summary>Penjelasan Quiz<br/><span class="text-sm italic">Note: jangan <em>ngintip</em> dulu ya kalau belum berusaha jawab sendiri</span></summary>
+
+    ### Q1
+
+    Fungsi `main` menerima satu parameter `num`. Apabila dilakukan pemanggilan `main(4)`, program akan mencetak teks 'Angka genap' karena kondisi `num % 2 == 0` bernilai `True` (hasil `4 modulo 2` sama dengan 0).
+
+    ### Q2
+
+    Fungsi `main` menerima satu parameter `num`. Di dalam fungsi main, terdapat variable `data` yang berisi list dengan 5 item string dan variable `output` berupa string kosong. 
+    Apabila dilakukan pemanggilan `main(3)`, program akan melakukan looping sebanyak 3 kali untuk menambah string ke dalam variable `output`. String yang ditambahkan adalah spasi + string yang diambil dari `data` menggunakan index `i`. Setelah looping selesai, program akan mencetak variable output.
+
+    Output akhir yang tercetak adalah string 'Saya suka ngulik'.
+
+    ### Q3
+
+    Kode memiliki 3 fungsi, yaitu fungsi `tambah`, `kurang` dan `main`. Fungsi `tambah` menerima parameter `a` dan `b`, dan mengembalikan hasil penjumlahan antara `a` dan `b`. Fungsi `kurang` juga menerima parameter `a` dan `b`. Berbeda dengan fungsi `tambah`, fungsi `kurang` melakukan operasi pengurangan antara `a` dan `b` dan mengembalikan hasilnya.
+
+    Fungsi `main` menerima 3 parameter, yaitu parameter `a`, `b` dan `operasi`. Apabila `operasi == 'tambah'` bernilai `True`, maka program akan mencetak hasil pemanggilan `tambah(a, b)`. Sedangkan apabila `operasi == 'kurang'` bernilai `True`, maka program akan mencetak hasil pemanggilan `kurang(a, b)`. Apabila tidak masuk kondisi apapun, program akan mencetak 'Operasi tidak didukung'.
+
+    Sehingga:
+
+    1. Apabila dilakukan pemanggilan `main(3, 4, 'kurang')`, program akan mencetak '-1'.
+    2. Apabila dilakukan pemanggilan `main(1, 2, 'kali')`, program akan mencetak 'Operasi tidak didukung'.
+</details>
