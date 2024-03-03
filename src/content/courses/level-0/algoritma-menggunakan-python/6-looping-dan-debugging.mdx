@@ -35,7 +35,7 @@ while number_of_loops > 0:
 # 'I am inside a loop.'
 ```
 
-Apabila kode pada Contoh 1.a dijalankan, komputer akan mengeksekusi kode yang ada di dalam loop secara berulang-ulang selama variable `number_of_loops` bernilai lebih dari 0. Namun, pada akhirnya loop akan berhenti pada iterasi ketiga karena di dalam loop ada kode yang melakukan operasi pengurangan terhadap nilai `number_of_loops` di setiap perulangan. Sehingga, output akan menyetak string 'I am inside a loop.' sebanyak 3 kali.
+Apabila kode pada Contoh 1.a dijalankan, komputer akan mengeksekusi kode yang ada di dalam loop secara berulang-ulang selama variable `number_of_loops` bernilai lebih dari 0. Namun, pada akhirnya loop akan berhenti pada iterasi ketiga karena di dalam loop ada kode yang melakukan operasi pengurangan terhadap nilai `number_of_loops` di setiap perulangan. Sehingga, output akan mencetak string 'I am inside a loop.' sebanyak 3 kali.
 
 <Mermaid
   content={`
@@ -55,7 +55,7 @@ Melakukan operasi pengurangan terhadap nilai `number_of_loops` di dalam blok kod
 ```python
 # Contoh 1.b
 # Perhatian:
-# Kode di bawah akan menyetak string secara berulang-ulang tanpa berhenti.
+# Kode di bawah akan mencetak string secara berulang-ulang tanpa berhenti.
 # Untuk menghentikannya, tekan Ctrl-C pada keyboard.
 number_of_loops = 3
 
@@ -178,7 +178,7 @@ for fruit in fruits:
 
 Ada perbedaan mendasar antara penggunaan `for` dengan `while` untuk pembuatan looping. Looping dengan `while` memerlukan kondisi yang eksplisit untuk menentukan apakah iterasi masih berjalan atau stop. Sedangkan looping dengan `for` tidak memerlukan kondisi yang eksplisit. Sebagai gantinya, `for` harus selalu dipasangkan dengan suatu data structure, seperti pada Contoh 2.a yang menggunakan `list`.
 
-Algoritma `for` akan mengunjungi satu per satu item yang terdapat pada `list` mulai dari item pada index yang pertama hingga item pada index yang terakhir. Itulah mengapa apabila dijalankan, kode pada Contoh 2.a akan menyetak `string` 'I like ...' sebanyak 5 kali dengan nama buah yang bergantian dan berurutan sesuai urutan item dalam `list`.
+Algoritma `for` akan mengunjungi satu per satu item yang terdapat pada `list` mulai dari item pada index yang pertama hingga item pada index yang terakhir. Itulah mengapa apabila dijalankan, kode pada Contoh 2.a akan mencetak `string` 'I like ...' sebanyak 5 kali dengan nama buah yang bergantian dan berurutan sesuai urutan item dalam `list`.
 
 <Mermaid
   content={`
