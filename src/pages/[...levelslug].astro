@@ -20,7 +20,7 @@ export async function getStaticPaths() {
       levelslug: groupedEntry.params.group,
     },
     props: {
-      entries: groupedEntry.entries,
+      ...groupedEntry.props,
       slug: groupedEntry.params.group,
     },
   }));
@@ -31,7 +31,7 @@ interface Props {
   slug: string;
 }
 
-const { entries, slug } = Astro.props;
+const { slug } = Astro.props;
 
 const pageEntry = await getEntry("pages", slug);
 // @ts-expect-error dynamic slug
@@ -56,7 +56,7 @@ const title = removeStripes(slug);
     <nav class="mt-8">
       <ol class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {
-          pageEntry.data.courses.map((course) => (
+          pageEntry?.data?.courses?.map((course) => (
             <li>
               <a
                 href={linkTo(course.slug)}
