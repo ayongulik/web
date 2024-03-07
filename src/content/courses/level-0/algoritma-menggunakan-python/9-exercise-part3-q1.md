@@ -6,7 +6,7 @@ enableTestCases: true
 
 # Exercise Part 3 - Q1
 
-Stanley adalah seorang manajer di sebuah toko retail. Dia ingin melakukan analisis terhadap produk yang dijual di tokonya. Kebetulan, tokonya sudah punya sistem dan Stanley bisa mengambil data dari sistemnya dengan bentuk `list`. Struk `item` pada `list`-nya adalah berbentuk `dictionary` dengan key `id`, `product_name`, `category`, `price`, `stock` dan `sold` seperti di bawah ini:
+Stanley adalah seorang manajer di sebuah toko retail. Dia ingin melakukan analisis terhadap produk yang dijual di tokonya. Kebetulan, tokonya sudah memiliki sistem, dan Stanley bisa mengambil data dari sistemnya dalam bentuk `list` dengan `dictionary` sebagai struktur data `item`-nya. Struktur `dictionary`-nya memiliki beberapa key, yaitu `id`, `product_name`, `category`, `price`, `stock` dan `sold` seperti pada contoh di bawah ini:
 
 ```python
 data = [
