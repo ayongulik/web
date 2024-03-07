@@ -26,7 +26,7 @@ Untuk lebih jelasnya, perhatikan contoh kode di bawah ini:
 number_of_loops = 3
 
 while number_of_loops > 0:
-    print("I am inside a loop.")
+    print('I am inside a loop.')
     number_of_loops = number_of_loops - 1
 
 # output:
@@ -60,14 +60,14 @@ Melakukan operasi pengurangan terhadap nilai `number_of_loops` di dalam blok kod
 number_of_loops = 3
 
 while number_of_loops > 0:
-    print("I am inside a loop.")
+    print('I am inside a loop.')
 
 # output:
-# 'I am inside a loop."
-# 'I am inside a loop."
-# 'I am inside a loop."
-# 'I am inside a loop."
-# 'I am inside a loop."
+# 'I am inside a loop.'
+# 'I am inside a loop.'
+# 'I am inside a loop.'
+# 'I am inside a loop.'
+# 'I am inside a loop.'
 # ...
 ```
 
@@ -79,7 +79,7 @@ number_of_loops = 5
 stop_loop = False
 
 while number_of_loops > 0 and stop_loop == False:
-    print("I am inside a loop.")
+    print('I am inside a loop.')
     number_of_loops = number_of_loops - 1
     if number_of_loops == 3:
         stop_loop = True
@@ -117,7 +117,7 @@ while number_of_loops > 0:
     number_of_nested_loops = 3
 
     while number_of_nested_loops > 0:
-        print("I am inside a loop.")
+        print('I am inside a loop.')
         number_of_nested_loops = number_of_nested_loops - 1
 
     number_of_loops = number_of_loops - 1
@@ -212,10 +212,29 @@ while index < len(fruits):
 # 'I like strawberry.'
 ```
 
-Selain `list`, kita juga bisa melakukan looping terhadap data structure `dictionary`. Perhatikan contoh berikut:
+Apabila kita ingin membuat looping dengan angka yang fix, kita dapat menggunakan fungsi `range` seperti contoh di bawah ini:
 
 ```python
 # Contoh 2.c
+number_of_loops = 3
+
+for index in range(number_of_loops):
+    print(f'I am inside a loop (index: {index}).')
+
+# output:
+# 'I am inside a loop (index: 0).'
+# 'I am inside a loop (index: 1).'
+# 'I am inside a loop (index: 2).'
+```
+
+Apabila diperhatikan pada Contoh 2.c, looping akan menjalankan fungsi cetak sebanyak 3 kali. Pada awal looping, variable `index` bernilai `0` dan pada setiap looping, nilai `index` akan bertambah `1`. Pada akhir looping, variable `index` bernilai `number_of_loops - 1`.
+
+---
+
+Selain `list`, kita juga bisa melakukan looping terhadap data structure `dictionary`. Perhatikan contoh berikut:
+
+```python
+# Contoh 2.d
 payment_config = {
     'base_price': 50000,
     'delivery_fee': 5000,
@@ -231,14 +250,14 @@ for key, value in payment_config.items():
 # 'The value of discount_rate is 0.25.'
 ```
 
-Pada Contoh 2.c, kita bisa mendapatkan key dan value secara bersamaan dan dapat digunakan di dalam blok kode `for`.
+Pada Contoh 2.d, kita bisa mendapatkan key dan value secara bersamaan dan dapat digunakan di dalam blok kode `for`.
 
 ---
 
 Seperti halnya `list`, kita juga bisa membuat nested loop menggunakan `for` seperti pada contoh di bawah ini:
 
 ```python
-# Contoh 2.d
+# Contoh 2.e
 bucket_of_words = [
     ['I', 'like', 'learning', 'new', 'stuffs'],
     ['However,', 'it', 'is', 'not', 'always', 'easy'],
