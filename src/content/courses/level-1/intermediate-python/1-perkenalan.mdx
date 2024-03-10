@@ -79,10 +79,10 @@ if __name__ == "__main__":
 
 <Alert>
 
-  Bagi yang bisa menjawab semua pertanyaan pada quiz dengan benar, waw kamu keren banget 🤩! Kamu sudah cocok lanjut ke materi selanjutnya!
-  
-  Apabila belum, jangan khawatir! Kamu tetap bisa mengikuti course ini sambil baca-baca lagi materi pada course
-  ['Algoritma menggunakan Python'](/web/level-0/algoritma-menggunakan-python).
+Bagi yang bisa menjawab semua pertanyaan pada quiz dengan benar, waw kamu keren banget 🤩! Kamu sudah cocok lanjut ke materi selanjutnya!
+
+Apabila belum, jangan khawatir! Kamu tetap bisa mengikuti course ini sambil baca-baca lagi materi pada course
+['Algoritma menggunakan Python'](/web/level-0/algoritma-menggunakan-python).
 
 </Alert>
 
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     ### Q2
 
-    Fungsi `main` menerima satu parameter `num`. Di dalam fungsi main, terdapat variable `data` yang berisi list dengan 5 item string dan variable `output` berupa string kosong. 
+    Fungsi `main` menerima satu parameter `num`. Di dalam fungsi main, terdapat variable `data` yang berisi list dengan 5 item string dan variable `output` berupa string kosong.
     Apabila dilakukan pemanggilan `main(3)`, program akan melakukan looping sebanyak 3 kali untuk menambah string ke dalam variable `output`. String yang ditambahkan adalah spasi + string yang diambil dari `data` menggunakan index `i`. Setelah looping selesai, program akan mencetak variable output.
 
     Output akhir yang tercetak adalah string 'Saya suka ngulik'.
@@ -110,4 +110,37 @@ if __name__ == "__main__":
 
     1. Apabila dilakukan pemanggilan `main(3, 4, 'kurang')`, program akan mencetak '-1'.
     2. Apabila dilakukan pemanggilan `main(1, 2, 'kali')`, program akan mencetak 'Operasi tidak didukung'.
+
 </details>
+
+## Penggunaan module
+
+Pada course sebelumnya, kita sudah mengenal penggunaan module `math` yang memiliki beberapa fungsi tambahan untuk melakukan perhitungan matematika yang lebih kompleks. Module tersebut sudah tersedia di Python dan pemakaiannya bisa langsung menggunakan keyword `import`.
+
+```python
+import math
+
+print(math.log2(2)) # output: 1.0
+```
+
+Selain module `math`, Python memiliki banyak module-module lain yang memiliki fungsi yang bermacam-macam. Module bawaan Python ini biasa disebut sebagai **module standar**. Daftar module bawaan Python secara singkat dapat dibaca pada [dokumentasi resmi Python](https://docs.python.org/3/tutorial/stdlib.html).
+
+Untuk memudahkan pekerjaan, kita juga dapat menggunakan module-module yang ditulis oleh komunitas Python (**module eksternal**) seperti [`pandas`](https://pandas.pydata.org/), [`matplotlib`](https://matplotlib.org/), [`django`](https://www.djangoproject.com/), dan masih banyak lagi yang lainnya.
+
+Berbeda dengan module standar, module eksternal ini perlu diinstal terlebih dahulu sebelum bisa digunakan. Untuk menginstalnya, kita bisa menjalankan command `pip` pada aplikasi terminal atau command prompt. Di bawah ini adalah contoh command untuk melakukan instalasi module `pandas`:
+
+```
+pip install pandas
+```
+
+Setelah proses instalasi selesai, kita bisa menggunakannya dengan menggunakan keyword `import`:
+
+```python
+import pandas as pd
+
+ages = pd.Series([17, 25, 27], name = "Age")
+
+print(ages)
+```
+
+Pada chapter selanjutnya, kita akan mempelajari lebih dalam penggunaan module `pandas` untuk pengolahan data.
