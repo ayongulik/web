@@ -75,8 +75,6 @@ if __name__ == "__main__":
     main(3, 4, 'kurang')
 ```
 
---
-
 <Alert>
 
 Bagi yang bisa menjawab semua pertanyaan pada quiz dengan benar, waw kamu keren banget 🤩! Kamu sudah cocok lanjut ke materi selanjutnya!
@@ -113,7 +111,7 @@ Apabila belum, jangan khawatir! Kamu tetap bisa mengikuti course ini sambil baca
 
 </details>
 
-## Penggunaan module
+## Instalasi dan penggunaan module
 
 Pada course sebelumnya, kita sudah mengenal penggunaan module `math` yang memiliki beberapa fungsi tambahan untuk melakukan perhitungan matematika yang lebih kompleks. Module tersebut sudah tersedia di Python dan pemakaiannya bisa langsung menggunakan keyword `import`.
 
@@ -127,13 +125,22 @@ Selain module `math`, Python memiliki banyak module-module lain yang memiliki fu
 
 Untuk memudahkan pekerjaan, kita juga dapat menggunakan module-module yang ditulis oleh komunitas Python (**module eksternal**) seperti [`pandas`](https://pandas.pydata.org/), [`matplotlib`](https://matplotlib.org/), [`django`](https://www.djangoproject.com/), dan masih banyak lagi yang lainnya.
 
-Berbeda dengan module standar, module eksternal ini perlu diinstal terlebih dahulu sebelum bisa digunakan. Untuk menginstalnya, kita bisa menjalankan command `pip` pada aplikasi terminal atau command prompt. Di bawah ini adalah contoh command untuk melakukan instalasi module `pandas`:
+Berbeda dengan module standar, module eksternal ini perlu diinstal terlebih dahulu sebelum bisa digunakan, dan biasanya module external memiliki dependensi terhadap versi Python atau versi module external yang lain. Supaya mudah untuk melakukan manajemen versi module eksternal untuk tiap projek Python, kita bisa menggunakan aplikasi Anaconda.
+
+<Alert variant="warning">
+  Download dan instal aplikasi [Anaconda](https://www.anaconda.com/) di komputer
+  sebelum lanjut ke chapter berikutnya.
+</Alert>
+
+Untuk menginstal module external, jalankan program 'Anaconda Navigator' > Home > pilih `CMD.exe Prompt`. Pada program prompt/console tersebut, kamu bisa menjalankan contoh command di bawah ini (pastikan komputer terkoneksi internet):
 
 ```
-pip install pandas
+conda install pandas
 ```
 
-Setelah proses instalasi selesai, kita bisa menggunakannya dengan menggunakan keyword `import`:
+Apabila dijalankan, Anaconda akan menginstal module `pandas` di komputer.
+
+Setelah proses instalasi selesai, kita bisa menggunakan module tersebut dengan menggunakan keyword `import`:
 
 ```python
 import pandas as pd
@@ -143,4 +150,9 @@ ages = pd.Series([17, 25, 27], name = "Age")
 print(ages)
 ```
 
-Pada chapter selanjutnya, kita akan mempelajari lebih dalam penggunaan module `pandas` untuk pengolahan data.
+<Alert>
+  Gunakan aplikasi Spyder yang dijalankan melalui Anaconda Navigator supaya IDE
+  dapat mengenali module external yang telah diinstal di Anaconda.
+</Alert>
+
+Pada chapter selanjutnya, kita akan mempelajari lebih dalam penggunaan module `pandas` untuk pengolahan data, dan penggunaan Anaconda untuk melakukan manajemen versi module.
