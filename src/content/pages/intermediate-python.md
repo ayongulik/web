@@ -9,9 +9,11 @@ Sebelum mengikuti course ini, diharapkan kalian sudah bisa melakukan programming
 
 Setelah menyelesaikan course ini, kalian diharapkan:
 
-- Dapat menggunakan library Pandas untuk membaca dan menulis file csv serta melakukan pengolahan data
-- Dapat mengimplementasikan import module dan package pada Python
-- Dapat memahami konsep Conda/Anaconda serta membuat environment dan instalasi library eksternal
-- Dapat menggunakan Jupyter Lab
+<ul class="list-style-checklist">
+  <li>Dapat menggunakan library Pandas untuk membaca dan menulis file csv serta melakukan pengolahan data</li>
+  <li>Dapat mengimplementasikan import module dan package pada Python</li>
+  <li>Dapat memahami konsep Conda/Anaconda serta membuat environment dan instalasi library eksternal</li>
+  <li>Dapat menggunakan Jupyter Lab</li>
+</ul>
 
 Selamat belajar!
