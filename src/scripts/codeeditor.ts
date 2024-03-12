@@ -39,6 +39,7 @@ async function initCodeEditor() {
     toggleLoadingOnButton(buttonRunTestCasesId, true);
 
     window.pyodide = await window.loadPyodide();
+    window.pyodide.loadPackage(["pandas"]);
     window.editor = window.CodeMirror.fromTextArea(
       document.getElementById("code") as HTMLTextAreaElement,
       {
