@@ -1,9 +1,9 @@
 ---
-title: "Intermediate Python"
+title: "Pengolahan & Visualisasi Data dengan Python"
 ref: "level-1/intermediate-python"
 ---
 
-Selamat datang pada course 'Intermediate Python'!
+Selamat datang pada course 'Pengolahan & Visualisasi Data dengan Python'!
 
 Sebelum mengikuti course ini, diharapkan kalian sudah bisa melakukan programming Python dengan menggunakan konsep-konsep dasar seperti variable dan tipe data, conditionals, data structure, looping dan fungsi.
 

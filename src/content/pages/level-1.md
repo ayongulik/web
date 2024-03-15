@@ -2,7 +2,7 @@
 title: "Level 1"
 ref: "level-1"
 courses:
-  - title: Pengolahan dan Visualisasi Data dengan Python
+  - title: Pengolahan & Visualisasi Data dengan Python
     slug: "level-1/pengolahan-dan-visualisasi-data-dengan-python"
 ---
 
