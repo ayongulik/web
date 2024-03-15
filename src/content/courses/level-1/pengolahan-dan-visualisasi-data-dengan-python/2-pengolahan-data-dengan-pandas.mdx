@@ -1,0 +1,480 @@
+---
+title: "Pengolahan Data dengan Pandas"
+type: "material"
+---
+
+import Alert from "src/components/Alert.astro";
+
+# Pengolahan Data dengan Pandas
+
+Pada chapter ini, kita akan belajar menggunakan module eksternal [**Pandas**](https://pandas.pydata.org/) untuk melakukan pengolahan data. Untuk melakukan instalasi `pandas`, buka program `CMD.exe Prompt` lewat Anaconda Navigator, lalu jalankan perintah di bawah ini:
+
+```
+conda install pandas
+```
+
+<Alert>
+  Apabila belum menginstal Anaconda, kamu bisa mengikuti langkah-langkahnya di
+  [chapter
+  sebelumnya](/web/level-1/intermediate-python/1-perkenalan#instalasi-dan-penggunaan-module).
+</Alert>
+
+Setelah itu, jalankan aplikasi Spyder dari Anaconda Navigator dan tulis kode di bawah ini untuk melakukan impor module Pandas:
+
+```python
+import pandas as pd
+```
+
+<Alert>
+  Contoh kode yang akan diberikan setelah ini akan banyak melakukan referensi ke
+  object `pd` sebagai alias dari `pandas`. Jangan lupa untuk menulis deklarasi
+  impor di bagian paling atas file sebelum mengikuti contoh.
+</Alert>
+
+## Perkenalan DataFrame
+
+Pandas memiliki konsep `DataFrame` yang merepresentasikan sebuah data structure tabular atau data berbentuk tabel yang terdiri dari row dan column. Contoh di bawah ini memperlihatkan cara untuk membuat variable `DataFrame`:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+print(df)
+# Output:
+#                  name nationality  age
+# 0  Christiano Ronaldo    Portugal   39
+# 1        Lionel Messi   Argentina   36
+# 2       Kylian Mbappé      France   25
+```
+
+Apabila dijalankan, variable `df` akan menyimpan `DataFrame` dengan 3 column ('name', 'nationality', dan 'age') dan 3 row.
+
+Untuk mendapatkan semua nilai pada column tertentu, kita dapat menulis kode seperti contoh berikut:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+print(df['name'])
+# Output:
+# 0    Christiano Ronaldo
+# 1          Lionel Messi
+# 2         Kylian Mbappé
+# Name: name, dtype: object
+
+print(df['age'])
+# Output:
+# 0    39
+# 1    36
+# 2    25
+# Name: age, dtype: int64
+```
+
+Apabila ingin melakukan seleksi pada beberapa column sekaligus, kita dapat mengikuti contoh di bawah ini:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+print(df[['name', 'age']])
+# Output:
+#                  name  age
+# 0  Christiano Ronaldo   39
+# 1        Lionel Messi   36
+# 2       Kylian Mbappé   25
+```
+
+Setiap row pada `DataFrame` akan otomatis mendapatkan index, mulai dari index 0 sampai `n-1` (`n` adalah jumlah baris pada `DataFrame`). Untuk mengakses data pada row tertentu, kita dapat menggunakan fungsi `loc` dan index seperti pada contoh berikut:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+print(df.loc[1])
+# Output:
+# name           Lionel Messi
+# nationality       Argentina
+# age                      36
+# Name: 1, dtype: object
+```
+
+Untuk mendapatkan tepat satu nilai pada `DataFrame` dari posisi row dan column tertentu, kita dapat mengikuti contoh di bawah ini:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+print(df['age'][0])
+# Output:
+# 39
+```
+
+Pandas juga memiliki fungsi untuk membaca data dari file di komputer dengan format `.csv`. Hasil dari pembacaan data tersebut akan dikonversi menjadi `DataFrame` oleh Pandas.
+
+```python
+# Parameter delimiter bisa diganti dengan karakter lain seperti ';' dsb.
+df = pd.read_csv('data/contoh.csv', delimiter = ',')
+```
+
+Selain membaca dari file `.csv` di komputer, Pandas juga bisa membaca file `.csv` yang diakses dari internet. Cara penggunaannya seperti kode di bawah ini:
+
+```python
+# Parameter berupa alamat URL yang aksesnya publik
+df = pd.read_csv('https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/titanic.csv', delimiter = ',')
+```
+
+## Modifikasi nilai pada DataFrame
+
+Kita bisa mengubah nilai pada `DataFrame` seperti halnya `list` dan `dictionary`. Di bawah ini adalah contoh modifikasi nilai dengan menggunakan nama column dan index row:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+df['age'][0] = df['age'][0] - 10
+
+print(df)
+# Output:
+#                  name nationality  age
+# 0  Christiano Ronaldo    Portugal   29
+# 1        Lionel Messi   Argentina   36
+# 2       Kylian Mbappé      France   25
+```
+
+Untuk mengganti beberapa nilai sekaligus pada satu row, kita bisa menggunakan fungsi `loc` seperti di bawah ini:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+df.loc[2] = ['Harry Kane', 'England', 30]
+
+print(df)
+# Output:
+#                  name nationality  age
+# 0  Christiano Ronaldo    Portugal   39
+# 1        Lionel Messi   Argentina   36
+# 2          Harry Kane     England   30
+```
+
+List baru yang kita set ke suatu row harus memiliki panjang yang sama dengan jumlah column. Apabila berbeda, Pandas akan mengeluarkan error seperti berikut:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+df.loc[2] = ['Harry Kane', 'England']
+# Output:
+# raise ValueError(
+#   ValueError: Must have equal len keys and value when setting with an iterable
+```
+
+Kita juga bisa mengubah beberapa nilai pada satu column seperti berikut:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+df['age'] = [29, 29, 29]
+
+print(df)
+# Output:
+#                  name nationality  age
+# 0  Christiano Ronaldo    Portugal   29
+# 1        Lionel Messi   Argentina   29
+# 2       Kylian Mbappé      France   29
+```
+
+List baru yang kita set ke suatu column harus memiliki panjang yang sama dengan jumlah row. Apabila berbeda, Pandas akan mengeluarkan error seperti berikut:
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+df['age'] = [29, 29]
+# Output:
+# ...
+# raise ValueError(
+#  ValueError: Length of values (2) does not match length of index (3)
+```
+
+Untuk menambah column baru, kita bisa membuat key baru pada variable `DataFrame`, lalu set sebuah list menjadi nilai dari column tersebut. Pastikan panjang list sama dengan jumlah row pada `DataFrame`.
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+df['club'] = ['Al-Nassr FC', 'Inter Miami CF', 'Paris Saint-Germain F.C.']
+
+print(df)
+# Output:
+#                  name nationality  age                      club
+# 0  Christiano Ronaldo    Portugal   39               Al-Nassr FC
+# 1        Lionel Messi   Argentina   36            Inter Miami CF
+# 2       Kylian Mbappé      France   25  Paris Saint-Germain F.C.
+```
+
+Untuk menambah row baru, kita bisa membuat index row baru pada variable `DataFrame`, lalu set sebuah list menjadi nilai dari row tersebut. Pastikan panjang list sama dengan jumlah column pada `DataFrame`.
+
+```python
+df = pd.DataFrame({
+    'name': ['Christiano Ronaldo', 'Lionel Messi', 'Kylian Mbappé'],
+    'nationality': ['Portugal', 'Argentina', 'France'],
+    'age': [39, 36, 25]
+})
+
+df.loc[len(df)] = ['Harry Kane', 'England', 30]
+
+print(df)
+# Output:
+#                  name nationality  age
+# 0  Christiano Ronaldo    Portugal   39
+# 1        Lionel Messi   Argentina   36
+# 2       Kylian Mbappé      France   25
+# 3          Harry Kane     England   30
+```
+
+---
+
+Untuk mempelajari Pandas lebih lanjut, kita membutuhkan data yang lebih banyak. Data yang akan kita gunakan adalah data penumpang kapal Titanic yang dapat diunduh di [sini](https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/titanic.csv). Setelah di unduh, copy file `titanic.csv` ke dalam folder/directory projek kamu. Buat file Python baru, lalu tulis kode berikut untuk membaca file:
+
+```python
+import pandas as pd
+
+df_titanic = pd.read_csv('titanic.csv', delimiter = ',')
+print(df_titanic.head())
+# Output:
+#    PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked
+# 0            1         0       3  ...   7.2500   NaN         S
+# 1            2         1       1  ...  71.2833   C85         C
+# 2            3         1       3  ...   7.9250   NaN         S
+# 3            4         1       1  ...  53.1000  C123         S
+# 4            5         0       3  ...   8.0500   NaN         S
+#
+# [5 rows x 12 columns]
+
+print(df_titanic.columns)
+# Output:
+# Index(['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
+#        'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked'],
+#       dtype='object')
+```
+
+Pada contoh, kita menggunakan fungsi `head` untuk melihat sampel data dari `DataFrame` dan property `columns` untuk mendapatkan informasi column apa saja yang ada di `DataFrame`.
+
+<Alert variant="tip">
+
+Pada column dengan tipe data nominal atau categorical (seperti column 'Survived', 'Pclass', 'Embarked'...), seringkali kita memerlukan nilai apa saja yang terdapat pada column tsb. Untuk mendapatkan informasi itu, kita dapat menggunakan fungsi `set` seperti contoh berikut:
+
+```python
+print(set(df_titanic['Pclass']))
+# {1, 2, 3}
+```
+
+</Alert>
+
+## Filtering dan sorting pada DataFrame
+
+Karena `DataFrame` memiliki bentuk tabular, filtering dan sorting dapat dilakukan dengan mudah. Untuk filtering, kita bisa sekreatif mungkin membuat filter dengan merumuskan sebuah kondisi pada `DataFrame` di dalam dua kurung siku.
+
+Sebagai contoh, kode di bawah ini akan memfilter penumpang Titanic yang berumur di bawah 17 tahun:
+
+```python
+df_young = df_titanic[df_titanic['Age'] < 17]
+
+print(df_young)
+```
+
+Hasil filtering akan mengembalikan nilai berupa `DataFrame` baru. Row pada `DataFrame` baru hanya row yang masuk dalam kondisi yang telah diset.
+
+Kita juga bisa memfilter penumpang yang selamat (`Survived=1`) seperti kode di bawah ini:
+
+```python
+df_survived = df_titanic[df_titanic['Survived'] == 1]
+
+print(df_survived)
+```
+
+Selain itu, kita juga bisa memfilter penumpang kelas tertentu seperti kode di bawah ini:
+
+```python
+df_class = df_titanic[df_titanic['Pclass'].isin([1, 2])]
+
+print(df_class)
+```
+
+Apabila perlu melakukan sorting untuk beberapa kondisi sekaligus, kita dapat menulis kode seperti di bawah ini:
+
+```python
+df_survived_and_class_1 = df_titanic[(df_titanic['Survived'] == 1) & (df_titanic['Pclass'] == 1)]
+print(df_survived_and_class_1)
+```
+
+<Alert>
+
+Apabila menggabungkan beberapa kondisi sekaligus saat filtering `DataFrame`,
+kamu perlu memperhatikan hal-hal berikut:
+
+1. Tiap kondisi harus dipisahkan dengan tanda kurung `()`
+2. Operator `and` and `or` harus diganti sintaksnya
+   dengan `&` dan `|`
+
+</Alert>
+
+Untuk melakukan sorting, kita dapat menggunakan fungsi `sort_values` seperti contoh di bawah ini:
+
+```python
+df_sorted_age = df_titanic.sort_values(by='Age')
+
+print(df_sorted_age)
+```
+
+Seperti halnya filtering, hasil sorting akan mengembalikan nilai berupa `DataFrame` baru. Row pada `DataFrame` baru akan mengalami perubahan urutan sesuai dengan column yang kita set.
+
+Secara default, nilai akan diurutkan secara menaik. Apabila kita ingin mengurutkan secara menurun, kita perlu mengeset parameter `ascending=False` pada fungsi `sort_values`.
+
+```python
+df_sorted_age = df_titanic.sort_values(by='Age', ascending=False)
+
+print(df_sorted_age)
+```
+
+## Ringkasan statistik
+
+Pandas memudahkan kita untuk mendapatkan statistik dari sebuah column pada `DataFrame` dengan beberapa fungsi statistik dasar seperti `count`, `mean`, `median`, `std` (standar deviasi), `min`, `max` dan `quantile`.
+
+```python
+print(df_titanic['Age'].count()) # Output: 714
+print(df_titanic['Age'].mean()) # Output: 29.69911764705882
+print(df_titanic['Age'].std()) # Output: 14.526497332334044
+print(df_titanic['Age'].min()) # Output: 0.42
+print(df_titanic['Age'].max()) # Output: 80.0
+print(df_titanic['Age'].quantile(0.25)) # Output: 20.125
+print(df_titanic['Age'].median()) # Output: 28.0
+print(df_titanic['Age'].quantile(0.75)) # Output: 38.0
+```
+
+<Alert>
+
+Secara default, fungsi `count` akan menghitung jumlah row pada column yang
+tidak bernilai empty (`None`/`NA`/`NaN`). Apabila kamu ingin mendapatkan
+total rows pada `DataFrame` dengan melibatkan nilai empty, kamu bisa menggunakan property `shape`:
+
+```python
+print(df_titanic.shape) # Output: (891, 12)
+```
+
+Item pertama menunjukkan jumlah row, sedangkan item kedua adalah jumlah column.
+
+</Alert>
+
+Kita juga bisa menggunakan fungsi `describe` untuk mendapatkan beberapa data statistik dari semua column dengan nilai numerik sekaligus.
+
+```python
+stat_titanic = df_titanic.describe()
+print(stat_titanic)
+# Output:
+#        PassengerId    Survived      Pclass  ...       SibSp       Parch        Fare
+# count   891.000000  891.000000  891.000000  ...  891.000000  891.000000  891.000000
+# mean    446.000000    0.383838    2.308642  ...    0.523008    0.381594   32.204208
+# std     257.353842    0.486592    0.836071  ...    1.102743    0.806057   49.693429
+# min       1.000000    0.000000    1.000000  ...    0.000000    0.000000    0.000000
+# 25%     223.500000    0.000000    2.000000  ...    0.000000    0.000000    7.910400
+# 50%     446.000000    0.000000    3.000000  ...    0.000000    0.000000   14.454200
+# 75%     668.500000    1.000000    3.000000  ...    1.000000    0.000000   31.000000
+# max     891.000000    1.000000    3.000000  ...    8.000000    6.000000  512.329200
+
+print(stat_titanic['Age'])
+# Output:
+# count    714.000000
+# mean      29.699118
+# std       14.526497
+# min        0.420000
+# 25%       20.125000
+# 50%       28.000000
+# 75%       38.000000
+# max       80.000000
+# Name: Age, dtype: float64
+```
+
+Apabila ingin melakukan kustomisasi pada statistik yang ingin ditampilkan secara sekaligus, kita dapat menggunakan fungsi `agg` seperti contoh berikut:
+
+```python
+stat_age = df_titanic.agg(average=('Age', 'mean'), standard_deviation=('Age', 'std'))
+print(stat_age)
+
+# Output:
+#                           Age
+# average             29.699118
+# standard_deviation  14.526497
+```
+
+---
+
+Dalam melakukan analisis data, seringkali kita perlu mendapatkan statistik dari data yang telah digrouping berdasarkan kategori pada column lain. Pada `DataFrame`, grouping dapat dilakukan dengan menggunakan fungsi `groupby`.
+
+```python
+# Contoh penggunaan groupby + describe
+stat_titanic_class = df_titanic.groupby(['Pclass']).describe()
+print(stat_titanic_class)
+# Output:
+#        PassengerId                          ...     Fare
+#              count        mean         std  ...      50%   75%       max
+# Pclass                                      ...
+# 1            216.0  461.597222  246.737616  ...  60.2875  93.5  512.3292
+# 2            184.0  445.956522  250.852161  ...  14.2500  26.0   73.5000
+# 3            491.0  439.154786  264.441453  ...   8.0500  15.5   69.5500
+#
+# [3 rows x 48 columns]
+
+print(stat_titanic_class['Age'])
+# Output:
+#         count       mean        std   min   25%   50%   75%   max
+# Pclass
+# 1       186.0  38.233441  14.802856  0.92  27.0  37.0  49.0  80.0
+# 2       173.0  29.877630  14.001077  0.67  23.0  29.0  36.0  70.0
+# 3       355.0  25.140620  12.495398  0.42  18.0  24.0  32.0  74.0
+
+# Contoh penggunaan groupby + agg
+stat_age_class = df_titanic.groupby(['Pclass']).agg(age_average=('Age', 'mean'))
+print(stat_age_class)
+# Output:
+#         age_average
+# Pclass
+# 1         38.233441
+# 2         29.877630
+# 3         25.140620
+```

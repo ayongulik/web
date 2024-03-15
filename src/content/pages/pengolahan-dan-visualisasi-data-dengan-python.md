@@ -12,7 +12,6 @@ Setelah menyelesaikan course ini, kalian diharapkan:
 <ul class="list-style-checklist">
   <li>Dapat menggunakan library Pandas untuk membaca dan menulis file csv serta melakukan pengolahan data</li>
   <li>Dapat mengimplementasikan import module dan package pada Python</li>
-  <li>Dapat memahami konsep Conda/Anaconda serta membuat environment dan instalasi library eksternal</li>
   <li>Dapat menggunakan Jupyter Lab</li>
 </ul>
 

@@ -1,0 +1,295 @@
+---
+title: "Visualisasi Data dengan Matplotlib"
+type: "material"
+---
+
+import Alert from "src/components/Alert.astro";
+
+# Visualisasi Data dengan Matplotlib
+
+Selain statistik, visualisasi data juga memiliki peran penting dalam kegiatan analisis. Untuk keperluan tersebut, pada chapter ini kita akan belajar menggunakan module eksternal [**matplotlib**](https://matplotlib.org/) untuk membuat berbagai macam visualisasi data.
+
+Untuk melakukan instalasi module `matplotlib`, buka program `CMD.exe Prompt` lewat Anaconda Navigator, lalu jalankan perintah di bawah ini:
+
+```python
+conda install matplotlib
+```
+
+Setelah itu, jalankan aplikasi Spyder dari Anaconda Navigator dan tulis kode di bawah ini untuk melakukan impor module `matplotlib`:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+<Alert>
+  Contoh kode yang akan diberikan setelah ini akan banyak melakukan referensi ke
+  object `plt` sebagai alias dari `matplotlib.pyplot`. Jangan lupa untuk menulis
+  deklarasi impor di bagian paling atas file sebelum mengikuti contoh.
+</Alert>
+
+<Alert variant="warning">
+  Pada IDE Spyder, output plot akan ditampilkan pada panel terpisah. Biasanya,
+  panel ini belum muncul secara default. Untuk menampilkan panel plot, kamu bisa
+  pergi ke menu View > Panes > Plots.
+</Alert>
+
+Pada chapter ini, kita akan menggunakan data jumlah COVID-19 di negara-negara EU per hari tahun 2020-2022[^1]. Data dapat di akses melalui website resmi [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country).
+
+## Line plot
+
+Diagram garis atau line plot adalah salah satu bentuk visualisasi untuk data yang memiliki tren atau berkaitan dengan waktu. Contoh berikut adalah kode untuk membuat visualisasi tren jumlah kasus COVID-19 per bulan pada tahun 2020 di negara `Belgium` dalam bentuk line plot:
+
+```python
+# Contoh 1.1
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+
+# Step 1: filtering data
+df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
+
+# Step 2: grouping 'month' dan aggregate
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+
+# Step 3: inisialisasi plot
+fig, ax = plt.subplots()
+ax.plot(cases_bymonth.index, cases_bymonth['cases'])
+
+# Step 4: penambahan label x dan y axis
+ax.set_xlabel('Month')
+ax.set_ylabel('Cases')
+
+# Step 5: penambahan judul plot
+ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
+```
+
+Ada beberapa step yang terlihat pada Contoh 1.1. Pembahasan per step adalah sebagai berikut:
+
+- Step 1: Kita membatasi visualisasi hanya untuk negara `Belgium` dan tahun `2020` saja. Sehingga pada step ini, kita melakukan filtering terhadap data aslinya.
+- Step 2: Karena data kasus COVID-19 masih dalam format per hari, maka kita perlu menjumlahkan tiap kasus per hari (agg sum) pada tiap bulan (groupby month).
+- Step 3: Inisialisasi plot. Fungsi `plot` menerima parameter pertama berupa **list** pada x axis, dan parameter kedua berupa **list** pada y axis.
+- Step 4: Penambahan label untuk `x` axis dan `y` axis.
+- Step 5: Penambahan judul plot dapat menggunakan fungsi `set_title`.
+
+Plot yang dihasilkan dari Contoh 1.1 akan terlihat seperti gambar di bawah ini:
+
+![Line plot jumlah kasus COVID-19 per bulan pada tahun 2020 di negara Belgia](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-1_1.png)
+
+Apabila diperhatikan, angka 'Month' pada x axis tidak dimunculkan semua pada plot. Kita bisa memodifikasi kode pada Contoh 1.1 untuk menampilkan semua angka 'Month' pada x axis menjadi seperti contoh berikut:
+
+```python
+# Contoh 1.2
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker # penambahan impor module `matplotlib.ticker`
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+
+df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+
+fig, ax = plt.subplots()
+ax.plot(cases_bymonth.index, cases_bymonth['cases'])
+
+ax.set_xlabel('Month')
+ax.set_ylabel('Cases')
+ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
+
+# Penambahan FixedLocator dengan parameter list yang sama dengan parameter x axis pada inisiasi plot
+ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth.index))
+```
+
+Plot yang dihasilkan dari Contoh 1.2 akan terlihat seperti gambar di bawah ini:
+
+![Line plot jumlah kasus COVID-19 per bulan pada tahun 2020 di negara Belgia (added ticker)](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-1_2.png)
+
+<Alert variant="tip">
+
+Untuk mengetahui negara-negara apa saja yang terdapat pada column `countriesAndTerritories`, kita dapat menggunakan fungsi `set` seperti contoh berikut ini:
+
+```python
+countries = set(df['countriesAndTerritories'])
+countries = list(countries)
+countries.sort()
+print(countries)
+# Output:
+# ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', ...,
+# ..., 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden']
+```
+
+</Alert>
+
+## Scatter plot 2D
+
+Scatter plot biasanya digunakan untuk memvisualisasikan hubungan antar variable pada data. Berbeda dengan line plot, visualisasi data pada scatter plot sifatnya lebih general, tidak selalu berorientasi terhadap waktu.
+
+Masih menggunakan data COVID-19, Contoh 2.1 memperlihatkan pembuatan scatter plot 2 dimensi. Perbedaan dengan sebelumnya, scatter plot pada `matplotlib` diinisialisasi menggunakan fungsi `scatter`.
+
+```python
+# Contoh 2.1
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+
+df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+
+fig, ax = plt.subplots()
+# Inisialisasi scatter plot
+ax.scatter(cases_bymonth.index, cases_bymonth['cases'])
+
+ax.set_xlabel('Month')
+ax.set_ylabel('Cases')
+ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
+ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth.index))
+```
+
+Plot yang dihasilkan Contoh 2.1 akan terlihat seperti gambar di bawah ini:
+
+![Scatter plot jumlah kasus COVID-19 per bulan pada tahun 2020 di negara Belgia](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-2_1.png)
+
+## Bar plot
+
+Seperti halnya scatter plot, Bar plot juga digunakan untuk memvisualisasikan hubungan antar variable. Bedanya, pada bar plot visualisasi dibuat menjadi bentuk balok-balok. Contoh di bawah ini memperlihatkan cara membuat bar plot dengan menggunakan fungsi `bar`:
+
+```python
+# Contoh 3.1
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+
+df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+
+fig, ax = plt.subplots()
+# Inisialisasi bar plot
+ax.bar(cases_bymonth.index, cases_bymonth['cases'])
+
+ax.set_xlabel('Month')
+ax.set_ylabel('Cases')
+ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
+ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth.index))
+```
+
+Plot yang dihasilkan Contoh 3.1 akan terlihat seperti gambar di bawah ini:
+
+![Bar plot jumlah kasus COVID-19 per bulan pada tahun 2020 di negara Belgia](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-3_1.png)
+
+## Histogram
+
+Histogram adalah salah satu bentuk visualisasi yang sering digunakan untuk menggambarkan distribusi dari suatu data. Kode berikut memperlihatkan cara membuat visualisasi histogram dari data COVID-19.
+
+```python
+# Contoh 4.1
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[df['countriesAndTerritories'] == 'Belgium']
+
+fig, ax = plt.subplots()
+ax.hist(df_filtered['cases'])
+```
+
+Histogram yang dihasilkan Contoh 4.1 akan terlihat seperti gambar di bawah ini:
+
+![Histogram jumlah kasus COVID-19 di negara Belgia](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-4_1.png)
+
+Histogram di atas memperlihatkan distribusi yang skewed. Untuk melihat bentuk dari distribusi secara lebih detail, kita juga bisa melakukan pengaturan terhadap parameter `bins`. Perhatikan Contoh 4.1 dan hasil outputnya:
+
+```python
+# Contoh 4.2
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[df['countriesAndTerritories'] == 'Belgium']
+
+fig, ax = plt.subplots()
+ax.hist(df_filtered['cases'], bins = 20)
+```
+
+![Histogram jumlah kasus COVID-19 di negara Belgia (bins=20)](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-4_2.png)
+
+Selain itu, kita juga bisa melakukan kontrol terhadap batas tampilan histogram pada x dan y axis seperti Contoh 4.3:
+
+```python
+# Contoh 4.3
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[df['countriesAndTerritories'] == 'Belgium']
+
+fig, ax = plt.subplots()
+ax.hist(df_filtered['cases'], bins = 30)
+
+ax.set(xlim=(0, 20000), ylim=(0, 500))
+```
+
+![Histogram jumlah kasus COVID-19 di negara Belgia (xlim dan ylim)](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-4_3.png)
+
+## Box plot
+
+Selain histogram, analisis distribusi data juga dapat dilakukan melalui visualisasi box plot.
+
+```python
+# Contoh 5.1
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[df['countriesAndTerritories'].isin(['Luxembourg', 'Belgium', 'Netherlands'])]
+
+fig, ax = plt.subplots()
+ax.boxplot(df_filtered['cases'])
+```
+
+![Box plot jumlah kasus COVID-19 di negara-negara Benelux](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-5_1.png)
+
+Pada output Contoh 5.1, terlalu banyak data outliers sehingga distribusinya kurang terlihat dengan jelas. Untuk memperbaiki visualisasi, kita juga bisa mengatur limit pada y axis seperti di bawah ini:
+
+```python
+# Contoh 5.2
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[df['countriesAndTerritories'].isin(['Luxembourg', 'Belgium', 'Netherlands'])]
+
+fig, ax = plt.subplots()
+ax.boxplot(df_filtered['cases'])
+
+ax.set(ylim=(0, 20000))
+```
+
+![Box plot jumlah kasus COVID-19 di negara-negara Benelux (ylim)](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-5_2.png)
+
+Selain itu, kita juga bisa menampilkan boxplot per kategori (negara). Perhatikan contoh di bawah ini:
+
+```python
+# Contoh 5.3
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[df['countriesAndTerritories'].isin(['Luxembourg', 'Belgium', 'Netherlands'])]
+
+fig, ax = plt.subplots()
+df_filtered.boxplot(column=['cases'], by='countriesAndTerritories', ax=ax)
+
+ax.set(ylim=(0, 20000))
+```
+
+![Box plot jumlah kasus COVID-19 di negara-negara Benelux (grouping)](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-5_3.png)
+
+Pada Contoh 5.3, kita melakukan pemanggilan fungsi `boxplot` dari object `DataFrame`, bukan dari object `ax`. Hal ini digunakan agar kita bisa mengontrol grouping boxplot melalui parameter `by`.
+
+# Theming
+
+[^1]: European Centre for Disease Prevention and Control. Data on the daily number of new reported COVID-19 cases and deaths by EU/EEA country ([link to website](https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country))

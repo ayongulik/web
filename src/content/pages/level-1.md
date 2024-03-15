@@ -2,8 +2,8 @@
 title: "Level 1"
 ref: "level-1"
 courses:
-  - title: Intermediate Python
-    slug: "level-1/intermediate-python"
+  - title: Pengolahan dan Visualisasi Data dengan Python
+    slug: "level-1/pengolahan-dan-visualisasi-data-dengan-python"
 ---
 
 Bersiaplah untuk menjelajahi pengetahuan secara interaktif dan menantang 🚀.
