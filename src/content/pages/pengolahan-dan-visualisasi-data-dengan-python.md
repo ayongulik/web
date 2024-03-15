@@ -10,9 +10,9 @@ Sebelum mengikuti course ini, diharapkan kalian sudah bisa melakukan programming
 Setelah menyelesaikan course ini, kalian diharapkan:
 
 <ul class="list-style-checklist">
-  <li>Dapat menggunakan library Pandas untuk membaca dan menulis file csv serta melakukan pengolahan data</li>
-  <li>Dapat mengimplementasikan import module dan package pada Python</li>
-  <li>Dapat menggunakan Jupyter Lab</li>
+  <li>Dapat menggunakan module Pandas untuk membaca file csv serta melakukan pengolahan data</li>
+  <li>Dapat menggunakan module matplotlib untuk membuat visualisasi data</li>
+  <li>Dapat menggunakan Jupyter Lab untuk kebutuhan dokumentasi dan reporting</li>
 </ul>
 
 Selamat belajar!
