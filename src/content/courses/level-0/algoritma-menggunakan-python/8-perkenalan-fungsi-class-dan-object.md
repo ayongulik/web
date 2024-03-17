@@ -1,6 +1,7 @@
 ---
 title: "Perkenalan Fungsi, Class dan Object"
 type: "material"
+chapter: 6
 ---
 
 # Perkenalan Fungsi, Class dan Object

@@ -6,6 +6,7 @@ const coursesCollection = defineCollection({
     title: z.string(),
     type: z.string(),
     enableTestCases: z.boolean().optional().default(false),
+    chapter: z.number().optional(),
   }),
 });
 

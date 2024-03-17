@@ -2,6 +2,7 @@
 title: "Exercise Part 3 - Q1"
 type: "exercise"
 enableTestCases: true
+chapter: 6
 ---
 
 # Exercise Part 3 - Q1
