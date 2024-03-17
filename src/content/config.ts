@@ -15,6 +15,7 @@ const pagesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     ref: z.string(),
+    ctaLink: z.string().optional(),
     courses: z
       .array(
         z.object({

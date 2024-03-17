@@ -20,5 +20,3 @@ Setelah menyelesaikan course ini, kalian diharapkan:
     Memahami konsep dasar fungsi, class dan object
   </li>
 </ul>
-
-Selamat belajar!
