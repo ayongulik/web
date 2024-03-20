@@ -479,3 +479,61 @@ print(stat_age_class)
 # 2         29.877630
 # 3         25.140620
 ```
+
+Apabila kamu perhatikan, setelah kita menggunakan fungsi `agg` yang dikombinasikan dengan fungsi `groupby`, struktur `DataFrame` kita berubah. Nilai pada `column` yang kita set pada fungsi `groupby` tidak lagi dapat dipanggil seperti biasanya (`df['<nama-column>']`). Hal ini karena nilai pada `column` tsb. sudah hilang dan berubah menjadi nama index pada `DataFrame`. Perhatikan contoh berikut:
+
+```python
+# Contoh penggunaan groupby + agg
+stat_age_class = df_titanic.groupby(['Pclass']).agg(age_average=('Age', 'mean'))
+print(stat_age_class)
+# Output:
+#         age_average
+# Pclass
+# 1         38.233441
+# 2         29.877630
+# 3         25.140620
+
+# Kode ini akan error karena column 'Pclass' tidak ada pada dataframe
+print(stat_age_class['Pclass'])
+# Output:
+#     raise KeyError(key) from err
+#
+# KeyError: 'Pclass'
+
+# Nilai pada column 'Pclass' berubah menjadi index pada dataframe
+print(stat_age_class.index)
+# Output:
+# Index([1, 2, 3], dtype='int64', name='Pclass')
+```
+
+Ada satu trik yang bisa kita gunakan agar nilai `column` yang kita set pada fungsi `groupby` kembali menjadi bagian dari `DataFrame`, yaitu dengan menggunakan fungsi `reset_index` seperti contoh berikut:
+
+```python
+stat_age_class = df_titanic.groupby(['Pclass']).agg(age_average=('Age', 'mean')).reset_index()
+print(stat_age_class)
+# Output:
+#    Pclass  age_average
+# 0       1    38.233441
+# 1       2    29.877630
+# 2       3    25.140620
+
+print(stat_age_class['Pclass'])
+# Output:
+# 0    1
+# 1    2
+# 2    3
+# Name: Pclass, dtype: int64
+```
+
+<Alert>
+
+Kalau kamu perhatikan, dalam satu baris kode kita rantainya semakin banyak sehingga menyebabkan kodenya menjadi semakin panjang. Supaya lebih mudah dibaca, kamu bisa menggunakan sintaks `\` agar kode berantai bisa ditulis dalam beberapa baris.
+
+```python
+stat_age_class = df_titanic \
+    .groupby(['Pclass']) \
+    .agg(age_average=('Age', 'mean')) \
+    .reset_index()
+```
+
+</Alert>
