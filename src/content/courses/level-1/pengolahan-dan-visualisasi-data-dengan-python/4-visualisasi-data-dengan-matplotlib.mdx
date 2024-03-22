@@ -51,11 +51,11 @@ df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_euee
 df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
 
 # Step 2: grouping 'month' dan aggregate
-cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum')).reset_index()
 
 # Step 3: inisialisasi plot
 fig, ax = plt.subplots()
-ax.plot(cases_bymonth.index, cases_bymonth['cases'])
+ax.plot(cases_bymonth['month'], cases_bymonth['cases'])
 
 # Step 4: penambahan label x dan y axis
 ax.set_xlabel('Month')
@@ -88,17 +88,17 @@ import pandas as pd
 df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
 
 df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
-cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum')).reset_index()
 
 fig, ax = plt.subplots()
-ax.plot(cases_bymonth.index, cases_bymonth['cases'])
+ax.plot(cases_bymonth['month'], cases_bymonth['cases'])
 
 ax.set_xlabel('Month')
 ax.set_ylabel('Cases')
 ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
 
 # Penambahan FixedLocator dengan parameter list yang sama dengan parameter x axis pada inisiasi plot
-ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth.index))
+ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth['month']))
 ```
 
 Plot yang dihasilkan dari Contoh 1.2 akan terlihat seperti gambar di bawah ini:
@@ -136,16 +136,16 @@ import pandas as pd
 df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
 
 df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
-cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum')).reset_index()
 
 fig, ax = plt.subplots()
 # Inisialisasi scatter plot
-ax.scatter(cases_bymonth.index, cases_bymonth['cases'])
+ax.scatter(cases_bymonth['month'], cases_bymonth['cases'])
 
 ax.set_xlabel('Month')
 ax.set_ylabel('Cases')
 ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
-ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth.index))
+ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth['month']))
 ```
 
 Plot yang dihasilkan Contoh 2.1 akan terlihat seperti gambar di bawah ini:
@@ -165,16 +165,16 @@ import pandas as pd
 df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
 
 df_filtered = df[(df['countriesAndTerritories'] == 'Belgium') & (df['year'] == 2020)]
-cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum'))
+cases_bymonth = df_filtered.groupby(['month']).agg(cases = ('cases', 'sum')).reset_index()
 
 fig, ax = plt.subplots()
 # Inisialisasi bar plot
-ax.bar(cases_bymonth.index, cases_bymonth['cases'])
+ax.bar(cases_bymonth['month'], cases_bymonth['cases'])
 
 ax.set_xlabel('Month')
 ax.set_ylabel('Cases')
 ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
-ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth.index))
+ax.xaxis.set_major_locator(ticker.FixedLocator(cases_bymonth['month']))
 ```
 
 Plot yang dihasilkan Contoh 3.1 akan terlihat seperti gambar di bawah ini:
@@ -291,6 +291,112 @@ ax.set(ylim=(0, 20000))
 
 Pada Contoh 5.3, kita melakukan pemanggilan fungsi `boxplot` dari object `DataFrame`, bukan dari object `ax`. Hal ini digunakan agar kita bisa mengontrol grouping boxplot melalui parameter `by`.
 
-## Theming
+## Membuat beberapa plot dalam satu diagram
+
+Sebelumnya kita sudah sempat belajar membuat beberapa boxplot dalam satu diagram. Kita juga bisa menghasilkan hal yang serupa untuk tipe plot yang lain. Misalkan, kita bisa menampilkan beberapa line plot pada satu diagram seperti pada contoh berikut:
+
+```python
+# Contoh 6.1
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[(df['countriesAndTerritories'].isin(['Luxembourg', 'Belgium', 'Netherlands'])) & (df['year'] == 2020)]
+cases_bymonth = df_filtered.groupby(['countriesAndTerritories', 'month']).agg(cases = ('cases', 'sum')).reset_index()
+
+df_lux = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Luxembourg']
+df_bel = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Belgium']
+df_nld = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Netherlands']
+
+fig, ax = plt.subplots()
+ax.plot(df_lux['month'], df_lux['cases'], label = 'Luxembourg')
+ax.plot(df_bel['month'], df_bel['cases'], label = 'Belgium')
+ax.plot(df_nld['month'], df_nld['cases'], label = 'Netherlands')
+
+ax.set_xlabel('Month')
+ax.set_ylabel('Cases')
+ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
+ax.legend()
+```
+
+![Line plot jumlah kasus COVID-19 di negara-negara Benelux](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-6_1.png)
+
+Pada Contoh 6.1, kita melakukan filtering untuk memperoleh `DataFrame` per negara. Setelah mendapatkan `DataFrame` yang diinginkan, seperti biasa kita menggunakan fungsi `plot` untuk membuat visualisasi line plot. Bedanya, kita melakukan pemanggilan fungsi `plot` berkali-kali dengan `DataFrame` yang berbeda untuk tiap negara.
+
+Tentu saja, kita juga bisa membuat visualisasi yang serupa untuk scatter plot dengan menggunakan fungsi `scatter` seperti contoh berikut:
+
+```python
+# Contoh 6.2
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[(df['countriesAndTerritories'].isin(['Luxembourg', 'Belgium', 'Netherlands'])) & (df['year'] == 2020)]
+cases_bymonth = df_filtered.groupby(['countriesAndTerritories', 'month']).agg(cases = ('cases', 'sum')).reset_index()
+
+df_lux = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Luxembourg']
+df_bel = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Belgium']
+df_nld = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Netherlands']
+
+fig, ax = plt.subplots()
+ax.(df_lux['month'], df_lux['cases'], label = 'Luxembourg')
+ax.scatter(df_bel['month'], df_bel['cases'], label = 'Belgium')
+ax.scatter(df_nld['month'], df_nld['cases'], label = 'Netherlands')
+
+ax.set_xlabel('Month')
+ax.set_ylabel('Cases')
+ax.set_title('Trend of COVID-19 cases in Belgium (2020)')
+ax.legend()
+```
+
+![Scatter plot jumlah kasus COVID-19 di negara-negara Benelux](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-6_2.png)
+
+Apabila kita ingin membuat tiap plot menjadi diagram yang terpisah, kita bisa mengikuti contoh di bawah ini:
+
+```python
+# Contoh 6.3
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv', delimiter = ',')
+df_filtered = df[(df['countriesAndTerritories'].isin(['Luxembourg', 'Belgium', 'Netherlands'])) & (df['year'] == 2020)]
+
+cases_bymonth = df_filtered.groupby(['countriesAndTerritories', 'month']).agg(cases = ('cases', 'sum')).reset_index()
+
+# 1. Filter berdasarkan negara
+df_lux = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Luxembourg']
+df_bel = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Belgium']
+df_nld = cases_bymonth[cases_bymonth['countriesAndTerritories'] == 'Netherlands']
+
+# 2. Inisiasi plot dengan 3 baris
+fig, axs = plt.subplots(nrows=3, sharex=True, sharey=True)
+
+# 3. Membuat plot untuk tiap data negara + label
+axs[0].plot(df_lux['month'], df_lux['cases'], label = 'Luxembourg')
+axs[1].plot(df_bel['month'], df_bel['cases'], label = 'Belgium')
+axs[2].plot(df_nld['month'], df_nld['cases'], label = 'Netherlands')
+
+# 4. Setup label x dan y axis + legend
+for ax in axs.flat:
+    ax.set_xlabel('Month')
+    ax.set_ylabel('Cases')
+    ax.label_outer()
+    ax.legend()
+
+# 5. Set title
+fig.suptitle('Trend of COVID-19 cases in Belgium (2020)')
+```
+
+Ada beberapa hal yang perlu diperhatikan pada Contoh 6.3:
+
+1. Setelah melakukan agregasi, kita perlu memisahkan `DataFrame` berdasarkan negara. Pada contoh, setiap negara dibuatkan variable `DataFrame`-nya sendiri, sehingga menghasilkan 3 variable baru.
+2. Pemanggilan fungsi `subplots` perlu ditambahkan parameter, yaitu `nrows=3` untuk menentukan berapa baris plot yang kita inginkan, lalu `sharex=True` dan `sharey=True` untuk mengeset skala axis agar seragam untuk semua plot.
+3. Setelah inisiasi, variable `axs` akan berubah menjadi list. Kita bisa mengeset plot dengan semua variable `DataFrame` yang sudah kita buat sebelumnya pada list tersebut. Parameter `label` dibutuhkan untuk membedakan antara plot yang satu dengan plot yang lainnya (dalam hal ini kita beri nama sesuai dengan negaranya).
+4. Karena fungsi `set_xlabel` dan `set_ylabel` akan menggunakan label yang sama untuk semua plot (berulang), di sini kita gunakan looping. Fungsi `label_outer` digunakan untuk membuat label x dan y axis akan tampil hanya satu kali saja, sedangkan fungsi `legend` digunakan untuk menampilkan legenda pada plot.
+5. Untuk menambahkan judul untuk kumpulan plot, kita dapat menggunakan fungsi `suptitle` pada objek `fig`.
+
+Hasil akhirnya dapat dilihat pada gambar di bawah ini:
+
+![Line plot jumlah kasus COVID-19 di negara-negara Benelux](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-6_3.png)
 
 [^1]: European Centre for Disease Prevention and Control. Data on the daily number of new reported COVID-19 cases and deaths by EU/EEA country ([link to website](https://www.ecdc.europa.eu/en/publications-data/data-daily-new-cases-covid-19-eueea-country))
