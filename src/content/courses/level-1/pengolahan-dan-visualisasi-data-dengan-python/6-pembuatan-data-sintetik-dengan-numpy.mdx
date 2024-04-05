@@ -1,0 +1,360 @@
+---
+title: "Pembuatan Data Sintetik dengan Numpy"
+type: "material"
+chapter: 4
+---
+
+import Alert from "src/components/Alert.astro";
+
+# Pembuatan Data Sintetik dengan Numpy
+
+Selain Pandas dan Matplotlib, module eksternal selanjutnya yang populer pada pemrograman Python adalah [Numpy](https://numpy.org/). Numpy adalah module yang memiliki banyak fungsi untuk melakukan operasi matematika pada vector (array) dan matriks secara efisien. Module ini banyak digunakan untuk mengembangkan berbagai metode matematika, statistika dan data science. Pada website resminya, kita bisa melihat banyak module-module eksternal yang menggunakan Numpy sebagai fondasi implementasinya.
+
+Dalam kegiatan analisis data sehari-hari, sejujurnya tidak banyak contoh kasus di mana kita perlu langsung menggunakan Numpy. Kalaupun kita butuh menggunakan metode analisis data yang lebih advanced, biasanya lebih mudah untuk memakai module eksternal lain yang sudah menggunakan Numpy di dalamnya. 
+
+Meskipun demikian, karena banyak sekali contoh kode Python di internet yang menggunakan module ini, menurut saya belajar sedikit mengenai Numpy akan tetap berguna. Sehingga pada chapter ini, kita akan belajar mengenal Numpy dan menggunakan beberapa teknik untuk membuat data sintetik (deret dan random).
+
+Untuk melakukan instalasi module `numpy`, buka program `CMD.exe Prompt` lewat Anaconda Navigator, lalu jalankan perintah di bawah ini:
+
+```python
+conda install numpy
+```
+
+Setelah itu, jalankan aplikasi Spyder dari Anaconda Navigator dan tulis kode di bawah ini untuk melakukan impor module `numpy`:
+
+```python
+import numpy as np
+```
+
+<Alert>
+  Contoh kode yang akan diberikan setelah ini akan banyak melakukan referensi ke
+  object `np` sebagai alias dari `numpy`. Jangan lupa untuk menulis
+  deklarasi impor di bagian paling atas file sebelum mengikuti contoh.
+</Alert>
+
+## Data structure array
+
+Numpy memiliki data structure khusus untuk merepresentasikan vector dan matriks dalam matematika, yaitu `array`. Value di dalam `array` ini hanya dapat berupa angka saja.
+
+Berikut adalah beberapa contoh penggunaan `array` untuk pembuatan matriks:
+
+```python
+import numpy as np
+
+# representasi matrix 1 dimensi (vector)
+data = np.array([1, 2, 3, 4])
+print(data)
+# Output:
+# array([1, 2, 3, 4])
+
+# representasi matrix 2x2 dimensi
+data = np.array([[1, 2], [3, 4]])
+print(data)
+# Output:
+# array([[1, 2],
+#        [3, 4]])
+
+# representasi matrix 3x3 dimensi
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(data)
+# Output:
+# array([[1, 2, 3],
+#        [4, 5, 6],
+#        [7, 8, 9]])
+```
+
+Seperti halnya `list`, akses value pada `array` dapat dilakukan menggunakan index:
+
+```python
+data = np.array([[1, 2], [3, 4]])
+print(data[0])
+# [1 2]
+
+print(data[0][0])
+# 1
+```
+
+Untuk mendapatkan informasi dimensi dari sebuah variable `array`, kita dapat menggunakan property `dim` pada variable tsb.:
+
+```python
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+print(data.shape)
+# (3, 3)
+```
+
+Semua operasi yang bisa dilakukan pada aljabar matriks dapat dilakukan menggunakan `array` seperti contoh berikut: 
+
+```python
+d1 = np.array([[1, 2], [3, 4]])
+d2 = np.array([[3, 4], [5, 6]])
+d3 = np.array([2, 2])
+
+# penjumlahan
+result = d1 + d2
+print(result)
+# Output:
+# [[ 4  6]
+#  [ 8 10]]
+
+# perkalian
+result = d3 * d1
+print(result)
+# Output:
+# [[2 4]
+#  [6 8]]
+
+# transpose
+result = np.transpose(d1)
+print(result)
+# Output:
+# [[1 3]
+#  [2 4]]
+```
+
+Seperti halnya `Series` pada Pandas, ringkasan statistik juga bisa didapatkan dari `array` menggunakan fungsi-fungsi pada Numpy. Bedanya, fungsi-fungsi statistik pada Numpy dapat bekerja dengan dimensi `array` yang besar dan kompleks sekalipun. Perhatikan contoh di bawah ini:
+
+```python
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+print(np.mean(data))
+# Output:
+# 5.0
+
+print(np.median(data))
+# Output:
+# 5.0
+
+print(np.quantile(data, 0.75))
+# Output:
+# 7.0
+
+print(np.std(data))
+# Output:
+# 2.581988897471611
+```
+
+Contoh sebelumnya menunjukkan bahwa secara default, ringkasan statistik didapatkan dengan sebelumnya mentransformasi `array` menjadi 1 dimensi terlebih dahulu. Kita juga bisa mengatur ringkasan statistik sesuai dengan axis seperti contoh berikut:
+
+```python
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+print(np.mean(data, axis = 0))
+# Output:
+# [4. 5. 6.]
+
+print(np.mean(data, axis = 1))
+# Output:
+# [2. 5. 8.]
+```
+
+## Deret dan distribusi statistika
+
+Pada course algoritma, kita telah belajar menggunakan fungsi `range` untuk pembuatan data deret secara cepat:
+
+```python
+data = list(range(0, 5))
+print(data) 
+# Output:
+# [0, 1, 2, 3, 4]
+```
+Numpy juga bisa digunakan untuk menghasilkan data deret. Faktanya, Numpy menyediakan fungsi yang lebih lengkap untuk kebutuhan ini. Perhatikan contoh berikut ini: 
+
+```python
+data = np.arange(0, 5)
+print(data) 
+# Output:
+# [0 1 2 3 4]
+
+# Parameter step digunakan untuk mengatur jarak antar nilai pada deret
+data = np.arange(0, 5, step = 0.5)
+print(data)
+# Output:
+# [0.  0.5 1.  1.5 2.  2.5 3.  3.5 4.  4.5]
+
+# Pembuatan deret dengan nilai 0 
+data = np.zeros(5)
+print(data)
+# Output:
+# [0. 0. 0. 0. 0.] 
+
+# Pembuatan matrix 3x3 dengan nilai 0 
+data = np.zeros([3, 3])
+print(data)
+# Output:
+# [[0. 0. 0.]
+#  [0. 0. 0.]
+#  [0. 0. 0.]]
+
+# Pembuatan deret dengan nilai 1
+data = np.ones(5)
+print(data)
+# Output:
+# [1. 1. 1. 1. 1.]
+
+# Pembuatan matrix 3x3 dengan nilai 1
+data = np.ones([3, 3])
+print(data)
+# Output:
+# [[1. 1. 1.]
+#  [1. 1. 1.]
+#  [1. 1. 1.]]
+
+print(np.array([3, 3, 3]) * data)
+# Output:
+# [[3. 3. 3.]
+#  [3. 3. 3.]
+#  [3. 3. 3.]]
+```
+
+Deret aritmatika lain juga bisa dibuat dengan menggunakan fungsi-fungsi Numpy seperti pada contoh berikut:
+
+```python
+# Deret linear
+data = np.linspace(1, 256, num = 10)
+print(data)
+# Output:
+# [  1.  12.  23.  34.  45.  56.  67.  78.  89. 100.]
+
+# Deret logaritma
+data = np.logspace(1, 256, num = 10, base = 2)
+print(data)
+# Output:
+# [1.e+001 1.e+012 1.e+023 1.e+034 1.e+045 1.e+056 1.e+067 1.e+078 1.e+089
+#  1.e+100] 
+
+# Deret geometrik
+data = np.linspace(1, 256, num = 10)
+print(data)
+# Output:
+# [  1.           1.66810054   2.7825594    4.64158883   7.74263683
+#   12.91549665  21.5443469   35.93813664  59.94842503 100.        ]
+```
+
+Numpy juga menyediakan berbagai macam fungsi untuk membuat data `array` dengan nilai random menggunakan distribusi statistika. Perhatikan contoh kode di bawah ini:
+
+```python
+gen = np.random.default_rng(123)
+
+# Distribusi normal
+mu, sigma = 0, 0.1
+data = gen.normal(mu, sigma, size = 10)
+print(data)
+# Output:
+# [-0.09891214 -0.03677867  0.12879253  0.01939744  0.09202309  
+#  0.05771038  -0.06364636  0.05419522 -0.03165955 -0.03223891]
+
+# Distribusi uniform
+low, high = 0, 1
+data = gen.uniform(low, high, size = 10)
+print(data)
+# Output:
+# [0.51297046 0.2449646  0.8242416  0.21376296 0.74146705 
+#  0.6299402  0.92740726 0.23190819 0.79912513 0.51816504]
+
+# Distribusi poisson
+lmd = 5
+data = gen.poisson(lmd, size = 10)
+print(data)
+# Output:
+# [ 4  2 10  3  3  3  1  7  4  8]
+```
+
+<Alert>
+
+Fungsi `random.default_rng()` digunakan untuk menginisialisasi generator distribusi. Setiap kali program Python dijalankan, generator angka random ini akan menghasilkan nilai yang berbeda. Agar nilai random yang dihasilkan bisa konsisten setiap kali program dijalankan, parameter berupa angka perlu di set saat pemanggilan fungsi ini (angkanya bebas sesuka hati kalian).
+
+</Alert>
+
+Apabila kita coba visualisasikan menggunakan histogram, bentuk distribusinya akan terlihat seperti contoh berikut:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+gen = np.random.default_rng(123)
+
+# Distribusi normal
+mu, sigma = 0, 0.1
+data = gen.normal(mu, sigma, size = 1000)
+
+fig, ax = plt.subplots()
+ax.hist(data, bins = 20)
+```
+
+![Visualisasi data dengan distribusi normal](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-normal.png)
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+gen = np.random.default_rng(123)
+
+# Distribusi poisson
+lmd = 5
+data = gen.poisson(lmd, size = 1000)
+
+fig, ax = plt.subplots()
+ax.hist(data)
+```
+
+![Visualisasi data dengan distribusi poisson](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-poisson.png)
+
+Data yang dibuat oleh Numpy seringkali digunakan untuk menginisialisasi sebuah `DataFrame` pada Pandas. Di bawah ini adalah contoh pembuatan data sintetik untuk nilai ujian dengan distribusi normal:
+
+```python
+import pandas as pd
+import numpy as np
+
+gen = np.random.default_rng(123)
+
+# Distribusi normal dengan mean = 50 dan std_dev = 15
+math_scores = gen.normal(50, 15, size = 100)
+# Pastikan range nilainya antara 0-100
+math_scores = np.clip(math_scores, 0, 100)
+# Lakukan pembulatan
+math_scores = np.round(math_scores)
+
+# Distribusi normal dengan mean = 64 dan std_dev = 10
+bio_scores = gen.normal(64, 10, size = 100) 
+bio_scores = np.clip(bio_scores, 0, 100)
+bio_scores = np.round(bio_scores)
+
+data = pd.DataFrame({
+    'math': math_scores,
+    'bio': bio_scores,
+})
+
+print(data)
+# Output:
+#     math   bio
+# 0   35.0  59.0
+# 1   44.0  81.0
+# 2   69.0  61.0
+# 3   53.0  50.0
+# 4   64.0  61.0
+# ..   ...   ...
+# 95  32.0  66.0
+# 96  45.0  62.0
+# 97  32.0  53.0
+# 98  62.0  69.0
+# 99  63.0  47.0
+# 
+# [100 rows x 2 columns]
+
+print(data.describe())
+# Output:
+#             math         bio
+# count  100.00000  100.000000
+# mean    51.16000   65.000000
+# std     13.49502    9.223378
+# min     17.00000   37.000000
+# 25%     42.75000   59.750000
+# 50%     50.00000   65.000000
+# 75%     62.00000   71.000000
+# max     84.00000   87.000000
+```
+
+---
+
+Numpy juga dapat digunakan untuk membantu menganalisis data dengan metode statistika seperti regresi linier dan pengujian hipotesis. Penggunaan metode statistika dengan Numpy dan module eksternal Python lainnya akan dibahas lebih dalam pada course Statistik dan Machine Learning Dasar Menggunakan Python (segera hadir).
