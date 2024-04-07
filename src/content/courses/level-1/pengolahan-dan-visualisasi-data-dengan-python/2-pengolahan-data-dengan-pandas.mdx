@@ -537,3 +537,83 @@ stat_age_class = df_titanic \
 ```
 
 </Alert>
+
+## Modifikasi struktur DataFrame
+
+Secara umum, struktur data tabel itu terdiri dari dua macam, yaitu format wide/melebar dan format long/memanjang. Perbedaannya, data dengan format wide menggunakan column untuk menyimpan value untuk tiap variable yang berbeda, sedangkan data dengan format long biasanya menggunakan satu column berisi variable dan satu column berisi value dari variable. Sebagai contoh, data titanic bisa dikategorikan sebagai data dengan format wide karena tiap variable dan value-nya (Survived, Pclass dsb.) dijabarkan ke dalam column yang terpisah.
+
+```python
+import pandas as pd
+
+titanic = pd.read_csv('https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/titanic.csv', delimiter = ',')
+
+print(titanic)
+# Output:
+#      PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked
+# 0              1         0       3  ...   7.2500   NaN         S
+# 1              2         1       1  ...  71.2833   C85         C
+# 2              3         1       3  ...   7.9250   NaN         S
+# 3              4         1       1  ...  53.1000  C123         S
+# 4              5         0       3  ...   8.0500   NaN         S
+# ..           ...       ...     ...  ...      ...   ...       ...
+# 886          887         0       2  ...  13.0000   NaN         S
+# 887          888         1       1  ...  30.0000   B42         S
+# 888          889         0       3  ...  23.4500   NaN         S
+# 889          890         1       1  ...  30.0000  C148         C
+# 890          891         0       3  ...   7.7500   NaN         Q
+# 
+# [891 rows x 12 columns]
+```
+
+Apabila kita perlu mengubah format data titanic menjadi long, kita dapat menggunakan fungsi `melt` seperti contoh di bawah ini:
+
+```python
+columns = ['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 
+    'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
+
+titanic_long = data.melt(titanic, id_vars = ['PassengerId'], value_vars = columns)
+
+print(titanic_long)
+# Output:
+#       PassengerId  variable value
+# 0               1  Survived     0
+# 1               2  Survived     1
+# 2               3  Survived     1
+# 3               4  Survived     1
+# 4               5  Survived     0
+#           ...       ...   ...
+# 9796          887  Embarked     S
+# 9797          888  Embarked     S
+# 9798          889  Embarked     S
+# 9799          890  Embarked     C
+# 9800          891  Embarked     Q
+# 
+# [9801 rows x 3 columns]
+```
+
+Pada contoh di atas, kita mengeset parameter `id_vars = ['PassengerId']` sebagai column acuan (index), dan parameter `value_vars = columns` sebagai column yang ingin kita gabung. Hasilnya akan menjadi `DataFrame` baru dengan 3 column: `PassengerId`, `variable` yang value-nya adalah nama column variable pada parameter `value_vars`, dan `value` yang berisi value asli dari variablenya. Apabila diperhatikan, jumlah row pada `DataFrame` dengan format long lebih besar dibandingkan pada format wide.
+
+Kita juga bisa mengkonversi `DataFrame` dengan format long menjadi wide menggunakan fungsi `pivot` seperti contoh berikut:
+
+```python
+titanic_wide = titanic_long \
+    .pivot(index = 'PassengerId', columns = 'variable', values = 'value') \
+    .reset_index()
+
+print(titanic_wide)
+# Output:
+# variable  PassengerId   Age Cabin  ... SibSp Survived            Ticket
+# 0                   1  22.0   NaN  ...     1        0         A/5 21171
+# 1                   2  38.0   C85  ...     1        1          PC 17599
+# 2                   3  26.0   NaN  ...     0        1  STON/O2. 3101282
+# 3                   4  35.0  C123  ...     1        1            113803
+# 4                   5  35.0   NaN  ...     0        0            373450
+# ..                ...   ...   ...  ...   ...      ...               ...
+# 886               887  27.0   NaN  ...     0        0            211536
+# 887               888  19.0   B42  ...     0        1            112053
+# 888               889   NaN   NaN  ...     1        0        W./C. 6607
+# 889               890  26.0  C148  ...     0        1            111369
+# 890               891  32.0   NaN  ...     0        0            370376
+# 
+# [891 rows x 12 columns]
+```
