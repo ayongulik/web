@@ -25,6 +25,7 @@ interface PyodideInterface {
   ERRNO_CODES: { [code: string]: number };
   FS: {
     writeFile: (...args) => void;
+    mkdir: (...args) => void;
   };
   PATH: string;
   canvas: any;

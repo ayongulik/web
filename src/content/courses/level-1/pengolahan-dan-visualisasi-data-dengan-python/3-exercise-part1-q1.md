@@ -1,7 +1,7 @@
 ---
 title: "Exercise Part 1 - Q1"
 type: "exercise"
-tags: ["level-0", "python"]
+tags: ["level-1", "python"]
 enableTestCases: true
 ---
 
@@ -18,7 +18,7 @@ Almira adalah penggemar Taylor Swift. Dia ingin melakukan analisis terhadap lagu
 | length           | Panjang lagu dalam millisecond                                             |
 | popularity       | Persentasi popularitas lagu berdasarkan algoritma Spotify                  |
 | danceability     | Seberapa gampang lagunya dipakai untuk joget berdasarkan kombinasi elemen-elemen seperti tempo, ritme dan beat |
-| accousticness    | Tingkat komponen keakustikan dalam lagu                                    |
+| acousticness    | Tingkat komponen keakustikan dalam lagu                                    |
 | energy           | Ukuran intensitas dan aktivitas pada lagu                                  |
 | instrumentalness | Tingkat komponen instrumen dalam lagu                                      |
 | liveness         | Probabilitas lagu melibatkan penonton langsung                             |
@@ -40,17 +40,9 @@ Berikut adalah cuplikan dari data yang akan digunakan:
 [5 rows x 16 columns]
 ```
 
-## Challenge #1
+Almira ingin mengetahui statistik `mean`, `min`, `median` dan `max` dari tiap indicator berikut: popularity, danceability, acousticness, energy, instrumentalness, speechiness, valence dan tempo; dan di group berdasarkan album. Buatlah sebuah fungsi dengan nama `get_stat_by_album` yang menerima satu parameter berupa `DataFrame` dari data sumber, dan mengembalikan `DataFrame` baru dengan column `album`, `indicator`, `mean`, `min`, `median` dan `max`.
 
-Almira ingin mengetahui statistik `mean`, `min`, `median` dan `max` dari tiap indicator berikut: popularity, danceability, accousticness, energy, instrumentalness, speechiness, valence dan tempo; dan di group berdasarkan album. Buatlah sebuah fungsi dengan nama `get_stat_by_album` yang menerima satu parameter berupa `DataFrame` dari data sumber, dan mengembalikan `DataFrame` baru dengan column `album`, `mean`, `min`, `median` dan `max`.
-
-## Challenge #2
-
-Almira ingin mengetahui lagu apa yang mendapatkan nilai paling tinggi dari tiap indicator berikut: popularity, danceability, accousticness, energy, instrumentalness, speechiness, valence dan tempo. Buatlah sebuah fungsi dengan nama `top_song_by_indicators` yang menerima satu parameter berupa `DataFrame` dari data sumber, dan mengembalikan `DataFrame` baru dengan column `indicator` dan `name`.
-
----
-
-Kamu bisa menggunakan template kode di bawah ini untuk mengerjakan soal:
+Kamu bisa menggunakan template kode di bawah ini untuk mengerjakan soal. Data csv telah tersedia pada online editor.
 
 ```python
 import pandas as pd
@@ -59,14 +51,8 @@ def get_stat_by_album(data):
     # Tulis kodemu di sini
     return
 
-def top_song_by_indicators(data):
-    # Tulis kodemu di sini
-    return
-
 if __name__ == '__main__':
-    data = pd.read_csv('data/spotify_taylorswift.csv', delimiter = ',')
+    data = pd.read_csv('spotify_taylorswift.csv', delimiter = ',')
 
-    print(top_song_by_indicators(data))
-
-    print(get_agg_by_album(data))
+    print(get_stat_by_album(data))
 ```

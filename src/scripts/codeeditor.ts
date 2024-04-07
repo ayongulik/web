@@ -1,4 +1,5 @@
 import { BASE_PATH } from "src/config";
+import { CSVSpotifyTaylorSwift } from "./data";
 
 const warningLog = console.warn;
 
@@ -40,6 +41,7 @@ async function initCodeEditor() {
 
     window.pyodide = await window.loadPyodide();
     window.pyodide.loadPackage(["pandas"]);
+    window.pyodide.FS.writeFile('spotify_taylorswift.csv', CSVSpotifyTaylorSwift)
     window.editor = window.CodeMirror.fromTextArea(
       document.getElementById("code") as HTMLTextAreaElement,
       {
@@ -74,14 +76,14 @@ function updateToMinHeight(
   editor.refresh();
 }
 
-function evaluateCode() {
+async function evaluateCode() {
   try {
     if (window.pyodide?.version && window.CodeMirror?.version) {
       toggleLoadingOnButton(buttonRunId, true);
 
-      window.pyodide.runPython(patchPrintCode);
-      window.pyodide.runPython(window.editor.getValue());
-      const stdout = window.pyodide.runPython("sys.stdout.getvalue()");
+      await window.pyodide.runPythonAsync(patchPrintCode);
+      await window.pyodide.runPythonAsync(window.editor.getValue());
+      const stdout = await window.pyodide.runPythonAsync("sys.stdout.getvalue()");
       printOutput(stdout);
 
       toggleLoadingOnButton(buttonRunId, false);
