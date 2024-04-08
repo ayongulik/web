@@ -337,7 +337,7 @@ df_class = df_titanic[df_titanic['Pclass'].isin([1, 2])]
 print(df_class)
 ```
 
-Apabila perlu melakukan sorting untuk beberapa kondisi sekaligus, kita dapat menulis kode seperti di bawah ini:
+Apabila perlu melakukan filtering untuk beberapa kondisi sekaligus, kita dapat menulis kode seperti di bawah ini:
 
 ```python
 df_survived_and_class_1 = df_titanic[(df_titanic['Survived'] == 1) & (df_titanic['Pclass'] == 1)]
@@ -561,14 +561,14 @@ print(titanic)
 # 888          889         0       3  ...  23.4500   NaN         S
 # 889          890         1       1  ...  30.0000  C148         C
 # 890          891         0       3  ...   7.7500   NaN         Q
-# 
+#
 # [891 rows x 12 columns]
 ```
 
 Apabila kita perlu mengubah format data titanic menjadi long, kita dapat menggunakan fungsi `melt` seperti contoh di bawah ini:
 
 ```python
-columns = ['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 
+columns = ['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age',
     'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
 
 titanic_long = data.melt(titanic, id_vars = ['PassengerId'], value_vars = columns)
@@ -587,7 +587,7 @@ print(titanic_long)
 # 9798          889  Embarked     S
 # 9799          890  Embarked     C
 # 9800          891  Embarked     Q
-# 
+#
 # [9801 rows x 3 columns]
 ```
 
@@ -614,6 +614,6 @@ print(titanic_wide)
 # 888               889   NaN   NaN  ...     1        0        W./C. 6607
 # 889               890  26.0  C148  ...     0        1            111369
 # 890               891  32.0   NaN  ...     0        0            370376
-# 
+#
 # [891 rows x 12 columns]
 ```
