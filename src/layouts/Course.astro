@@ -11,12 +11,14 @@ interface Props {
 }
 
 const { frontmatter, slug } = Astro.props;
+
+const enableCodeEditor =
+  frontmatter.enableCodeEditor === undefined
+    ? frontmatter.type === "exercise"
+    : frontmatter.enableCodeEditor;
 ---
 
-<CodeEditorLayout
-  frontmatter={frontmatter}
-  enableCodeEditor={frontmatter.type === "exercise"}
->
+<CodeEditorLayout frontmatter={frontmatter} enableCodeEditor={enableCodeEditor}>
   <slot slot="aside-editor" name="aside" />
 
   <Fragment slot="before-editor">
