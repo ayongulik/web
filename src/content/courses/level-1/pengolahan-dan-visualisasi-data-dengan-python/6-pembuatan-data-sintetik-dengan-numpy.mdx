@@ -10,9 +10,9 @@ import Alert from "src/components/Alert.astro";
 
 Selain Pandas dan Matplotlib, module eksternal selanjutnya yang populer pada pemrograman Python adalah [Numpy](https://numpy.org/). Numpy adalah module yang memiliki banyak fungsi untuk melakukan operasi matematika pada vector (array) dan matriks secara efisien. Module ini banyak digunakan untuk mengembangkan berbagai metode matematika, statistika dan data science. Pada website resminya, kita bisa melihat banyak module-module eksternal yang menggunakan Numpy sebagai fondasi implementasinya.
 
-Dalam kegiatan analisis data sehari-hari, sejujurnya tidak banyak contoh kasus di mana kita perlu langsung menggunakan Numpy. Kalaupun kita butuh menggunakan metode analisis data yang lebih advanced, biasanya lebih mudah untuk memakai module eksternal lain yang sudah menggunakan Numpy di dalamnya. 
+Dalam kegiatan analisis data sehari-hari, sejujurnya tidak banyak contoh kasus di mana kita perlu langsung menggunakan Numpy. Kalaupun kita butuh menggunakan metode analisis data yang lebih advanced, biasanya lebih mudah untuk memakai module eksternal lain yang sudah menggunakan Numpy di dalamnya.
 
-Meskipun demikian, karena banyak sekali contoh kode Python di internet yang menggunakan module ini, menurut saya belajar sedikit mengenai Numpy akan tetap berguna. Sehingga pada chapter ini, kita akan belajar mengenal Numpy dan menggunakan beberapa teknik untuk membuat data sintetik (deret dan random).
+Meskipun demikian, karena banyak sekali contoh kode Python di internet yang menggunakan module ini, belajar sedikit mengenai Numpy akan tetap berguna. Sehingga pada chapter ini, kita akan belajar mengenal Numpy dengan mengimplementasikan beberapa teknik untuk membuat data sintetik (deret dan random).
 
 Untuk melakukan instalasi module `numpy`, buka program `CMD.exe Prompt` lewat Anaconda Navigator, lalu jalankan perintah di bawah ini:
 
@@ -28,8 +28,8 @@ import numpy as np
 
 <Alert>
   Contoh kode yang akan diberikan setelah ini akan banyak melakukan referensi ke
-  object `np` sebagai alias dari `numpy`. Jangan lupa untuk menulis
-  deklarasi impor di bagian paling atas file sebelum mengikuti contoh.
+  object `np` sebagai alias dari `numpy`. Jangan lupa untuk menulis deklarasi
+  impor di bagian paling atas file sebelum mengikuti contoh.
 </Alert>
 
 ## Data structure array
@@ -83,7 +83,7 @@ print(data.shape)
 # (3, 3)
 ```
 
-Semua operasi yang bisa dilakukan pada aljabar matriks dapat dilakukan menggunakan `array` seperti contoh berikut: 
+Semua operasi yang bisa dilakukan pada aljabar matriks dapat dilakukan menggunakan `array` seperti contoh berikut:
 
 ```python
 d1 = np.array([[1, 2], [3, 4]])
@@ -154,15 +154,16 @@ Pada course algoritma, kita telah belajar menggunakan fungsi `range` untuk pembu
 
 ```python
 data = list(range(0, 5))
-print(data) 
+print(data)
 # Output:
 # [0, 1, 2, 3, 4]
 ```
-Numpy juga bisa digunakan untuk menghasilkan data deret. Faktanya, Numpy menyediakan fungsi yang lebih lengkap untuk kebutuhan ini. Perhatikan contoh berikut ini: 
+
+Numpy juga bisa digunakan untuk menghasilkan data deret. Faktanya, Numpy menyediakan fungsi yang lebih lengkap untuk kebutuhan ini. Perhatikan contoh berikut ini:
 
 ```python
 data = np.arange(0, 5)
-print(data) 
+print(data)
 # Output:
 # [0 1 2 3 4]
 
@@ -172,13 +173,13 @@ print(data)
 # Output:
 # [0.  0.5 1.  1.5 2.  2.5 3.  3.5 4.  4.5]
 
-# Pembuatan deret dengan nilai 0 
+# Pembuatan deret dengan nilai 0
 data = np.zeros(5)
 print(data)
 # Output:
-# [0. 0. 0. 0. 0.] 
+# [0. 0. 0. 0. 0.]
 
-# Pembuatan matrix 3x3 dengan nilai 0 
+# Pembuatan matrix 3x3 dengan nilai 0
 data = np.zeros([3, 3])
 print(data)
 # Output:
@@ -221,7 +222,7 @@ data = np.logspace(1, 256, num = 10, base = 2)
 print(data)
 # Output:
 # [1.e+001 1.e+012 1.e+023 1.e+034 1.e+045 1.e+056 1.e+067 1.e+078 1.e+089
-#  1.e+100] 
+#  1.e+100]
 
 # Deret geometrik
 data = np.linspace(1, 256, num = 10)
@@ -241,7 +242,7 @@ mu, sigma = 0, 0.1
 data = gen.normal(mu, sigma, size = 10)
 print(data)
 # Output:
-# [-0.09891214 -0.03677867  0.12879253  0.01939744  0.09202309  
+# [-0.09891214 -0.03677867  0.12879253  0.01939744  0.09202309
 #  0.05771038  -0.06364636  0.05419522 -0.03165955 -0.03223891]
 
 # Distribusi uniform
@@ -249,7 +250,7 @@ low, high = 0, 1
 data = gen.uniform(low, high, size = 10)
 print(data)
 # Output:
-# [0.51297046 0.2449646  0.8242416  0.21376296 0.74146705 
+# [0.51297046 0.2449646  0.8242416  0.21376296 0.74146705
 #  0.6299402  0.92740726 0.23190819 0.79912513 0.51816504]
 
 # Distribusi poisson
@@ -316,7 +317,7 @@ math_scores = np.clip(math_scores, 0, 100)
 math_scores = np.round(math_scores)
 
 # Distribusi normal dengan mean = 64 dan std_dev = 10
-bio_scores = gen.normal(64, 10, size = 100) 
+bio_scores = gen.normal(64, 10, size = 100)
 bio_scores = np.clip(bio_scores, 0, 100)
 bio_scores = np.round(bio_scores)
 
@@ -339,7 +340,7 @@ print(data)
 # 97  32.0  53.0
 # 98  62.0  69.0
 # 99  63.0  47.0
-# 
+#
 # [100 rows x 2 columns]
 
 print(data.describe())
