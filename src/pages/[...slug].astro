@@ -98,7 +98,7 @@ function getPrevNextNavigation(
                 class:list={[
                   "pl-8 py-4 pr-4 text-sm block border-b-2 border-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
                   {
-                    "text-white font-semibold bg-purple-800 border-purple-800":
+                    "font-semibold bg-slate-200 text-purple-900":
                       slug == entry.slug,
                   },
                   {
@@ -121,28 +121,28 @@ function getPrevNextNavigation(
   <Fragment slot="after-editor">
     <aside class="mb-8">
       <nav class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div class="text-center md:text-left">
+        <div class="text-center md:text-left px-4">
           {
             prev && (
               <a
                 href={linkTo(prev.slug)}
-                class="flex flex-col p-4 hover:text-purple-800"
+                class="inline-block px-4 py-3 rounded-lg shadow border border-purple-900 hover:bg-purple-100"
               >
-                <span>Sebelumnya</span>
-                <span class="font-semibold text-lg">{prev.data.title}</span>
+                <p class="text-sm mb-1">Sebelumnya</p>
+                <p class="text-purple-900 font-semibold">{prev.data.title}</p>
               </a>
             )
           }
         </div>
-        <div class="text-center md:text-right">
+        <div class="text-center md:text-right px-4">
           {
             next && (
               <a
                 href={linkTo(next.slug)}
-                class="flex flex-col p-4 hover:text-purple-800"
+                class="inline-block px-4 py-3 rounded-lg shadow border border-purple-900 hover:bg-purple-100"
               >
-                <span>Selanjutnya</span>
-                <span class="font-semibold text-lg">{next.data.title}</span>
+                <p class="text-sm mb-1">Selanjutnya</p>
+                <p class="text-purple-900 font-semibold">{next.data.title}</p>
               </a>
             )
           }
