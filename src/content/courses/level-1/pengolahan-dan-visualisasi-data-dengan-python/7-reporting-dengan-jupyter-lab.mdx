@@ -1,0 +1,106 @@
+---
+title: "Reporting dengan Jupyter Notebook"
+type: "material"
+chapter: 5
+---
+
+import Alert from "src/components/Alert.astro";
+
+# Reporting dengan Jupyter Notebook
+
+Jupyter Notebook adalah salah satu tools yang sering digunakan oleh data analyst untuk membuat laporan (reporting). Dengan Jupyter Notebook, hasil analisis data kita lebih mudah untuk dibagikan karena kode program dan outputnya (statistik maupun visualisasi) dapat ditulis dalam satu file sekaligus.
+
+Untuk menjalankan Jupyter Notebook via Anaconda, jalankan program 'Anaconda Navigator' > Home > pilih `Notebook`. Setelah memilih menu tersebut, komputer akan membuka halaman web Jupyter Notebook.
+
+## Membuat dan membuka file notebook
+
+Buatlah file notebook baru dengan mengklik tombol New > `Notebook: Python 3 (ipykernel)`:
+
+![Figure Jupyter Notebook 1](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-1.png)
+
+Setelah itu, browser akan membuka halaman baru yang bisa kamu gunakan untuk menulis kode Python pada notebook seperti pada screenshot di bawah ini:
+
+![Figure Jupyter Notebook 2](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-2.png)
+
+Nama file notebook dapat diganti dengan klik judul `Untitled1` > ubah nama > klik tombol `Rename` untuk menyimpan perubahan. Pada contoh di bawah ini, kita mengubah nama filenya menjadi `belajar-notebook`:
+
+![Figure Jupyter Notebook 3](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-3.png)
+
+Setelah itu, simpan notebook yang telah dibuat dengan menggunakan tombol `Ctrl+S` atau melalui menu File > Save and Checkpoint.
+
+![Figure Jupyter Notebook 4](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-4.png)
+
+File notebook yang sudah disimpan bisa diakses kembali lewat homepage Jupyter Notebook (ekstensi file `.ipyb`).
+
+![Figure Jupyter Notebook 5](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-5.png)
+
+<Alert>
+  Secara default, Jupyter Notebook akan melakukan save secara otomatis tanpa
+  harus menjalankan menu save/`Ctrl+S`.
+</Alert>
+
+## Menjalankan kode Python pada notebook
+
+Dengan notebook, kita dapat menulis membagi kode Python ke dalam beberapa cell. Tiap cell dapat dijalankan secara terpisah, dan output pada masing-masing cell dapat dilihat dalam satu file.
+
+Agar lebih jelas, coba tulis kode di bawah ini pada cell pertama:
+
+```python
+import pandas as pd
+
+df = pd.read_csv('https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/titanic.csv', delimiter = ',')
+df.head()
+```
+
+Lalu buat cell baru dengan mengklik tombol `+`, dan tulis kode di bawah ini pada cell tsb:
+
+```python
+df.describe()
+```
+
+Klik tombol `Run` untuk menjalankan semua kode python yang kita tulis. Hasil notebook kita akan seperti screenshot di bawah ini:
+
+![Figure Jupyter Notebook 6](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-6.png)
+
+Kita juga bisa menambahkan visualisasi pada notebook seperti contoh di bawah ini:
+
+```python
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+df.boxplot(column='Age', by='Survived', ax=ax)
+fig.suptitle('Boxplot Age by Survived')
+ax.set_title('')
+```
+
+![Figure Jupyter Notebook 7](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-7.png)
+
+## Menulis teks pada notebook
+
+Selain kode Python, kita juga bisa menulis teks pada notebook. Tulisan yang ditambahkan pada notebook dapat berupa catatan atau penjelasan terkait dengan hasil analisis data yang kamu lakukan.
+
+Untuk menambahkan teks, klik tombol `+` atau pergi ke menu Insert > Insert Cell Above/Below. Lalu, ganti mode cell ke `Markdown` seperti pada screenshot di bawah ini:
+
+![Figure Jupyter Notebook 8](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-8.png)
+
+Setelah itu, kamu dapat menulis deskripsi dari hasil analisis data titanic seperti contoh di bawah ini:
+
+![Figure Jupyter Notebook 9](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-9.png)
+
+Untuk membuat struktur yang lebih jelas pada notebook, dengan cara yang sama kita juga dapat menulis heading seperti contoh di bawah ini:
+
+![Figure Jupyter Notebook 10](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-10.png)
+
+<Alert>
+
+Membuat teks bold, menambahkan list maupun tabel juga bisa dilakukan dengan mengikuti sintaks Markdown. Untuk mengetahui apa saja yang bisa ditulis menggunakan Markdown, silakan [baca artikel ini](https://www.markdownguide.org/basic-syntax/).
+
+</Alert>
+
+## Membagikan notebook
+
+File notebook `.ipyb` yang tersimpan dalam komputer dapat dibagikan ke orang lain layaknya file biasa. Orang yang menerima file notebook kamu akan bisa menjalankan kode Python di dalamnya selama komputer mereka telah terinstal program Jupyter Notebook dan menginstal module eksternal yang diperlukan.
+
+Selain membagikan notebook dengan format `.ipyb`, kita juga bisa membagikan notebook menggunakan format lain melalui menu File > Download as > Pilih format PDF/HTML/Tex dsb.
+
+![Figure Jupyter Notebook 11](/web/images/courses/level-1/pengolahan-dan-visualisasi-data-dengan-python/figure-jupyter-notebook-11.png)
