@@ -7,7 +7,7 @@ Pada course ini, kita akan belajar dasar-dasar pemrograman menggunakan Python ag
 
 Kamu tidak perlu memiliki background IT untuk mengikuti course ini.
 
-Setelah menyelesaikan course ini, kalian diharapkan:
+Setelah menyelesaikan course ini, kamu diharapkan:
 
 <ul class="list-style-checklist">
   <li>

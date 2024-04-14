@@ -10,7 +10,7 @@ Dua konsep yang akan dikenalkan pada chapter ini digunakan untuk meningkatkan _r
 
 ## Fungsi
 
-Fungsi atau function adalah salah satu konsep algoritma untuk membungkus kode menjadi sehingga bisa dipakai kembali di tempat lain. Apabila kalian sudah mengerjakan exercise pada course ini, kalian seharusnya sudah cukup familiar dengan pembuatan fungsi `main` dan cara pemanggilannya. Karakteristik dari sintaks Python adalah menggunakan kata kunci `def`. Berikut adalah sintaks dasar dari fungsi:
+Fungsi atau function adalah salah satu konsep algoritma untuk membungkus kode menjadi sehingga bisa dipakai kembali di tempat lain. Apabila kamu sudah mengerjakan exercise pada course ini, kamu seharusnya sudah cukup familiar dengan pembuatan fungsi `main` dan cara pemanggilannya. Karakteristik dari sintaks Python adalah menggunakan kata kunci `def`. Berikut adalah sintaks dasar dari fungsi:
 
 ```python
 def nama_fungsi(parameter_1, parameter_2, ...):
@@ -103,7 +103,7 @@ print(add(2, 3)) # output: 5
 
 ## Class dan Object
 
-Tanpa kalian sadari, sebenarnya kalian sudah sering berinteraksi dengan `object` di Python, karena sebenarnya semua entitas pada Python direpresentasikan sebagai `object`. Kalau tidak percaya, coba jalankan contoh di bawah ini:
+Tanpa kamu sadari, sebenarnya kamu sudah sering berinteraksi dengan `object` di Python, karena sebenarnya semua entitas pada Python direpresentasikan sebagai `object`. Kalau tidak percaya, coba jalankan contoh di bawah ini:
 
 ```python
 my_values = [5, 3.14, True, [1, 2, 3], {'key': 'value'}]
