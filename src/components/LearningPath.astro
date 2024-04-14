@@ -1,8 +1,16 @@
 ---
-import { linkTo } from "../utils/url";
 import { LEARNING_TRACKS } from "../config";
+import LearningPathItems from "./LearningPathItems.astro";
 
-const skills = [{ id: 1, name: "Analisis Data", slug: "analisis-data" }];
+const skills = [
+  { id: 1, name: "Analisis Data", slug: "analisis-data" },
+  { id: 2, name: "Web Dev", slug: "web-dev" },
+];
+
+type Track = keyof typeof LEARNING_TRACKS;
+const tracks = skills.map((skill) => skill.slug) as Track[];
+
+const selectedSkill = skills[0].slug;
 ---
 
 <div class="max-w-48 mx-auto mb-8">
@@ -26,50 +34,13 @@ const skills = [{ id: 1, name: "Analisis Data", slug: "analisis-data" }];
   >
     <ol>
       {
-        LEARNING_TRACKS["analisis-data"].map((item) => (
-          <li class="grid grid-cols-9 items-center">
-            <div class="col-span-1 text-center flex items-center justify-center h-full sticky left-0 top-0 z-10 bg-slate-100">
-              <span>Level {item.level}</span>
-            </div>
-
-            {item.courses.map((course) =>
-              course.available ? (
-                <a
-                  href={linkTo(course.path) + "?track=analisis-data"}
-                  class:list={[
-                    "col-span-4 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100",
-                    {
-                      "relative z-0 border-purple-800 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-purple-900 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded":
-                        course.primary_course,
-                    },
-                  ]}
-                >
-                  {course.title}
-                </a>
-              ) : (
-                <span class="col-span-4 flex gap-2 items-center p-3 m-2 font-semibold bg-gray-200 shadow rounded-lg border border-gray-200 text-gray-500">
-                  <span class="flex-none">
-                    <svg
-                      class="w-6 h-6"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H7a1 1 0 0 1-1-1v-7c0-.6.4-1 1-1Z"
-                      />
-                    </svg>
-                  </span>
-                  <span class="flex-1">{course.title}</span>
-                </span>
-              ),
-            )}
-          </li>
+        tracks.map((key) => (
+          <div
+            class:list={[{ hidden: selectedSkill != key }]}
+            data-skill-courses
+          >
+            <LearningPathItems data={LEARNING_TRACKS[key]} track={key} />
+          </div>
         ))
       }
     </ol>
