@@ -96,9 +96,9 @@ function getPrevNextNavigation(
               <a
                 href={linkTo(slug)}
                 class:list={[
-                  "pl-8 py-4 pr-4 text-sm block border-b-2 border-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
+                  "pl-8 py-4 pr-4 text-sm block border-b-2 border-b-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
                   {
-                    "font-semibold bg-slate-200 text-purple-900":
+                    "font-semibold border-l-4 pl-7 border-l-purple-800 text-purple-900":
                       slug == entry.slug,
                   },
                   {
@@ -126,7 +126,7 @@ function getPrevNextNavigation(
             prev && (
               <a
                 href={linkTo(prev.slug)}
-                class="inline-block px-4 py-3 rounded-lg shadow border border-purple-900 hover:bg-purple-100"
+                class="inline-block px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
               >
                 <p class="text-sm mb-1">Sebelumnya</p>
                 <p class="text-purple-900 font-semibold">{prev.data.title}</p>
@@ -139,7 +139,7 @@ function getPrevNextNavigation(
             next && (
               <a
                 href={linkTo(next.slug)}
-                class="inline-block px-4 py-3 rounded-lg shadow border border-purple-900 hover:bg-purple-100"
+                class="inline-block px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
               >
                 <p class="text-sm mb-1">Selanjutnya</p>
                 <p class="text-purple-900 font-semibold">{next.data.title}</p>
