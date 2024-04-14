@@ -96,16 +96,17 @@ function getPrevNextNavigation(
               <a
                 href={linkTo(slug)}
                 class:list={[
-                  "pl-8 py-4 pr-4 text-sm block border-b-2 border-b-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
+                  "p-4 text-sm block border-b-2 border-b-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
                   {
-                    "font-semibold border-l-4 pl-7 border-l-purple-800 text-purple-900":
+                    "font-semibold border-l-4 border-l-purple-800 text-purple-900 side-navbar-current":
                       slug == entry.slug,
                   },
                   {
-                    "border-none rounded-b-lg":
+                    "border-b-none rounded-b-lg":
                       index == courseEntries.length - 1,
                   },
                 ]}
+                data-link-search
               >
                 {data.title}
               </a>
@@ -120,13 +121,29 @@ function getPrevNextNavigation(
 
   <Fragment slot="after-editor">
     <aside class="mb-8">
+      {
+        !next && (
+          <div class="px-4 text-center my-10">
+            <p class="mb-2">
+              Selamat, kamu telah menyelesaikan course
+              <span class="capitalize font-semibold">{courseTitle}</span>! 🎉
+            </p>
+            <p>
+              Kamu bisa lanjut ke course berikutnya melalui menu navigasi di
+              sebelah kiri.
+            </p>
+          </div>
+        )
+      }
+
       <nav class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div class="text-center md:text-left px-4">
+        <div class="course-prev-nav text-center md:text-left px-4">
           {
             prev && (
               <a
                 href={linkTo(prev.slug)}
                 class="inline-block px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
+                data-link-search
               >
                 <p class="text-sm mb-1">Sebelumnya</p>
                 <p class="text-purple-900 font-semibold">{prev.data.title}</p>
@@ -134,12 +151,13 @@ function getPrevNextNavigation(
             )
           }
         </div>
-        <div class="text-center md:text-right px-4">
+        <div class="crouse-next-nav text-center md:text-right px-4">
           {
             next && (
               <a
                 href={linkTo(next.slug)}
                 class="inline-block px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
+                data-link-search
               >
                 <p class="text-sm mb-1">Selanjutnya</p>
                 <p class="text-purple-900 font-semibold">{next.data.title}</p>

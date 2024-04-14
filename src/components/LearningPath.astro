@@ -1,56 +1,8 @@
 ---
 import { linkTo } from "../utils/url";
+import { LEARNING_TRACKS } from "../config";
 
 const skills = [{ id: 1, name: "Analisis Data", slug: "analisis-data" }];
-const learningPaths = {
-  "analisis-data": [
-    {
-      level: 0,
-      courses: [
-        {
-          title: "Algoritma Menggunakan Python",
-          path: "level-0/algoritma-menggunakan-python",
-          available: true,
-          primary_course: true,
-        },
-      ],
-    },
-    {
-      level: 1,
-      courses: [
-        {
-          title: "Pengolahan & Visualisasi Data dengan Python",
-          path: "level-1/pengolahan-dan-visualisasi-data-dengan-python",
-          available: true,
-          primary_course: true,
-        },
-        {
-          title: "Relational Database & SQL",
-          path: "",
-          available: false,
-          primary_course: false,
-        },
-      ],
-    },
-    {
-      level: 2,
-      courses: [
-        {
-          title: "Statistika & Machine Learning Dasar",
-          path: "",
-          available: false,
-          primary_course: false,
-        },
-        {
-          title: "Data Wrangling & Scraping",
-          path: "",
-          available: false,
-          primary_course: false,
-        },
-      ],
-    },
-  ],
-};
 ---
 
 <div class="max-w-48 mx-auto mb-8">
@@ -74,7 +26,7 @@ const learningPaths = {
   >
     <ol>
       {
-        learningPaths["analisis-data"].map((item) => (
+        LEARNING_TRACKS["analisis-data"].map((item) => (
           <li class="grid grid-cols-9 items-center">
             <div class="col-span-1 text-center flex items-center justify-center h-full sticky left-0 top-0 z-10 bg-slate-100">
               <span>Level {item.level}</span>
@@ -83,7 +35,7 @@ const learningPaths = {
             {item.courses.map((course) =>
               course.available ? (
                 <a
-                  href={linkTo(course.path)}
+                  href={linkTo(course.path) + "?track=analisis-data"}
                   class:list={[
                     "col-span-4 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100",
                     {

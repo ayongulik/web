@@ -16,7 +16,7 @@ interface Props {
 const { path, class: customClass = "", enableMenu = false } = Astro.props;
 
 const items = generateItems(path);
-const otherItems = items.slice(0, items.length - 1);
+const otherItems = items.slice(1, items.length - 1);
 const activeItem = items[items.length - 1];
 
 function generateItems(path: string): BreadcrumbItems[] {
@@ -102,6 +102,7 @@ function generateItems(path: string): BreadcrumbItems[] {
             <a
               href={linkTo(item.slug)}
               class="ms-1 text-sm font-medium text-gray-700 hover:text-purple-800 md:ms-2 capitalize"
+              data-link-search
             >
               {item.label}
             </a>
