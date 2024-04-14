@@ -11,6 +11,7 @@ const learningPaths = {
           title: "Algoritma Menggunakan Python",
           path: "level-0/algoritma-menggunakan-python",
           available: true,
+          primary_course: true,
         },
       ],
     },
@@ -21,11 +22,13 @@ const learningPaths = {
           title: "Pengolahan & Visualisasi Data dengan Python",
           path: "level-1/pengolahan-dan-visualisasi-data-dengan-python",
           available: true,
+          primary_course: true,
         },
         {
           title: "Relational Database & SQL",
           path: "",
           available: false,
+          primary_course: false,
         },
       ],
     },
@@ -36,11 +39,13 @@ const learningPaths = {
           title: "Statistika & Machine Learning Dasar",
           path: "",
           available: false,
+          primary_course: false,
         },
         {
           title: "Data Wrangling & Scraping",
           path: "",
           available: false,
+          primary_course: false,
         },
       ],
     },
@@ -71,7 +76,7 @@ const learningPaths = {
       {
         learningPaths["analisis-data"].map((item) => (
           <li class="grid grid-cols-9 items-center">
-            <div class="col-span-1 text-center flex items-center justify-center h-full sticky left-0 top-0 bg-slate-100">
+            <div class="col-span-1 text-center flex items-center justify-center h-full sticky left-0 top-0 z-10 bg-slate-100">
               <span>Level {item.level}</span>
             </div>
 
@@ -79,7 +84,13 @@ const learningPaths = {
               course.available ? (
                 <a
                   href={linkTo(course.path)}
-                  class="col-span-4 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100"
+                  class:list={[
+                    "col-span-4 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100",
+                    {
+                      "relative z-0 border-purple-900 after:content-['wajib'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-purple-900 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded":
+                        course.primary_course,
+                    },
+                  ]}
                 >
                   {course.title}
                 </a>
