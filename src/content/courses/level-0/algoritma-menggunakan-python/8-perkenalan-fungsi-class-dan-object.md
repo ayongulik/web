@@ -163,7 +163,3 @@ print(circle.calculate_area()) # output: 78.54
 Pada contoh, `class Circle` menerima parameter constructor berupa radius dan di set sebagai attribute. Class `Circle` juga memiliki method `calculate_area` untuk menghitung luas area lingkaran. Setelah object `circle_4` diinisiasi, attribute `radius` dan method `calculate_area` dapat diakses dari `object` `circle_4`.
 
 Masih banyak lagi konsep yang berhubungan dengan class dan object. Untuk belajar lebih lanjut, silakan mengunjungi chapter 'extras' (tunggu update terbaru!).
-
----
-
-Selamat! Kamu sudah menyelesaikan course level 0 'Algoritma menggunakan Python' 🎉🎉. Jangan lupa selesaikan semua exercise yang ada dan berlatih terus hingga mahir. Sampai jumpa di course selanjutnya!

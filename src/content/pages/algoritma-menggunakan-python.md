@@ -1,5 +1,5 @@
 ---
-title: "Algoritma menggunakan Python"
+title: "Algoritma Menggunakan Python"
 ref: "level-0/algoritma-menggunakan-python"
 ---
 
