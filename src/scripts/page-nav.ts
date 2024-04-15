@@ -64,6 +64,8 @@ function initPageNav() {
       inline: "nearest",
     });
   }
+
+  setSearchParamToLinks();
 }
 
 function navTemplate(levelItem: Level, bottomNote = false) {

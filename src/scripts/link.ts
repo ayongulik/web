@@ -5,11 +5,7 @@ const popupShareId = "popup-share";
 initLink();
 
 function initLink() {
-  const currentUrl = new URL(window.location.href);
-  const links = document.querySelectorAll(linkSelector);
-  for (const link of links) {
-    link.setAttribute("href", link.getAttribute("href") + currentUrl.search);
-  }
+  setSearchParamToLinks();
 
   window._goodshare?.reNewAllInstance();
 
@@ -36,4 +32,12 @@ function initLink() {
       }
     }
   });
+}
+
+function setSearchParamToLinks() {
+  const currentUrl = new URL(window.location.href);
+  const links = document.querySelectorAll(linkSelector);
+  for (const link of links) {
+    link.setAttribute("href", link.getAttribute("href") + currentUrl.search);
+  }
 }
