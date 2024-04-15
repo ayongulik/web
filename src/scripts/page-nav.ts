@@ -78,7 +78,7 @@ function navTemplate(levelItem: Level, bottomNote = false) {
     ${levelItem.courses
       .map(({ title, path, available }) => {
         return available
-          ? `<li><a href=${linkTo(path)} class="${navLinkClass}" data-link-search>${title}</a></li>`
+          ? `<li><a href=${linkTo(path)} class="${joinClass([navLinkClass, "hover:underline"])}" data-link-search>${title}</a></li>`
           : `<li><p class="${joinClass([navLinkClass, "flex gap-2 items-center text-slate-500"])}">${iconLock}${title}</p></li>`;
       })
       .join("")}

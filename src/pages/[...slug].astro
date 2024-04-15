@@ -26,9 +26,9 @@ interface Props {
 const { entry } = Astro.props;
 
 const splitSlug = entry.slug.split("/");
-const courseSlug = splitSlug[1];
+const [levelSlug, courseSlug] = splitSlug;
 const courseTitle = removeStripes(courseSlug);
-const levelTitle = removeStripes(splitSlug[0]);
+const levelTitle = removeStripes(levelSlug);
 const courseEntries = await getCollection("courses", ({ slug }) =>
   slug.includes(courseSlug),
 );
@@ -85,10 +85,14 @@ function getPrevNextNavigation(
       </svg>
     </button>
     <nav class="bg-slate-50 shadow rounded-lg">
-      <div class="p-4 bg-purple-100 rounded-t-lg">
+      <a
+        href={linkTo(`${levelSlug}/${courseSlug}`)}
+        class="p-4 bg-purple-100 rounded-t-lg block hover:underline"
+        data-link-search
+      >
         <p class="text-xs capitalize mb-1">{levelTitle}</p>
         <p class="text-sm capitalize">{courseTitle}</p>
-      </div>
+      </a>
       <ol class="rounded-b-lg">
         {
           courseEntries.map(({ data, slug }, index) => (
@@ -96,7 +100,7 @@ function getPrevNextNavigation(
               <a
                 href={linkTo(slug)}
                 class:list={[
-                  "p-4 text-sm block border-b-2 border-b-slate-200 overflow-hidden whitespace-nowrap text-ellipsis",
+                  "p-4 text-sm block border-b-2 border-b-slate-200 overflow-hidden whitespace-nowrap text-ellipsis hover:underline",
                   {
                     "font-semibold border-l-4 border-l-purple-800 text-purple-900 side-navbar-current":
                       slug == entry.slug,

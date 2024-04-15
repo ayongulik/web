@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar.astro";
 import { linkTo } from "../utils/url";
 import { SITE_TITLE } from "../config";
 
-const { frontmatter } = Astro.props;
+const { frontmatter, enableCourseMode = false } = Astro.props;
 
 function getTitle(title: string) {
   if (title) {
@@ -50,7 +50,9 @@ const title = getTitle(frontmatter?.title);
     <slot name="head" />
   </head>
   <body class="bg-slate-50 relative">
-    <Navbar />
+    <Navbar enableCourseMode={enableCourseMode}>
+      <slot name="navbar" />
+    </Navbar>
     <slot />
     <script src="../scripts/link.ts"></script>
   </body>

@@ -21,7 +21,7 @@ const {
 const enableTestCases = enableTestCasesProps || frontmatter?.enableTestCases;
 ---
 
-<BaseLayout frontmatter={frontmatter}>
+<BaseLayout frontmatter={frontmatter} enableCourseMode>
   <Fragment slot="head">
     <link
       rel="stylesheet"
@@ -44,11 +44,13 @@ const enableTestCases = enableTestCasesProps || frontmatter?.enableTestCases;
       src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
   </Fragment>
 
+  <slot slot="navbar" name="navbar" />
+
   <div class:list={["max-w-screen-2xl relative mx-auto", customClass]}>
     <div class="flex">
       <slot name="aside-editor" />
 
-      <div class="w-full">
+      <div class="w-full lg:w-3/4">
         <slot name="before-editor" />
 
         {

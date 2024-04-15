@@ -1,15 +1,22 @@
 ---
 import Logo from "./Logo.astro";
 import NavbarLink from "./NavbarLink.astro";
+import Breadcrumb from "./Breadcrumb.astro";
 import { linkTo } from "../utils/url";
 
 interface Props {
   enableBorder?: boolean;
+  enableCourseMode?: boolean;
   transparent?: boolean;
   sticky?: boolean;
 }
 
-const { enableBorder = true, sticky = true, transparent = false } = Astro.props;
+const {
+  enableBorder = true,
+  enableCourseMode = false,
+  sticky = true,
+  transparent = false,
+} = Astro.props;
 ---
 
 <nav
@@ -20,18 +27,105 @@ const { enableBorder = true, sticky = true, transparent = false } = Astro.props;
     { "bg-white": !transparent },
   ]}
 >
-  <section class="flex-none px-4">
+  <section class="flex-none flex px-4">
+    {
+      enableCourseMode && (
+        <button
+          id="button-menu"
+          class="block mr-4 hover:text-purple-800 lg:hidden lg:m-0"
+          onclick="onButtonMenuClick()"
+        >
+          <svg
+            class="w-8 h-8"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5"
+            />
+          </svg>
+        </button>
+      )
+    }
     <Logo />
+
+    <slot />
   </section>
 
   <section class="flex-1">
     <ul class="flex flex-row-reverse items-center">
-      <li class="flex">
-        <NavbarLink href={linkTo("online-editor")}>Editor Online</NavbarLink>
-      </li>
-      <li class="flex">
-        <NavbarLink href={linkTo("#courses")}>Courses</NavbarLink>
-      </li>
+      {
+        enableCourseMode ? (
+          <>
+            <li class="flex">
+              <button class="p-[0.875rem] hover:text-purple-800">
+                <svg
+                  class="w-6 h-6"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4.248 19C3.22 15.77 5.275 8.232 12.466 8.232V6.079a1.025 1.025 0 0 1 1.644-.862l5.479 4.307a1.108 1.108 0 0 1 0 1.723l-5.48 4.307a1.026 1.026 0 0 1-1.643-.861v-2.154C5.275 13.616 4.248 19 4.248 19Z"
+                  />
+                </svg>
+              </button>
+            </li>
+
+            <li class="flex">
+              <a
+                class="p-[0.875rem] hover:text-purple-800"
+                href="https://github.com/orgs/ayongulik/discussions/categories/q-a"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  class="w-6 h-6"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 10.5h.01m-4.01 0h.01M8 10.5h.01M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-6.6a1 1 0 0 0-.69.275l-2.866 2.723A.5.5 0 0 1 8 18.635V17a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
+                  />
+                </svg>
+              </a>
+            </li>
+          </>
+        ) : (
+          <>
+            <li class="flex">
+              <NavbarLink href={linkTo("online-editor")}>
+                Editor Online
+              </NavbarLink>
+            </li>
+            <li class="flex">
+              <NavbarLink href={linkTo("#courses")}>Courses</NavbarLink>
+            </li>
+          </>
+        )
+      }
     </ul>
   </section>
 </nav>
