@@ -83,24 +83,13 @@ export const LEARNING_TRACKS = {
       level: 2,
       courses: [
         {
-          title: "Implementasi UI dengan React.js",
+          title: "RESTful API dengan Node.js",
           path: "",
           available: false,
           primary_course: false,
         },
         {
-          title: "Typescript Dasar",
-          path: "",
-          available: false,
-          primary_course: false,
-        },
-      ],
-    },
-    {
-      level: 3,
-      courses: [
-        {
-          title: "Static Site Generator dengan Astro.js",
+          title: "Performa & Keamanan Web Dasar",
           path: "",
           available: false,
           primary_course: false,

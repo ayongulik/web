@@ -4,7 +4,7 @@ import LearningPathItems from "./LearningPathItems.astro";
 
 const skills = [
   { id: 1, name: "Analisis Data", slug: "analisis-data" },
-  { id: 2, name: "Web Dev", slug: "web-dev" },
+  { id: 2, name: "Web Development", slug: "web-dev" },
 ];
 
 type Track = keyof typeof LEARNING_TRACKS;
@@ -20,7 +20,7 @@ const selectedSkill = skills[0].slug;
   >
     {
       skills.map((skill, index) => (
-        <option selected={index === 0} value={skill.id}>
+        <option selected={index === 0} value={skill.slug}>
           {skill.name}
         </option>
       ))
@@ -37,7 +37,7 @@ const selectedSkill = skills[0].slug;
         tracks.map((key) => (
           <div
             class:list={[{ hidden: selectedSkill != key }]}
-            data-skill-courses
+            data-skill-courses={key}
           >
             <LearningPathItems data={LEARNING_TRACKS[key]} track={key} />
           </div>
