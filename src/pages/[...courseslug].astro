@@ -53,17 +53,15 @@ const exerciseCount = entries.filter(
 
 <BaseLayout frontmatter={{ title }}>
   <div class="max-w-screen-lg mx-auto min-screen-height px-4 relative">
-    <Breadcrumb path={slug} class="py-2 my-4" />
-
     <article class="my-8">
-      <header class="flex flex-col mb-10">
+      <header class="flex flex-col mb-8">
         <div class="mb-4">
           <span
-            class="text-sm px-2 py-1 rounded bg-slate-200 capitalize font-semibold text-purple-800"
+            class="text-sm px-2 py-1 rounded bg-slate-200 capitalize font-semibold"
             >{levelTitle}</span
           >
         </div>
-        <h1 class="text-4xl font-bold text-purple-800">{title}</h1>
+        <h1 class="text-3xl md:text-4xl font-semibold">{title}</h1>
       </header>
 
       <Prose>
@@ -78,6 +76,9 @@ const exerciseCount = entries.filter(
             <p class="text-xl font-semibold mb-1">{chapterCount}</p>
             <p>Chapter</p>
           </li>
+
+          <span class="bg-gray-200 w-[0.1rem] my-4 mx-3"></span>
+
           <li class="flex-1 p-4 text-center">
             <p class="text-xl font-semibold mb-1">{exerciseCount}</p>
             <p>Exercise</p>
@@ -107,12 +108,12 @@ const exerciseCount = entries.filter(
                       {entry.data.chapter}
                     </span>
                   ) : null}
-                  <div class="flex text-lg font-semibold text-purple-800 ">
+                  <div class="flex text-lg font-semibold">
                     <span class="flex-1">{entry.data.title}</span>
                     {entry.data.type === "material" && (
                       <span class="flex-none">
                         <svg
-                          class="w-6 h-6 text-purple-800"
+                          class="w-6 h-6"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -131,7 +132,7 @@ const exerciseCount = entries.filter(
                     {entry.data.type === "exercise" && (
                       <span class="flex-none">
                         <svg
-                          class="w-6 h-6 text-purple-800"
+                          class="w-6 h-6"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
