@@ -13,7 +13,7 @@ const { data, track } = Astro.props;
 {
   data.map((item) => (
     <li class="grid grid-cols-9 items-center">
-      <div class="col-span-1 text-center flex items-center justify-center h-full sticky left-0 top-0 z-10 bg-slate-100">
+      <div class="col-span-1 text-center flex items-center justify-center h-full sticky left-0 top-0 z-10 bg-slate-100 opacity-75">
         <span>Level {item.level}</span>
       </div>
 
@@ -22,9 +22,9 @@ const { data, track } = Astro.props;
           <a
             href={linkTo(course.path) + `?track=${track}`}
             class:list={[
-              "col-span-4 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100",
+              "col-span-4 relative z-0 p-3 m-2 font-semibold bg-white shadow rounded-lg border border-gray-200 text-purple-900 hover:bg-purple-100",
               {
-                "relative z-0 border-purple-800 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-purple-900 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded":
+                "border-purple-800 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-purple-900 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded":
                   course.primary_course,
               },
             ]}
@@ -34,9 +34,9 @@ const { data, track } = Astro.props;
         ) : (
           <span
             class:list={[
-              "col-span-4 flex gap-2 items-center p-3 m-2 font-semibold bg-gray-200 shadow rounded-lg border border-gray-200 text-gray-500",
+              "col-span-4 relative z-0 flex gap-2 items-center p-3 m-2 font-semibold bg-gray-200 shadow rounded-lg border border-gray-200 text-gray-500",
               {
-                "relative z-0 border-gray-500 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-gray-500 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded":
+                "border-gray-500 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-gray-500 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded":
                   course.primary_course,
               },
             ]}
