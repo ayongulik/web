@@ -22,7 +22,12 @@ const borderColor = {
 ---
 
 <aside class:list={["my-8 px-4 border-l-4", borderColor[variant]]}>
-  <p class:list={["capitalize font-semibold text-xl", textColor[variant]]}>
+  <p
+    class:list={[
+      "capitalize font-semibold text-lg md:text-xl",
+      textColor[variant],
+    ]}
+  >
     {title[variant]}
   </p>
   <slot />
