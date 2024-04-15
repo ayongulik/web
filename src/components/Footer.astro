@@ -1,5 +1,6 @@
 ---
 import Logo from "./Logo.astro";
+import { SITE_TITLE } from "../config";
 
 interface Props {
   class?: string;
@@ -18,7 +19,7 @@ const { class: customClass = "" } = Astro.props;
         Raih skill pemrograman, dan siap menghadapi tantangan teknologi masa
         depan 🚀
       </p>
-      <p class="text-sm">© Ayo Ngulik 2024. All rights reserved.</p>
+      <p class="text-sm">© {SITE_TITLE} 2024. All rights reserved.</p>
     </section>
     <section class="flex-none text-sm"></section>
   </div>

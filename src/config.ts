@@ -1,5 +1,6 @@
 export const SITE_URL = "https://ayongulik.github.io";
 export const BASE_PATH = "/web";
+export const SITE_TITLE = "Ayo Ngulik!";
 
 export const LEARNING_TRACKS = {
   "analisis-data": [
