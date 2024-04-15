@@ -59,5 +59,9 @@ declare global {
     editor: EditorFromTextArea;
     loadPyodide: (options?: LoadPyodideOptions) => Promise<PyodideInterface>;
     pyodide: PyodideInterface;
+    _goodshare?: {
+      reNewAllInstance: () => void;
+      setShareCallback: (fn: () => void) => void;
+    };
   }
 }
