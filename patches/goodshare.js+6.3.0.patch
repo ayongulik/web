@@ -1,0 +1,29 @@
+diff --git a/node_modules/goodshare.js/src/providers/LinkedIn.js b/node_modules/goodshare.js/src/providers/LinkedIn.js
+index fd63df2..aae2d63 100644
+--- a/node_modules/goodshare.js/src/providers/LinkedIn.js
++++ b/node_modules/goodshare.js/src/providers/LinkedIn.js
+@@ -32,10 +32,7 @@ export class LinkedIn extends ProviderMixin {
+     const title = item.dataset.title
+       ? encodeURIComponent(item.dataset.title)
+       : this.title;
+-    const description = item.dataset.description
+-      ? encodeURIComponent(item.dataset.description)
+-      : this.description;
+-    const share_url = `https://www.linkedin.com/shareArticle?url=${url}&text=${title}&summary=${description}&mini=true`;
++    const share_url = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${title}`;
+ 
+     return {
+       callback: this.callback,
+diff --git a/node_modules/goodshare.js/src/providers/Twitter.js b/node_modules/goodshare.js/src/providers/Twitter.js
+index 4114625..f8ff78e 100644
+--- a/node_modules/goodshare.js/src/providers/Twitter.js
++++ b/node_modules/goodshare.js/src/providers/Twitter.js
+@@ -32,7 +32,7 @@ export class Twitter extends ProviderMixin {
+     const hashtags = item.dataset.hashtags
+       ? encodeURIComponent(item.dataset.hashtags)
+       : this.hashtags;
+-    const share_url = `https://twitter.com/share?url=${url}&text=${title}&hashtags=${hashtags}`;
++    const share_url = `https://twitter.com/intent/tweet?url=${url}&text=${title}&hashtags=${hashtags}`;
+ 
+     return {
+       callback: this.callback,
