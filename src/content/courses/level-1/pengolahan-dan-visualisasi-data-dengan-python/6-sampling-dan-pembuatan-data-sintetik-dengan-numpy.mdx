@@ -1,18 +1,18 @@
 ---
-title: "Pembuatan Data Sintetik dengan Numpy"
+title: "Sampling dan Pembuatan Data Sintetik dengan Numpy"
 type: "material"
 chapter: 4
 ---
 
 import Alert from "src/components/Alert.astro";
 
-# Pembuatan Data Sintetik dengan Numpy
+# Sampling dan Pembuatan Data Sintetik dengan Numpy
 
 Selain Pandas dan Matplotlib, module eksternal selanjutnya yang populer pada pemrograman Python adalah [Numpy](https://numpy.org/). Numpy adalah module yang memiliki banyak fungsi untuk melakukan operasi matematika pada vector (array) dan matriks secara efisien. Module ini banyak digunakan untuk mengembangkan berbagai metode matematika, statistika dan data science. Pada website resminya, kita bisa melihat banyak module-module eksternal yang menggunakan Numpy sebagai fondasi implementasinya.
 
 Dalam kegiatan analisis data sehari-hari, sejujurnya tidak banyak contoh kasus di mana kita perlu langsung menggunakan Numpy. Kalaupun kita butuh menggunakan metode analisis data yang lebih advanced, biasanya lebih mudah untuk memakai module eksternal lain yang sudah menggunakan Numpy di dalamnya.
 
-Meskipun demikian, karena banyak sekali contoh kode Python di internet yang menggunakan module ini, belajar sedikit mengenai Numpy akan tetap berguna. Sehingga pada chapter ini, kita akan belajar mengenal Numpy dengan mengimplementasikan beberapa teknik untuk membuat data sintetik (deret dan random).
+Meskipun demikian, karena banyak sekali contoh kode Python di internet yang menggunakan module ini, belajar sedikit mengenai Numpy akan tetap berguna. Sehingga pada chapter ini, kita akan belajar mengenal Numpy dengan mengimplementasikan beberapa teknik untuk membuat data sintetik (deret dan random) dan melakukan sampling pada data.
 
 Untuk melakukan instalasi module `numpy`, buka program `CMD.exe Prompt` lewat Anaconda Navigator, lalu jalankan perintah di bawah ini:
 
@@ -212,20 +212,21 @@ Deret aritmatika lain juga bisa dibuat dengan menggunakan fungsi-fungsi Numpy se
 
 ```python
 # Deret linear
-data = np.linspace(1, 256, num = 10)
+data = np.linspace(1, 100, num = 10)
 print(data)
 # Output:
 # [  1.  12.  23.  34.  45.  56.  67.  78.  89. 100.]
 
 # Deret logaritma
-data = np.logspace(1, 256, num = 10, base = 2)
+data = np.logspace(1, 100, num = 10, base = 2)
 print(data)
 # Output:
-# [1.e+001 1.e+012 1.e+023 1.e+034 1.e+045 1.e+056 1.e+067 1.e+078 1.e+089
-#  1.e+100]
+# [2.00000000e+00 4.09600000e+03 8.38860800e+06 1.71798692e+10
+#  3.51843721e+13 7.20575940e+16 1.47573953e+20 3.02231455e+23
+#  6.18970020e+26 1.26765060e+30]
 
 # Deret geometrik
-data = np.linspace(1, 256, num = 10)
+data = np.geomspace(1, 100, num = 10)
 print(data)
 # Output:
 # [  1.           1.66810054   2.7825594    4.64158883   7.74263683
@@ -263,7 +264,7 @@ print(data)
 
 <Alert>
 
-Fungsi `random.default_rng()` digunakan untuk menginisialisasi generator distribusi. Setiap kali program Python dijalankan, generator angka random ini akan menghasilkan nilai yang berbeda. Agar nilai random yang dihasilkan bisa konsisten setiap kali program dijalankan, parameter berupa angka perlu di set saat pemanggilan fungsi ini (angkanya bebas sesuka hati kamu).
+Fungsi `random.default_rng()` digunakan untuk menginisialisasi generator distribusi. Setiap kali program Python dijalankan, generator angka random ini akan menghasilkan nilai yang berbeda. Agar nilai random yang dihasilkan bisa konsisten setiap kali program dijalankan, parameter berupa angka (_seed number_) perlu di set saat pemanggilan fungsi ini (angkanya bebas sesuka hati kamu).
 
 </Alert>
 
@@ -354,6 +355,111 @@ print(data.describe())
 # 50%     50.00000   65.000000
 # 75%     62.00000   71.000000
 # max     84.00000   87.000000
+```
+
+## Teknik Sampling
+
+Module Numpy juga umum digunakan untuk melakukan sampling terhadap data. Untuk mendapatkan sample secara random dari data, kita dapat memanfaatkan fungsi `choice` seperti contoh berikut:
+
+```python
+import pandas as pd
+import numpy as np
+
+gen = np.random.default_rng(123)
+
+# buat list dengan value 1-10
+data = np.linspace(1, 10, num = 10)
+
+for i in range(5):
+    # ambil sample sebanyak 5
+    sample = gen.choice(data, 5)
+    print(sample)
+
+# Output:
+# [1. 7. 6. 1.  10.]
+# [3. 3. 2. 4.  2.]
+# [4. 9. 5. 10. 5.]
+# [3. 8. 9. 9.  9.]
+# [1. 6. 3. 3.  3.]
+```
+
+Secara default, fungsi `choice` akan melakukan sampling dengan pengembalian. Hal ini terlihat dari hasil sample yang berulang pada contoh di atas. Untuk melakukan sampling tanpa pengembalian, kita dapat mengeset parameter `replace` dengan nilai `False`:
+
+```python
+import pandas as pd
+import numpy as np
+
+gen = np.random.default_rng(123)
+
+data = np.linspace(1, 10, num = 10)
+
+for i in range(5):
+    sample = gen.choice(data, 5, replace = False)
+    print(sample)
+
+# Output:
+# [9. 8. 1.  10. 5.]
+# [2. 5. 10. 3.  7.]
+# [5. 3. 1.  6.  7.]
+# [3. 2. 7.  9.  6.]
+# [8. 2. 5.  6.  7.]
+```
+
+Value yang terpilih dalam sample memiliki probabilitas yang sama untuk semua value. Apabila diperlukan, sampling juga bisa diatur agar mengikuti probabilitas yang berbeda-beda untuk tiap value di dalam data melalui parameter `p` seperti contoh di bawah ini.
+
+```python
+import pandas as pd
+import numpy as np
+
+gen = np.random.default_rng(123)
+
+data = np.linspace(1, 10, num = 10)
+
+probs = [0.025, 0.025, 0.1, 0.25, 0.25, 0.1, 0.1, 0.05, 0.05, 0.05]
+
+for i in range(5):
+    sample = gen.choice(data, 5, p = probs)
+    print(sample)
+
+# Output:
+# [6. 3. 4. 4. 4.]
+# [7. 9. 4. 7. 8.]
+# [5. 4. 7. 4. 6.]
+# [5. 9. 4. 7. 5.]
+# [4. 4. 5. 5. 4.]
+```
+
+Dengan menggunakan teknik yang sama, kita bisa melakukan sampling pada sebuah `DataFrame`. Caranya, ambil sample list dari index `DataFrame`, lalu lakukan filtering terhadap `DataFrame` tsb. menggunakan sample index. Contoh berikut memperlihatkan cara mengambil sampel sebanyak 10 rows dari data titanic.
+
+```python
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv('https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/titanic.csv', delimiter = ',')
+
+gen = np.random.default_rng(123)
+
+sample_size = 10
+sample_indexes = gen.choice(df.index, sample_size)
+
+df_sample = df[df.index.isin(sample_indexes)]
+
+print(df_sample)
+
+# Output:
+#      PassengerId  Survived  Pclass  ...      Fare    Cabin  Embarked
+# 13            14         0       3  ...   31.2750      NaN         S
+# 47            48         1       3  ...    7.7500      NaN         Q
+# 156          157         1       3  ...    7.7333      NaN         Q
+# 164          165         0       3  ...   39.6875      NaN         S
+# 196          197         0       3  ...    7.7500      NaN         Q
+# 227          228         0       3  ...    7.2500      NaN         S
+# 297          298         0       1  ...  151.5500  C22 C26         S
+# 528          529         0       3  ...    7.9250      NaN         S
+# 607          608         1       1  ...   30.5000      NaN         S
+# 809          810         1       1  ...   53.1000       E8         S
+# 
+# [10 rows x 12 columns]
 ```
 
 ---
