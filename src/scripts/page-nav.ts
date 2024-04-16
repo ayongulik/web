@@ -69,6 +69,7 @@ function initPageNav() {
 function navTemplate(levelItem: Level, bottomNote = false) {
   const navLinkClass =
     "p-4 text-sm block border-b-2 border-b-slate-200 overflow-hidden whitespace-nowrap text-ellipsis";
+  const searchParam = window.location.search;
 
   return `<nav class="bg-slate-50 shadow rounded-lg">
     <div class="p-4 rounded-t-lg bg-slate-200">
@@ -78,7 +79,7 @@ function navTemplate(levelItem: Level, bottomNote = false) {
     ${levelItem.courses
       .map(({ title, path, available }) => {
         return available
-          ? `<li><a href=${linkTo(path)} class="${joinClass([navLinkClass, "hover:underline"])}" data-link-search>${title}</a></li>`
+          ? `<li><a href=${linkTo(path + searchParam)} class="${joinClass([navLinkClass, "hover:underline"])}">${title}</a></li>`
           : `<li><p class="${joinClass([navLinkClass, "flex gap-2 items-center text-slate-500"])}">${iconLock}${title}</p></li>`;
       })
       .join("")}
