@@ -6,11 +6,11 @@ chapter: 6
 
 # Perkenalan Fungsi, Class dan Object
 
-Dua konsep yang akan dikenalkan pada chapter ini digunakan untuk meningkatkan _reusability_ dari kode Python. Salah satu manfaat dari implementasi konsep ini adalah kita tidak perlu melakukan duplikasi kode yang memiliki cara kerja yang identik.
+Dua konsep yang akan dikenalkan pada chapter ini digunakan untuk meningkatkan _reusability_ dari kode Python, yaitu menggunakan kembali bagian dari kode kita agar kita lebih produktif, dan kode kita menjadi lebih mudah untuk dimodifikasi.
 
 ## Fungsi
 
-Fungsi atau function adalah salah satu konsep algoritma untuk membungkus kode menjadi sehingga bisa dipakai kembali di tempat lain. Apabila kamu sudah mengerjakan exercise pada course ini, kamu seharusnya sudah cukup familiar dengan pembuatan fungsi `main` dan cara pemanggilannya. Karakteristik dari sintaks Python adalah menggunakan kata kunci `def`. Berikut adalah sintaks dasar dari fungsi:
+Fungsi atau function adalah salah satu teknik untuk membungkus kode sehingga bisa dipakai kembali di tempat lain. Apabila kamu sudah mengerjakan exercise pada course ini, kamu seharusnya sudah cukup familiar dengan pembuatan fungsi `main` dan cara pemanggilannya. Karakteristik dari sintaks Python adalah menggunakan kata kunci `def`. Berikut adalah sintaks dasar dari fungsi:
 
 ```python
 def nama_fungsi(parameter_1, parameter_2, ...):
@@ -161,5 +161,3 @@ print(circle.calculate_area()) # output: 78.54
 ```
 
 Pada contoh, `class Circle` menerima parameter constructor berupa radius dan di set sebagai attribute. Class `Circle` juga memiliki method `calculate_area` untuk menghitung luas area lingkaran. Setelah object `circle_4` diinisiasi, attribute `radius` dan method `calculate_area` dapat diakses dari `object` `circle_4`.
-
-Masih banyak lagi konsep yang berhubungan dengan class dan object. Untuk belajar lebih lanjut, silakan mengunjungi chapter 'extras' (tunggu update terbaru!).
