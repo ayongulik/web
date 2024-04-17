@@ -13,19 +13,25 @@ const tracks = skills.map((skill) => skill.slug) as Track[];
 const selectedSkill = skills[0].slug;
 ---
 
-<div class="max-w-48 mx-auto mb-8">
-  <select
-    id="skill-select"
-    class="bg-gray-50 border-2 border-gray-200 rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5"
-  >
-    {
-      skills.map((skill, index) => (
-        <option selected={index === 0} value={skill.slug}>
-          {skill.name}
-        </option>
-      ))
-    }
-  </select>
+<div class="mx-auto flex items-center flex-col mb-6 lg:mb-8">
+  <label class="block mb-1" for="skill-select">
+    Belajar pemrograman untuk:
+  </label>
+
+  <div class="max-w-48 mx-auto">
+    <select
+      id="skill-select"
+      class="bg-gray-50 border-2 border-gray-200 rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5"
+    >
+      {
+        skills.map((skill, index) => (
+          <option selected={index === 0} value={skill.slug}>
+            {skill.name}
+          </option>
+        ))
+      }
+    </select>
+  </div>
 </div>
 
 <div class="relative overflow-x-auto">
