@@ -4,6 +4,7 @@ import Navbar from "src/components/Navbar.astro";
 import Footer from "src/components/Footer.astro";
 import LearningPath from "src/components/LearningPath.astro";
 import { linkTo } from "../utils/url";
+import { FORUM_LINKS } from "../config";
 ---
 
 <html lang="id">
@@ -160,7 +161,13 @@ import { linkTo } from "../utils/url";
           <p class="text-lg lg:text-xl max-w-screen-md">
             Meskipun ini platform gratisan, kita ingin kamu beneran bisa
             pemrograman setelah belajar dari sini. Tanyakan semua kebingungan
-            kamu lewat channel diskusi kita di Github dan Discord.
+            kamu lewat channel diskusi kita di
+            <a class="font-semibold text-purple-100" href={FORUM_LINKS[0].link}
+              >Github</a
+            > dan
+            <a class="font-semibold text-purple-100" href={FORUM_LINKS[1].link}
+              >Discord</a
+            >.
           </p>
         </div>
       </section>
@@ -191,5 +198,6 @@ import { linkTo } from "../utils/url";
 
     <Footer class="max-w-screen-xl" />
     <script src="../scripts/home.ts"></script>
+    <script src="../scripts/link.ts"></script>
   </body>
 </html>

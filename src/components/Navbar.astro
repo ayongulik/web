@@ -3,6 +3,7 @@ import Logo from "./Logo.astro";
 import NavbarLink from "./NavbarLink.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import { linkTo } from "../utils/url";
+import { FORUM_LINKS } from "../config";
 
 interface Props {
   enableBorder?: boolean;
@@ -239,12 +240,6 @@ const {
                 <NavbarLink href={linkTo("#tracks")}>Track Belajar</NavbarLink>
               </li>
 
-              <li class="flex">
-                <NavbarLink href={linkTo("online-editor")}>
-                  Editor Online
-                </NavbarLink>
-              </li>
-
               <span class="bg-gray-200 w-[0.1rem] my-4 mx-3" />
             </div>
           </>
@@ -254,10 +249,49 @@ const {
               <NavbarLink href={linkTo("#tracks")}>Track Belajar</NavbarLink>
             </li>
 
-            <li class="flex">
-              <NavbarLink href={linkTo("online-editor")}>
-                Editor Online
-              </NavbarLink>
+            <li class="flex relative">
+              <button
+                id="button-tanya"
+                class="text-sm inline-flex items-center gap-1 font-semibold hover:text-purple-700 p-4"
+              >
+                Tanya-Tanya
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m8 10 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              <div
+                id="popup-tanya"
+                class="absolute top-16 right-2 rounded-lg border border-gray-200 shadow-lg p-4 bg-white min-w-24 hidden"
+              >
+                <ul class="flex flex-col gap-4">
+                  {FORUM_LINKS.map((item) => (
+                    <li>
+                      <a
+                        class="flex items-center gap-2 text-gray-800 hover:text-purple-800"
+                        href={item.link}
+                        target="_blank"
+                      >
+                        <Fragment set:html={item.icon} />
+                        <span class="text-sm">{item.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </li>
           </div>
         )
