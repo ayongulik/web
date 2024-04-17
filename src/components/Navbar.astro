@@ -208,12 +208,10 @@ const {
               </div>
             </li>
 
-            <li class="flex">
-              <a
+            <li class="flex relative">
+              <button
+                id="button-tanya"
                 class="p-[0.875rem] hover:text-purple-800"
-                href="https://github.com/orgs/ayongulik/discussions"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <svg
                   class="w-6 h-6"
@@ -232,7 +230,32 @@ const {
                     d="M16 10.5h.01m-4.01 0h.01M8 10.5h.01M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-6.6a1 1 0 0 0-.69.275l-2.866 2.723A.5.5 0 0 1 8 18.635V17a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                   />
                 </svg>
-              </a>
+              </button>
+
+              <div
+                id="popup-tanya"
+                class="absolute top-16 right-2 rounded-lg border border-gray-200 shadow-lg p-4 bg-white min-w-24 hidden"
+              >
+                <p class="text-sm mb-4 whitespace-nowrap">
+                  Bingung? Tanya kita di:
+                </p>
+
+                <ul class="flex flex-col gap-4">
+                  {FORUM_LINKS.map((item) => (
+                    <li>
+                      <a
+                        class="flex items-center gap-2 text-gray-800 hover:text-purple-800"
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Fragment set:html={item.icon} />
+                        <span class="text-sm">{item.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </li>
 
             <div class="hidden sm:flex">
@@ -277,6 +300,10 @@ const {
                 id="popup-tanya"
                 class="absolute top-16 right-2 rounded-lg border border-gray-200 shadow-lg p-4 bg-white min-w-24 hidden"
               >
+                <p class="text-sm mb-4 whitespace-nowrap">
+                  Bingung? Tanya kita di:
+                </p>
+
                 <ul class="flex flex-col gap-4">
                   {FORUM_LINKS.map((item) => (
                     <li>
@@ -284,6 +311,7 @@ const {
                         class="flex items-center gap-2 text-gray-800 hover:text-purple-800"
                         href={item.link}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Fragment set:html={item.icon} />
                         <span class="text-sm">{item.name}</span>
