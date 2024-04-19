@@ -270,19 +270,11 @@ const {
             </div>
           </>
         ) : (
-          <div class="flex">
-            <li class="flex">
-              <NavbarLink class="hover:no-underline" href={linkTo("#tracks")}>
-                <span class="bg-purple-600 text-white px-3 py-2 rounded-lg hover:bg-purple-500">
-                  Track Belajar
-                </span>
-              </NavbarLink>
-            </li>
-
-            <li class="flex relative">
+          <div class="flex gap-4 px-4">
+            <li class="relative hidden md:flex">
               <button
                 id="button-tanya"
-                class="text-sm inline-flex items-center gap-1 font-semibold p-4 font-heading hover:text-purple-700 hover:underline"
+                class="text-sm inline-flex items-center font-semibold py-4 font-heading hover:text-purple-700 hover:underline"
               >
                 Tanya-Tanya
                 <svg
@@ -327,6 +319,13 @@ const {
                   ))}
                 </ul>
               </div>
+            </li>
+            <li class="flex">
+              <NavbarLink class="hover:no-underline" href={linkTo("#tracks")}>
+                <span class="bg-purple-600 text-white px-3 py-2 rounded-lg hover:bg-purple-500">
+                  Track Belajar
+                </span>
+              </NavbarLink>
             </li>
           </div>
         )
