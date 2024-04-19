@@ -2,7 +2,7 @@
 import { linkTo } from "../utils/url";
 
 interface Props {
-  variant?: "lg" | "md";
+  variant?: "xl" | "lg" | "md";
   class?: string;
 }
 
@@ -12,10 +12,11 @@ const { variant = "md", class: customClass = "" } = Astro.props;
 <a
   href={linkTo("")}
   class:list={[
-    "inline-flex font-semibold text-white rounded-md bg-purple-800 -skew-y-3 hover:-skew-y-1 px-2 py-1 font-heading",
+    "inline-flex font-extrabold text-purple-900 rounded-md -skew-y-3 hover:-skew-y-1 py-1 font-heading tracking-tighter",
     { "text-lg": variant === "lg" },
+    { "text-xl": variant === "xl" },
     customClass,
   ]}
 >
-  Ayo Ngulik<span class="text-yellow-500">!</span>
+  Ayo Ngulik<span class="text-amber-500 text-[1.15em]">!</span>
 </a>
