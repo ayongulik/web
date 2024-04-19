@@ -13,12 +13,12 @@ const tracks = skills.map((skill) => skill.slug) as Track[];
 const selectedSkill = skills[0].slug;
 ---
 
-<div class="mx-auto flex items-center flex-col mb-6 lg:mb-8">
+<div class="mx-auto flex md:items-center flex-col mb-4 md:mb-10">
   <label class="block mb-1" for="skill-select">
     Belajar pemrograman untuk:
   </label>
 
-  <div class="max-w-48 mx-auto">
+  <div class="max-w-48 md:mx-auto">
     <select
       id="skill-select"
       class="bg-gray-50 border-2 border-gray-200 rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5"
@@ -35,9 +35,7 @@ const selectedSkill = skills[0].slug;
 </div>
 
 <div class="relative overflow-x-auto">
-  <div
-    class="max-w-screen-lg min-w-[1024px] mx-auto text-left text-md lg:text-lg"
-  >
+  <div class="max-w-screen-lg mx-auto text-left">
     <ol>
       {
         tracks.map((key) => (
@@ -52,3 +50,7 @@ const selectedSkill = skills[0].slug;
     </ol>
   </div>
 </div>
+
+<p class="text-left md:text-center text-sm mt-8">
+  * Beberapa course dan materi masih dalam tahap pengembangan.
+</p>

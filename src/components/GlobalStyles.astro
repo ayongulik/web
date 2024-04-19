@@ -24,7 +24,7 @@
 
   /** Custom styles */
   .homepage-content :target {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: -2rem;
   }
 
   .course-content :target {
@@ -97,18 +97,6 @@
     position: absolute;
     top: 0.875rem;
     right: 0.75rem;
-  }
-
-  [data-section]:before {
-    @apply absolute font-extrabold;
-
-    content: attr(data-section);
-    top: -2rem;
-    left: -1rem;
-    line-height: 0.75;
-    font-size: 12rem;
-    z-index: 0;
-    opacity: 0.15;
   }
 
   button[data-with-loading] svg:first-child {

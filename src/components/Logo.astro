@@ -12,7 +12,7 @@ const { variant = "md", class: customClass = "" } = Astro.props;
 <a
   href={linkTo("")}
   class:list={[
-    "inline-flex font-semibold text-white rounded-md bg-purple-800 -skew-y-3 hover:-skew-y-1 px-2 py-1",
+    "inline-flex font-semibold text-white rounded-md bg-purple-800 -skew-y-3 hover:-skew-y-1 px-2 py-1 font-heading",
     { "text-lg": variant === "lg" },
     customClass,
   ]}
