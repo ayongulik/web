@@ -146,25 +146,68 @@ function getPrevNextNavigation(
             prev && (
               <a
                 href={linkTo(prev.slug)}
-                class="inline-block bg-white px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
+                class="inline-flex text-right items-center gap-6 bg-white px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
                 data-link-search
               >
-                <p class="text-sm mb-1">Sebelumnya</p>
-                <p class="text-purple-900 font-semibold">{prev.data.title}</p>
+                <svg
+                  class="w-5 h-5 text-purple-800"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m15 19-7-7 7-7"
+                  />
+                </svg>
+
+                <span class="flex-1">
+                  <p class="text-sm mb-1">Sebelumnya</p>
+                  <p class="text-purple-900 font-semibold font-heading">
+                    {prev.data.title}
+                  </p>
+                </span>
               </a>
             )
           }
         </div>
-        <div class="crouse-next-nav text-center md:text-right px-4">
+        <div class="course-next-nav text-center md:text-right px-4">
           {
             next && (
               <a
                 href={linkTo(next.slug)}
-                class="inline-block bg-white px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
+                class="inline-flex text-left items-center gap-6 bg-white px-4 py-3 rounded-lg shadow border border-purple-800 hover:bg-purple-100"
                 data-link-search
               >
-                <p class="text-sm mb-1">Selanjutnya</p>
-                <p class="text-purple-900 font-semibold">{next.data.title}</p>
+                <span class="flex-1">
+                  <p class="text-sm mb-1">Selanjutnya</p>
+                  <p class="text-purple-900 font-semibold font-heading">
+                    {next.data.title}
+                  </p>
+                </span>
+                <svg
+                  class="w-5 h-5 text-purple-800"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m9 5 7 7-7 7"
+                  />
+                </svg>
               </a>
             )
           }
