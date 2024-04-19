@@ -36,12 +36,17 @@ function dropdownClick(buttonDropdownId: string, dropdownId: string) {
 
       if (isButtonClicked) {
         popup?.classList.toggle("hidden");
+        button.setAttribute(
+          "aria-expanded",
+          button.getAttribute("aria-expanded") === "true" ? "false" : "true",
+        );
       } else {
         const popupActive = !popup?.classList.contains("hidden");
         const isClickOutside = !popup?.contains(target);
 
         if (popupActive && isClickOutside) {
           popup?.classList.add("hidden");
+          button.setAttribute("aria-expanded", "false");
         }
       }
     }

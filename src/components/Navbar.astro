@@ -1,7 +1,6 @@
 ---
 import Logo from "./Logo.astro";
 import NavbarLink from "./NavbarLink.astro";
-import Breadcrumb from "./Breadcrumb.astro";
 import { linkTo } from "../utils/url";
 import { FORUM_LINKS } from "../config";
 
@@ -247,13 +246,13 @@ const {
                   {FORUM_LINKS.map((item) => (
                     <li>
                       <a
-                        class="flex items-center gap-2 text-gray-800 hover:text-purple-800"
+                        class="flex items-center gap-3 hover:text-purple-800"
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Fragment set:html={item.icon} />
-                        <span class="text-sm">{item.name}</span>
+                        <span class="text-sm font-semibold">{item.name}</span>
                       </a>
                     </li>
                   ))}
@@ -274,11 +273,14 @@ const {
             <li class="relative hidden md:flex">
               <button
                 id="button-tanya"
-                class="text-sm inline-flex items-center font-semibold py-4 font-heading hover:text-purple-700 hover:underline"
+                class="dropdown text-sm inline-flex items-center font-semibold py-4 font-heading hover:text-purple-700 hover:underline"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
                 Tanya-Tanya
                 <svg
-                  class="w-5 h-5"
+                  class="w-5 h-5 transition-transform ease-in"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -298,6 +300,7 @@ const {
               <div
                 id="popup-tanya"
                 class="absolute top-16 right-2 rounded-lg border border-gray-200 shadow-lg p-4 bg-white min-w-24 hidden"
+                aria-labelledby="button-tanya"
               >
                 <p class="text-sm mb-4 whitespace-nowrap">
                   Bingung? Tanya kita di:
@@ -307,13 +310,13 @@ const {
                   {FORUM_LINKS.map((item) => (
                     <li>
                       <a
-                        class="flex items-center gap-2 text-gray-800 hover:text-purple-800"
+                        class="flex items-center gap-3 hover:text-purple-800"
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Fragment set:html={item.icon} />
-                        <span class="text-sm">{item.name}</span>
+                        <span class="text-sm font-semibold">{item.name}</span>
                       </a>
                     </li>
                   ))}

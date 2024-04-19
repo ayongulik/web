@@ -24,7 +24,7 @@
 
   /** Custom styles */
   .course-content :target {
-    scroll-margin-top: 8rem;
+    scroll-margin-top: 4rem;
   }
 
   .copy-code {
@@ -32,6 +32,10 @@
 
     top: 0.5rem;
     right: 0.5rem;
+  }
+
+  .dropdown[aria-expanded="true"] > svg {
+    transform: rotate(-180deg);
   }
 
   ::-moz-selection {
