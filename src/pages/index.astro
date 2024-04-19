@@ -90,12 +90,14 @@ const productHighlights = [
     />
     <GlobalStyles />
   </head>
-  <body>
-    <main class="bg-slate-100 min-h-screen homepage-content">
+  <body class="relative bg-slate-100">
+    <div class="bg-slate-100/75 sticky top-0 z-10 backdrop-blur-sm">
       <div class="max-w-screen-xl mx-auto">
         <Navbar enableBorder={false} sticky={false} transparent />
       </div>
+    </div>
 
+    <main class="homepage-content">
       <header class="max-w-screen-xl mx-auto mb-24 md:mb-32">
         <article class="px-4 max-w-screen-md">
           <h1
@@ -192,9 +194,10 @@ const productHighlights = [
           <p
             class="text-lg lg:text-xl text-left md:text-center max-w-screen-md mx-auto mb-10 text-balance"
           >
-            Tamatkan <b class="font-semibold">dua course pertama</b> untuk mendapatkan
-            skill dasar. Pelajari course tambahan untuk meningkatkan skill kamu lebih
-            jauh lagi!
+            Tamatkan <b class="font-semibold text-purple-900"
+              >dua course pertama</b
+            > untuk mendapatkan skill dasar. Pelajari course tambahan untuk meningkatkan
+            skill kamu lebih jauh lagi!
           </p>
           <LearningPath />
         </div>

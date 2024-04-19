@@ -10,6 +10,7 @@ interface Props {
   enableCourseMode?: boolean;
   transparent?: boolean;
   sticky?: boolean;
+  class?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   enableCourseMode = false,
   sticky = true,
   transparent = false,
+  class: classes,
 } = Astro.props;
 ---
 
@@ -26,6 +28,7 @@ const {
     { "sticky top-0 left-0": sticky },
     { "box-border border-b-2 border-gray-200": enableBorder },
     { "bg-white": !transparent },
+    classes,
   ]}
 >
   <section class="flex-none flex px-4">
@@ -269,7 +272,11 @@ const {
         ) : (
           <div class="flex">
             <li class="flex">
-              <NavbarLink href={linkTo("#tracks")}>Track Belajar</NavbarLink>
+              <NavbarLink class="hover:no-underline" href={linkTo("#tracks")}>
+                <span class="bg-purple-600 text-white px-3 py-2 rounded-lg hover:bg-purple-500">
+                  Track Belajar
+                </span>
+              </NavbarLink>
             </li>
 
             <li class="flex relative">

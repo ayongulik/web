@@ -14,7 +14,7 @@ const { data, track } = Astro.props;
   data.map((item) => (
     <li
       class="grid grid-flow-col items-center my-4 gap-x-4"
-      style={{ "grid-template-columns": "4rem repeat(8, minmax(0, 1fr))" }}
+      style={{ "grid-template-columns": "3.5rem repeat(8, minmax(0, 1fr))" }}
     >
       <div class="col-span-1 text-left flex items-center h-full">
         <span>Level {item.level}</span>
@@ -37,14 +37,14 @@ const { data, track } = Astro.props;
         ) : (
           <span
             class:list={[
-              "col-span-4 relative flex gap-2 items-center p-3 font-semibold bg-gray-200 h-full shadow rounded-lg border border-gray-200 text-gray-500 text-md md:text-lg",
+              "col-span-4 relative flex gap-2 md:items-center p-3 font-semibold bg-gray-200 h-full shadow rounded-lg border border-gray-200 text-gray-500 text-md md:text-lg",
               {
                 "border-gray-500 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-gray-500 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded after:z-10":
                   course.primary_course,
               },
             ]}
           >
-            <span class="flex-none">
+            <span class="flex-none hidden md:block">
               <svg
                 class="w-6 h-6"
                 aria-hidden="true"
