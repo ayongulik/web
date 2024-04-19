@@ -25,7 +25,7 @@ const { data, track } = Astro.props;
           <a
             href={linkTo(course.path) + `?track=${track}`}
             class:list={[
-              "col-span-4 relative z-0 p-3 font-semibold bg-white shadow rounded-lg border border-gray-200 h-full text-purple-900 text-md md:text-lg hover:bg-purple-100",
+              "col-span-4 relative z-0 p-3 font-semibold font-heading bg-white shadow rounded-lg border border-gray-200 h-full text-purple-900 text-md md:text-lg hover:bg-purple-100",
               {
                 "border-purple-800 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-purple-900 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded":
                   course.primary_course,
@@ -37,7 +37,7 @@ const { data, track } = Astro.props;
         ) : (
           <span
             class:list={[
-              "col-span-4 relative flex gap-2 md:items-center p-3 font-semibold bg-gray-200 h-full shadow rounded-lg border border-gray-200 text-gray-500 text-md md:text-lg",
+              "col-span-4 relative flex gap-2 md:items-center p-3 font-semibold font-heading bg-gray-200 h-full shadow rounded-lg border border-gray-200 text-gray-500 text-md md:text-lg",
               {
                 "border-gray-500 after:content-['dasar'] after:absolute after:right-[-0.5rem] after:top-[-0.5rem] after:text-[10px] after:bg-gray-500 after:text-white after:text-normal after:leading-none after:uppercase after:p-1 after:rounded after:z-10":
                   course.primary_course,
