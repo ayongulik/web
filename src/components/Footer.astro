@@ -1,6 +1,6 @@
 ---
 import Logo from "./Logo.astro";
-import { SITE_TITLE } from "../config";
+import { SITE_TITLE, FORUM_LINKS } from "../config";
 
 interface Props {
   class?: string;
@@ -10,19 +10,51 @@ const { class: customClass = "" } = Astro.props;
 ---
 
 <footer class="bg-slate-300">
-  <div
-    class:list={["max-w-screen-lg mx-auto px-4 py-10 flex gap-4", customClass]}
-  >
-    <section class="flex-1">
+  <div class:list={["max-w-screen-lg mx-auto px-4 py-10", customClass]}>
+    <section class="mb-14">
+      <ul class="flex flex-row gap-5 text-sm">
+        {
+          FORUM_LINKS.map((item) => (
+            <li>
+              <a
+                class="flex items-center gap-1 hover:underline"
+                href={item.link}
+                target="_blank"
+              >
+                <span>{item.name}</span>
+                <svg
+                  class="w-3 h-3 text-gray-800"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <>
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </>
+                </svg>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="mb-4">
       <Logo variant="lg" class="mb-6" />
-      <p class="mb-10 text-pretty">
-        Raih skill pemrograman, dan siap menghadapi tantangan teknologi masa
+      <p class="text-sm text-pretty">
+        Raih skill pemrograman, dan siap menghadapi tantangan teknologi di masa
         depan 🚀
       </p>
-      <p class="text-sm">
-        Copyright © {SITE_TITLE} 2024. All rights reserved.
-      </p>
     </section>
-    <section class="flex-none text-sm"></section>
+    <p class="text-sm">
+      Copyright © {SITE_TITLE} 2024. All rights reserved.
+    </p>
   </div>
 </footer>

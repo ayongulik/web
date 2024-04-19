@@ -5,7 +5,7 @@ export const FORUM_GITHUB_URL = "https://github.com/orgs/ayongulik/discussions";
 export const FORUM_DISCORD_URL = "https://discord.gg/hag79a9j";
 export const FORUM_LINKS = [
   {
-    name: "Github",
+    name: "Forum Github",
     link: FORUM_GITHUB_URL,
     icon: `
     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
