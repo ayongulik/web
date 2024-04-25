@@ -98,10 +98,10 @@ const productHighlights = [
     </div>
 
     <main class="homepage-content">
-      <header class="max-w-screen-xl text-center mx-auto mb-24 md:mb-32">
+      <header class="max-w-screen-xl text-center mx-auto my-28 md:my-32">
         <article class="px-4 mx-auto">
           <h1
-            class="text-5xl md:text-6xl font-bold tracking-tight leading-none mt-24 mb-6 text-balance font-heading"
+            class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-none mb-6 text-balance font-heading"
           >
             <span>Semua bisa belajar</span>{" "}
             <span
@@ -125,11 +125,11 @@ const productHighlights = [
       </header>
 
       <section
-        class="my-14 flex flex-col md:flex-row gap-6 md:gap-4 max-w-screen-md px-4 mx-auto md:my-16 lg:my-20"
+        class="my-14 flex flex-col sm:flex-row gap-6 md:gap-4 max-w-screen-lg px-4 mx-auto md:my-16 lg:my-20"
       >
         <div class="flex-1">
           <h2
-            class=`relative text-2xl md:text-4xl font-semibold text-gray-900 mx-auto mb-4 md:mb-6 tracking-tight font-heading`
+            class=`relative text-2xl md:text-3xl font-semibold text-gray-900 mx-auto mb-4 md:mb-6 tracking-tight font-heading`
           >
             Banyak sumber di internet, tapi belajar pemrograman tetap saja
             "membingungkan".
@@ -147,9 +147,7 @@ const productHighlights = [
         </figure>
       </section>
 
-      <section
-        class="py-14 md:py-16 lg:py-24 flex flex-col bg-slate-300 text-gray-800"
-      >
+      <section class="py-14 md:py-16 flex flex-col bg-slate-300 text-gray-800">
         {
           productHighlights.map((item, index) => (
             <div
@@ -158,7 +156,7 @@ const productHighlights = [
                 { "mb-16 md:mb-20": index < productHighlights.length - 1 },
               ]}
             >
-              <h2 class="text-2xl md:text-4xl font-heading font-semibold max-w-screen-md mb-4 md:mb-6 text-gray-900 tracking-tight text-balance">
+              <h2 class="text-2xl md:text-3xl font-heading font-semibold max-w-screen-md mb-4 md:mb-6 text-gray-900 tracking-tight text-balance">
                 {item.title}
               </h2>
               <p
@@ -170,14 +168,14 @@ const productHighlights = [
         }
       </section>
 
-      <section id="tracks" class="py-14 md:py-16 lg:py-20">
+      <section id="tracks" class="py-14 md:py-16">
         <div class="max-w-screen-xl mx-auto px-4">
           <img
-            class="max-w-[200px] mb-4 md:mx-auto"
+            class="max-w-[250px] mb-4 md:mx-auto"
             src={linkTo("images/illus-2.png")}
           />
           <h2
-            class="text-2xl md:text-4xl font-heading font-semibold text-gray-900 text-left md:text-center max-w-screen-md mx-auto mb-6 md:mb-10 tracking-tight text-balance"
+            class="text-2xl md:text-3xl font-heading font-semibold text-gray-900 text-left md:text-center max-w-screen-md mx-auto mb-6 md:mb-10 tracking-tight text-balance"
           >
             Pilih skill yang kamu mau, lalu ikuti track belajarnya.
           </h2>
