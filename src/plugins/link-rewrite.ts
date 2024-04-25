@@ -8,7 +8,7 @@ export function RemarkLinkRewrite(options = { replacer: defaultReplacer }) {
     const nodes: any = [];
 
     visit(tree, (node) => {
-      if (node.type === "link") {
+      if (node.type === "link" || node.type === "image") {
         nodes.push(node);
       }
     });
