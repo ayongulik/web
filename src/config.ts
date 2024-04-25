@@ -1,5 +1,5 @@
-export const SITE_URL = "https://ayongulik.github.io";
-export const BASE_PATH = "/web";
+export const SITE_URL = "https://ayongulik.com";
+export const BASE_PATH = "";
 export const SITE_TITLE = "Ayo Ngulik!";
 export const FORUM_GITHUB_URL = "https://github.com/orgs/ayongulik/discussions";
 export const FORUM_DISCORD_URL = "https://discord.gg/hag79a9j";
