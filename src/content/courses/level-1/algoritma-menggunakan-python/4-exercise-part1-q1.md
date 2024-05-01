@@ -1,7 +1,7 @@
 ---
 title: "Exercise Part 1 - Q1"
 type: "exercise"
-tags: ["level-0", "python"]
+tags: ["level-1", "python"]
 enableTestCases: true
 chapter: 1
 ---

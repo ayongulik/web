@@ -1,6 +1,6 @@
 ---
 title: "Algoritma Menggunakan Python"
-ref: "level-0/algoritma-menggunakan-python"
+ref: "level-1/algoritma-menggunakan-python"
 ---
 
 Pada course ini, kita akan belajar dasar-dasar pemrograman menggunakan Python agar siap dalam mengaplikasikan Python untuk berbagai macam kebutuhan.

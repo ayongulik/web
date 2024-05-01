@@ -39,9 +39,9 @@ function initPageNav() {
   if (track && track.length > 1) {
     const currentLevel = getLevelFromUrl(currentUrl.pathname);
 
-    const prevLevel = currentLevel > 0 ? track[currentLevel - 1] : null;
+    const prevLevel = currentLevel > 1 ? track[currentLevel - 1] : null;
     const nextLevel =
-      currentLevel < track.length ? track[currentLevel + 1] : null;
+      currentLevel <= track.length ? track[currentLevel + 1] : null;
 
     if (prevLevel) {
       sideNavbar.innerHTML =

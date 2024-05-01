@@ -29,30 +29,19 @@ export const FORUM_LINKS = [
 export const LEARNING_TRACKS = {
   "analisis-data": [
     {
-      level: 0,
+      level: 1,
       courses: [
         {
           title: "Algoritma Menggunakan Python",
-          path: "level-0/algoritma-menggunakan-python",
+          path: "level-1/algoritma-menggunakan-python",
           available: true,
           primary_course: true,
         },
-      ],
-    },
-    {
-      level: 1,
-      courses: [
         {
           title: "Pengolahan & Visualisasi Data dengan Python",
           path: "level-1/pengolahan-dan-visualisasi-data-dengan-python",
           available: true,
           primary_course: true,
-        },
-        {
-          title: "Relational Database & SQL",
-          path: "",
-          available: false,
-          primary_course: false,
         },
       ],
     },
@@ -60,11 +49,22 @@ export const LEARNING_TRACKS = {
       level: 2,
       courses: [
         {
+          title: "Relational Database & SQL",
+          path: "",
+          available: false,
+          primary_course: false,
+        },
+        {
           title: "Statistika & Machine Learning Dasar",
           path: "",
           available: false,
           primary_course: false,
         },
+      ],
+    },
+    {
+      level: 3,
+      courses: [
         {
           title: "Data Wrangling & Scraping",
           path: "",
@@ -76,7 +76,7 @@ export const LEARNING_TRACKS = {
   ],
   "web-dev": [
     {
-      level: 0,
+      level: 1,
       courses: [
         {
           title: "HTML, CSS & Javascript Dasar",
@@ -84,22 +84,11 @@ export const LEARNING_TRACKS = {
           available: false,
           primary_course: true,
         },
-      ],
-    },
-    {
-      level: 1,
-      courses: [
         {
           title: "Pembuatan Web Service dengan Node.js",
           path: "",
           available: false,
           primary_course: true,
-        },
-        {
-          title: "Relational Database & SQL",
-          path: "",
-          available: false,
-          primary_course: false,
         },
       ],
     },
@@ -107,11 +96,22 @@ export const LEARNING_TRACKS = {
       level: 2,
       courses: [
         {
+          title: "Relational Database & SQL",
+          path: "",
+          available: false,
+          primary_course: false,
+        },
+        {
           title: "RESTful API dengan Node.js",
           path: "",
           available: false,
           primary_course: false,
         },
+      ],
+    },
+    {
+      level: 3,
+      courses: [
         {
           title: "Performa & Keamanan Web Dasar",
           path: "",

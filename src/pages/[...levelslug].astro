@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import { getGroupedStaticPaths } from "../utils/collection";
 import { removeStripes } from "../utils/string";
 import { linkTo } from "../utils/url";
+import { LEARNING_TRACKS } from "../config";
 
 import type { CollectionEntry } from "astro:content";
 
@@ -38,6 +39,12 @@ const pageEntry = await getEntry("pages", slug);
 const { Content } = await pageEntry.render();
 
 const title = removeStripes(slug);
+
+// TODO: render courses based on track
+const courses =
+  LEARNING_TRACKS["analisis-data"].find(
+    (item) => `level-${item.level}` === slug,
+  )?.courses ?? [];
 ---
 
 <BaseLayout>
@@ -56,10 +63,10 @@ const title = removeStripes(slug);
     <nav class="mt-8">
       <ol class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {
-          pageEntry?.data?.courses?.map((course) => (
+          courses.map((course) => (
             <li>
               <a
-                href={linkTo(course.slug)}
+                href={linkTo(`${course.path}/?track=analisis-data`)}
                 class="block p-6 font-semibold text-lg bg-white border border-gray-200 rounded-lg shadow hover:bg-purple-100"
                 data-link-search
               >
