@@ -1,8 +1,6 @@
 import { LEARNING_TRACKS, BASE_PATH } from "../config";
+import type { Course, TrackCourse, Track } from "../config";
 import { linkTo } from "../utils/url";
-
-type Track = keyof typeof LEARNING_TRACKS;
-type Level = (typeof LEARNING_TRACKS)["analisis-data"][0];
 
 const sideNavbarId = "side-navbar";
 const sideNavbarCurrentSelector = ".side-navbar-current";
@@ -35,24 +33,45 @@ function initPageNav() {
   const trackParams = currentUrl.searchParams.get("track") as Track;
   const track = LEARNING_TRACKS[trackParams];
 
-  // add prev and next level menus based on track
+  // add prev and next course menus based on track
   if (track && track.length > 1) {
     const currentLevel = getLevelFromUrl(currentUrl.pathname);
+    const currentCourses =
+      track.find((item) => item.level === currentLevel)?.courses ?? [];
+    const currentCourseIndex =
+      currentCourses.findIndex((course) =>
+        currentUrl.pathname.includes(course.path),
+      ) ?? 0;
 
-    const prevLevel = currentLevel > 1 ? track[currentLevel - 1] : null;
-    const nextLevel =
-      currentLevel <= track.length ? track[currentLevel + 1] : null;
+    // level starts from 1
+    const prevLevelIndex = currentLevel > 1 ? currentLevel - 2 : null;
+    const nextLevelIndex = currentLevel <= track.length ? currentLevel : null;
 
-    if (prevLevel) {
+    let prevCourse, nextCourse;
+    if (currentCourseIndex > 0) {
+      prevCourse = currentCourses[currentCourseIndex - 1];
+    } else if (prevLevelIndex != null) {
+      prevCourse = track[prevLevelIndex].courses.at(-1);
+    }
+
+    if (currentCourseIndex < currentCourses.length - 1) {
+      nextCourse = currentCourses[currentCourseIndex + 1];
+    } else if (nextLevelIndex != null) {
+      nextCourse = track[nextLevelIndex].courses[0];
+    }
+
+    if (prevCourse) {
       sideNavbar.innerHTML =
-        `<div class="mb-6">${navTemplate(prevLevel)}</div>` +
+        `<div class="mb-6">${navTemplate(prevCourse, track)}</div>` +
         sideNavbar.innerHTML;
     }
 
-    if (nextLevel) {
-      sideNavbar.innerHTML += `<div class="mt-6">${navTemplate(nextLevel, !!nextLevel.courses.find((course) => !course.available))}</div>`;
+    if (nextCourse) {
+      sideNavbar.innerHTML += `<div class="mt-6">${navTemplate(nextCourse, track)}</div>`;
     }
   }
+
+  sideNavbar.innerHTML += `<p class="text-xs pt-2">*course dengan tanda lock belum tersedia</p>`;
 
   // set current active nav visible
   const currentActiveNav = document.querySelector(
@@ -66,26 +85,26 @@ function initPageNav() {
   }
 }
 
-function navTemplate(levelItem: Level, bottomNote = false) {
+function navTemplate(course: Course, track: TrackCourse[]) {
   const navLinkClass =
     "p-4 text-sm block border-b-2 border-b-slate-200 overflow-hidden whitespace-nowrap text-ellipsis";
   const searchParam = window.location.search;
+  const level = track.find((item) =>
+    item.courses.map((course) => course.path).includes(course.path),
+  )?.level as number;
 
   return `<nav class="bg-slate-50 shadow rounded-lg">
     <div class="p-4 rounded-t-lg bg-slate-200">
-      <p class="text-xs capitalize mb-1">Level ${levelItem.level}</p>
+      <p class="text-xs capitalize mb-1">Level ${level}</p>
     </div>
     <ol class="rounded-b-lg">
-    ${levelItem.courses
-      .map(({ title, path, available }) => {
-        return available
-          ? `<li><a href=${linkTo(path + searchParam)} class="${joinClass([navLinkClass, "hover:underline"])}">${title}</a></li>`
-          : `<li><p class="${joinClass([navLinkClass, "flex gap-2 items-center text-slate-500"])}">${iconLock}${title}</p></li>`;
-      })
-      .join("")}
+    ${
+      course.available
+        ? `<li><a href=${linkTo(course.path + searchParam)} class="${joinClass([navLinkClass, "hover:underline"])}">${course.title}</a></li>`
+        : `<li><p class="${joinClass([navLinkClass, "flex gap-2 items-center text-slate-500"])}">${iconLock}${course.title}</p></li>`
+    }
     </ol>
   </nav>
-  ${bottomNote ? '<p class="text-xs pt-2">*course dengan tanda lock belum tersedia</p>' : ""}
   `;
 }
 

@@ -26,7 +26,23 @@ export const FORUM_LINKS = [
   },
 ];
 
-export const LEARNING_TRACKS = {
+export interface Course {
+  title: string;
+  path: string;
+  available: boolean;
+  primary_course: boolean;
+}
+
+export interface TrackCourse {
+  level: number;
+  courses: Array<Course>;
+}
+
+export interface LearningTracks {
+  [key: string]: Array<TrackCourse>;
+}
+
+export const LEARNING_TRACKS: LearningTracks = {
   "analisis-data": [
     {
       level: 1,
@@ -122,3 +138,5 @@ export const LEARNING_TRACKS = {
     },
   ],
 };
+
+export type Track = keyof typeof LEARNING_TRACKS;
