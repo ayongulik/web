@@ -8,36 +8,34 @@ import { FORUM_LINKS } from "../config";
 
 const productHighlights = [
   {
-    title: "Alur pembelajaran terstruktur 🧗",
+    icon: "🧗",
+    title: "Alur pembelajaran terstruktur",
     description: `
-      Ingin bisa pemrograman untuk analisis data atau develop software? 
+      Ingin bisa pemrograman untuk analisis data atau bikin software? 
       Belajar lebih mudah dengan mengikuti track pembelajaran yang fokus dan terstruktur.
     `,
   },
   {
-    title: "Materi belajar simpel dan padat 📖",
+    icon: "📖",
+    title: "Materi belajar simpel dan padat",
     description: `
       Belajar pemrograman susah dan ribet? 
-      Ikut <b class="font-semibold text-purple-800">dua course</b> saja sudah cukup bikin kamu bisa ngoding beneran!
+      Selesaikan <b class="font-semibold text-purple-800">dua course</b> saja sudah cukup bikin kamu bisa ngoding beneran!
     `,
   },
   {
-    title: "Exercise yang interaktif 🏋",
+    icon: "🆓",
+    title: "Bebas akses, bebas belajar, gratis!",
     description: `
-      Belajar dengan diselingi exercise untuk memperkuat pemahaman dan memperbanyak pengalaman <em>hands-on</em>.
-    `,
-  },
-  {
-    title: "Bebas akses, bebas belajar, gratis! 🆓",
-    description: `
-      Semua orang berhak mendapatkan akses sumber belajar yang berkualitas dengan mudah. 
+      Kamu berhak mendapatkan akses sumber belajar yang berkualitas dengan mudah. 
       Akses semua materi di platform ini gratis tanpa biaya.
     `,
   },
   {
-    title: "Kalau bingung, gak ditinggal begitu aja 😵",
+    icon: "😵",
+    title: "Masih bingung? Kamu gak sendirian",
     description: `
-      Meskipun ini platform gratisan, kita ingin kamu beneran bisa
+      Kita mau kamu beneran bisa
       pemrograman setelah belajar dari sini. Tanyakan semua kebingungan
       kamu lewat channel diskusi kita di
       <a class="font-semibold text-purple-800" href=${FORUM_LINKS[0].link}>Github</a> dan
@@ -101,7 +99,7 @@ const productHighlights = [
       <header class="max-w-screen-xl text-center mx-auto my-28 md:my-32">
         <article class="px-4 mx-auto">
           <h1
-            class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-none mb-6 text-balance font-heading"
+            class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-none mb-6 text-pretty font-heading"
           >
             <span>Semua bisa belajar</span>{" "}
             <span
@@ -125,18 +123,18 @@ const productHighlights = [
       </header>
 
       <section
-        class="my-14 flex flex-col sm:flex-row gap-6 md:gap-4 max-w-screen-lg px-4 mx-auto md:my-16 lg:my-20"
+        class="my-14 flex flex-col sm:flex-row gap-6 md:gap-4 max-w-screen-lg px-4 mx-auto md:my-12"
       >
         <div class="flex-1">
           <h2
             class=`relative text-2xl md:text-3xl font-semibold text-gray-900 mx-auto mb-4 md:mb-6 tracking-tight font-heading`
           >
-            Banyak sumber di internet, tapi belajar pemrograman tetap saja
-            "membingungkan".
+            Bingung belajar pemrograman? Jangan menyerah dulu...
           </h2>
-          <p class="text-lg lg:text-xl text-gray-800 text-pretty">
-            Semua materi pada platform ini dirancang khusus agar kamu dapat
-            menyerap skill pemrograman dengan lebih mudah.
+          <p class="text-lg md:text-xl text-gray-800 text-pretty">
+            Belajar pemrograman itu memang pusing, tapi akan lebih mudah kalau
+            ada panduan dan materi yang lebih simpel. Yuk kita belajar bareng di
+            sini!
           </p>
         </div>
         <figure>
@@ -147,25 +145,36 @@ const productHighlights = [
         </figure>
       </section>
 
-      <section class="py-14 md:py-16 flex flex-col bg-slate-300 text-gray-800">
-        {
-          productHighlights.map((item, index) => (
-            <div
-              class:list={[
-                "max-w-screen-xl mx-auto px-4 relative z-0 text-left md:text-center",
-                { "mb-16 md:mb-20": index < productHighlights.length - 1 },
-              ]}
-            >
-              <h2 class="text-2xl md:text-3xl font-heading font-semibold max-w-screen-md mb-4 md:mb-6 text-gray-900 tracking-tight text-balance">
-                {item.title}
-              </h2>
-              <p
-                class="text-lg lg:text-xl max-w-screen-md text-pretty"
-                set:html={item.description}
-              />
-            </div>
-          ))
-        }
+      <section class="py-14 md:py-16 bg-slate-300 text-gray-800">
+        <header
+          class="max-w-screen-lg mx-auto text-left md:text-center mb-12 md:mb-16 px-4"
+        >
+          <h2
+            class=`relative text-2xl md:text-3xl font-semibold text-gray-900  mb-4 md:mb-6 tracking-tight font-heading`
+          >
+            Gak pake ribet. Langsung belajar.
+          </h2>
+          <p class="text-lg md:text-xl text-gray-800 text-balance">
+            Semua materi di website ini dirancang khusus agar kamu dapat
+            menyerap skill pemrograman dengan lebih mudah. Bebas belajar kapan
+            aja!
+          </p>
+        </header>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-screen-lg mx-auto px-4 md:px-0"
+        >
+          {
+            productHighlights.map((item, index) => (
+              <div class="p-4 shadow bg-slate-200 rounded-lg">
+                <div class="text-xl md:text-2xl mb-2">{item.icon}</div>
+                <h2 class="text-xl md:text-2xl font-heading font-semibold mb-3 md:mb-4 text-gray-900 tracking-tight text-balance">
+                  {item.title}
+                </h2>
+                <p class="md:text-lg text-pretty" set:html={item.description} />
+              </div>
+            ))
+          }
+        </div>
       </section>
 
       <section id="tracks" class="py-14 md:py-16">
@@ -180,12 +189,12 @@ const productHighlights = [
             Pilih skill yang kamu mau, lalu ikuti track belajarnya.
           </h2>
           <p
-            class="text-lg lg:text-xl text-left md:text-center max-w-screen-md mx-auto mb-10 text-balance"
+            class="text-lg lg:text-xl text-left md:text-center max-w-screen-md mx-auto mb-10 text-pretty md:text-balance"
           >
             Tamatkan <b class="font-semibold text-purple-900"
               >dua course pertama</b
             > untuk mendapatkan skill dasar. Pelajari course tambahan untuk meningkatkan
-            skill kamu lebih jauh lagi!
+            skill kamu lebih jauh lagi.
           </p>
           <LearningPath />
         </div>
