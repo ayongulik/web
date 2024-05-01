@@ -1,5 +1,11 @@
-export const SITE_URL = "https://ayongulik.com";
-export const BASE_PATH = "";
+// Below config are taken from the astro.config.ts.
+// This way, the configs are also accessible both for build and client runtime.
+export const SITE_URL = import.meta.env.SITE;
+export const BASE_PATH =
+  import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL;
+
+console.log(SITE_URL, BASE_PATH);
+
 export const SITE_TITLE = "Ayo Ngulik!";
 export const FORUM_GITHUB_URL = "https://github.com/orgs/ayongulik/discussions";
 export const FORUM_DISCORD_URL = "https://discord.gg/hag79a9j";
