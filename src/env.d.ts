@@ -63,5 +63,6 @@ declare global {
       reNewAllInstance: () => void;
       setShareCallback: (fn: () => void) => void;
     };
+    dataLayer: any[];
   }
 }

@@ -1,7 +1,7 @@
 ---
 import GlobalStyles from "../components/GlobalStyles.astro";
 import Navbar from "../components/Navbar.astro";
-import { linkTo } from "../utils/url";
+import Meta from "../components/Meta.astro";
 import { SITE_TITLE } from "../config";
 
 const { frontmatter, enableCourseMode = false } = Astro.props;
@@ -18,38 +18,7 @@ const title = getTitle(frontmatter?.title);
 
 <html lang="id">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="content-language" content="id-id" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href={linkTo("apple-touch-icon.png")}
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href={linkTo("favicon-32x32.png")}
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href={linkTo("favicon-16x16.png")}
-    />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
+    <Meta title={title} description="" />
     <GlobalStyles />
     <slot name="head" />
   </head>
