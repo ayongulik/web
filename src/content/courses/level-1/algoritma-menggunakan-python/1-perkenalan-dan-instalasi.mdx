@@ -1,0 +1,98 @@
+---
+title: "Perkenalan dan Instalasi"
+type: "material"
+chapter: 1
+---
+
+import Alert from "src/components/Alert.astro";
+import Mermaid from "src/components/Mermaid.astro";
+
+# Perkenalan
+
+Selamat datang pada course 'Algoritma Menggunakan Python'!
+
+Di sini, kita akan belajar memahami dasar-dasar algoritma dan melakukan pemrograman dasar menggunakan Python.
+
+## Apa itu algoritma?
+
+Pada dasarnya, algoritma itu adalah sebuah **set instruksi** yang dapat dilakukan untuk menyelesaikan suatu masalah. Dalam konteks ini (dan dalam lingkup yang luas), set instruksi ini dibuat oleh manusia dan diberikan ke komputer untuk kemudian dijalankan atau dilakukan pemrosesan.
+
+## Mengapa belajar algoritma itu penting?
+
+Memahami konsep algoritma dengan baik itu akan membentuk kerangka berpikir yang logis dan sistematis, yang sesuai dengan cara kerja komputer. Efeknya adalah, kita bisa jadi lebih kreatif dalam membuat program yang kompleks.
+
+Selain itu, memahami dengan baik konsep algoritma itu akan membuat kita bisa belajar bahasa pemrograman baru dengan lebih mudah. Sebagai contoh, di bawah ini adalah perbandingan dari sintaks dari bahasa C dengan sintaks dari bahasa Python.
+
+```c
+// Bahasa C
+#include <stdio.h>
+
+int main(void)
+{
+    printf('Hello, world!\n');
+}
+```
+
+```python
+# Bahasa python
+def main():
+    print('Hello, world!')
+
+if __name__ == '__main__':
+    main()
+```
+
+_Perbedaan sintaks dari bahasa C dan Python untuk melakukan print 'Hello, world!'_
+
+Meskipun berbeda sintaks, namun secara umum strukturnya masih mirip-mirip. Setelah mengikuti course ini, kamu bukan hanya bisa pemrograman Python, tapi juga paham konsep algoritma yang bisa ditransfer saat belajar bahasa pemrograman lainnya.
+
+## Input dan output
+
+Algoritma itu gak akan jauh-jauh dari konsep input dan output.
+
+<Mermaid
+  content={`
+flowchart LR
+    classDef processState stroke-dasharray:3,fill:white
+    Input --> Algoritma:::processState
+    Algoritma --> Output
+`}
+/>
+
+Suatu algoritma dikatakan berhasil atau menyelesaikan masalah apabila algoritma tersebut dapat menghasilkan output yang dikehendaki sesuai dengan input yang diberikan. Sehingga, suatu masalah dapat diselesaikan dengan solusi algoritma yang berbeda-beda. Jadi, kalau nanti di bagian exercise kamu memiliki solusi yang berbeda dari kunci jawaban itu gak masalah.
+
+## Instalasi Python
+
+Pada dasarnya, Python itu bisa diinstal terpisah tanpa embel-embel dari program macem-macem. Nah sekarang, coba kita instal Python dengan mengikuti cara berikut ini (sesuai dengan OS komputer yang kamu gunakan):
+
+- Windows: Kunjungi https://www.python.org/downloads/ dan klik tombol download disana. Jalankan file `.exe` yang telah di-download, lalu ikuti instruksi pada dialog instalasi hingga selesai.
+- MacOS: Buka aplikasi terminal atau iTerm, lalu jalankan perintah `brew update && brew upgrade`. Setelah itu, jalankan perintah `brew install python3`. Tunggu hingga proses instalasi selesai.
+
+Untuk mengetes apakah instalasi program Python kamu sukses, ikuti langkah-langkah berikut:
+
+1. Buat file baru dengan nama `hello-world.py` dan copas kode Python `Hello, world!` dari contoh sebelumnya.
+2. Buka aplikasi terminal/command prompt pada komputer kamu. Ganti direktori ke lokasi dimana kamu menyimpan file `hello-world.py`.
+3. Jalan perintah `py hello-world.py` atau `python hello-world.py`. Apabila tidak muncul error dan tampil teks `Hello, world!` pada terminal, maka instalasi Python kamu telah berhasil!
+
+## Text Editor dan IDE
+
+Untuk memulai menulis kode Python, kita juga membutuhkan sebuah aplikasi text editor untuk menulis kode. Sebenarnya text editor yang sederhana seperti Notepad atau TextEdit itu sudah cukup. Tapi kalo pakai text editor yang terlalu sederhana, nanti kita bakal repot pindah-pindah dari text editor ke terminal/command prompt untuk mengetes program Python kita. Jadi, lebih simpel kalau kita pakai IDE saja.
+
+Ada banyak IDE bagus yang bisa kamu pakai. Tetapi untuk course ini, kami merekomendasikan [Spyder](https://www.spyder-ide.org/) karena di dalamnya sudah terinstal program Python dan memiliki fitur-fitur yang lengkap seperti syntax checking, error highlighting serta autocomplete.
+
+<Alert>
+  Untuk membuat project baru di Spyder, gunakan menu Projects > New Project.
+  Pilih opsi 'New directory', isi nama project yang diinginkan, lalu klik tombol
+  Create. Pada panel folder, kamu bisa buat file Python baru dengan klik kanan,
+  lalu pilih menu New > Python File.
+</Alert>
+
+<Alert variant="tip">
+  Untuk mengetes dan menjalankan kode yang kamu buat, kamu bisa memanfaatkan
+  online editor pada [halaman ini](/online-editor) atau pada tiap chapter
+  exercise. Sehingga sebenarnya, kamu tidak perlu menginstal software/program
+  apapun untuk mengikuti course ini. Meskipun demikian, skill untuk menggunakan
+  software Python di komputer kamu masing-masing sangat penting untuk pekerjaan
+  sehari-hari. Oleh karena itu, jangan lupa tetap berlatih menggunakan
+  software/program Python ya!
+</Alert>
